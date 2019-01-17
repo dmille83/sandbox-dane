@@ -1,0 +1,340 @@
+html, body
+{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: white;
+    /*background-color: #171717;*/
+
+    //background: -webkit-linear-gradient(#000000, #2E2E2E, #000000, #000000); /* For Safari 5.1 to 6.0 */
+    //background: -o-linear-gradient(#000000, #2E2E2E, #000000, #000000); /* For Opera 11.1 to 12.0 */
+    //background: -moz-linear-gradient(#000000, #2E2E2E, #000000, #000000); /* For Firefox 3.6 to 15 */
+    //background: linear-gradient(#000000, #2E2E2E, #000000, #000000); /* Standard syntax */
+
+	/*
+	SOURCE:  http://lea.verou.me/css3patterns/#starry-night
+	*/
+	background-color:black;
+	background-image:
+	radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+	radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+	radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+	radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+	background-size: 450px 450px, 350px 350px, 250px 250px, 150px 150px; 
+	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+	
+
+	/*
+	background-color:black;
+	  background-image: 
+	    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+	    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+	    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+	    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+	    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+	    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+	  background-repeat: repeat;
+	  background-size: 200px 200px;
+	*/
+}
+button
+{
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #eee;
+    background-color: black;
+    color: white;
+}
+
+
+#game-outer-menu-wrapper
+{
+    margin: auto;
+    /*background-color: black;*/
+
+	display: none;
+}
+#game-outer-menu-wrapper td
+{
+    vertical-align: top;
+    text-align: center;
+    /*border: 1px solid white;*/
+}
+/*#game-outer-menu-wrapper td:first-child*/
+/*#game-outer-menu-wrapper td:last-child
+{
+    width: 300px;
+}*/
+/*#game-outer-menu-wrapper td:first-child
+{
+    width: 270px;
+}*/
+
+
+#canvasMinimap, #canvasScreenID, #canvasHUD
+{
+    border: 1px solid white;
+}
+#canvasScreenID
+{
+    width: 750px;
+    height: 600px;
+}
+#canvasMinimap
+{
+    width: 260px;
+    height: 260px;
+}
+#canvasHUD
+{
+    /*width: 398px;*/
+    width: calc(100% - 6px);
+    /*height: 150px;*/
+}
+
+
+
+.fixed-menu-banner
+{
+	position: fixed;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	background-color: #000000;
+	margin-top: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+
+.menu-divider
+{
+    width: 1000px;
+    margin: auto;
+    background-color: black;
+    color: white;
+    margin-top: 5px;
+    padding: 2px;
+    position: relative;
+}
+
+
+.magnify-wrapper-table
+{
+    border: 1px solid white;
+    padding: 3px;
+}
+
+
+.control-menu-header
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /*text-decoration: underline;*/
+    /*font-size: 1.3em;*/
+    text-align: center;
+}
+
+.edit-controls-wrapper, .gameplay-instructions
+{
+	width: 860px;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+	background-color: black;
+	/*margin-top: 20px;*/
+	margin-top: 50px;
+}
+
+.gameplay-instructions
+{
+	text-align: left;
+	background-color: rgba(0,0,0, 0.9);
+	position: relative;
+}
+.gameplay-instructions h1, .gameplay-instructions h2
+{
+	text-align: center;
+}
+h2
+{
+	padding-top: 30px;
+}
+
+
+.sidebar-splash, .sidebar-splash-B
+{
+	display: inline-block;
+	width: 2000px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 60px;
+	background-color: rgba(0,0,0, 0.7);
+	position: fixed;
+	top: 0;
+	/*left: 60px;*/
+	
+	text-align: left;
+	padding-left: 150px;
+
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+}
+.sidebar-splash
+{
+	left: 60px;
+}
+.sidebar-splash-B
+{
+	right: 60px;
+	
+	text-align: right;
+	padding-right: 150px;
+
+	transform: rotate(-90deg);
+	transform-origin: right top 0;
+}
+
+
+
+#toggleScreenOrientation, #toggleParticles
+{
+    /*display: block;*/
+    width: 100px;
+    height: 75px;
+    margin: 2px;
+    border: 2px solid #070707;
+}
+
+.pan-viewport-btn
+{
+    border: 2px solid #070707;
+    background: transparent;
+    padding: 3px;
+    font-weight: bold;
+    text-align: center;
+
+    color: #666;
+
+    /*width: 100%;
+    height: 100%;*/
+
+    min-width: 75px;
+    height: 75px;
+
+    min-height: 75px;
+    display: inline-block;
+    margin: 1px;
+}
+.btn-key-class
+{
+    padding-top: 5px;
+    margin-top: 5px;
+    border-top: 1px solid #666;
+    color: white;
+}
+.weapon-btn
+{
+    width: 130px;
+}
+.loot-viewport-table
+{
+    border: 1px solid white;
+}
+.control-key-table
+{
+   background-color: black;
+   display: inline-block;
+}
+.control-key-table td
+{
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    min-width: 75px;
+    min-height: 75px;
+	 text-align: center;
+}
+.menu-segment
+{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#myWarningMessages
+{
+    /*height: calc(100% - 6px);*/
+    /*width: 300px;*/
+    /*width: 346px;*/
+    height: 150px;
+    width: calc(100% - 6px);
+    overflow-y: auto;
+    border: 1px solid white;
+    background-color: "#000000";
+
+    /*position: absolute;
+    right: 3px;
+    top: 3px;*/
+}
+
+#minimap-slider-scale
+{
+    /*float: left;*/
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 170px;
+    padding: 0 5px;
+    margin: 15px 0 15px 0;
+}
+
+#loot_armor
+{
+    height: 40px;
+}
+
+#begin-game-button, #begin-game-button2, #loading-button
+{
+	border: 1px solid white;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 30px;
+	padding: 20px;
+	width: 350px;
+	margin: auto;
+	min-height: 80px;
+}
+#begin-game-button:hover
+{
+	background-color: white;
+	border: 1px solid black;
+	color: black;
+}
+#loading-button
+{
+	border: 0px;
+}
+
+p.image-wrapper
+{
+	text-align: center;
+}
+
+
+table.display-pre-menu
+{
+	display: inline-block;
+}
+table.display-pre-menu td:first-child
+{
+	text-align: right;
+}
+table.display-pre-menu td:first-child, table.display-pre-menu td:last-child
+{
+	width: 250px;
+}
+
+
+
+

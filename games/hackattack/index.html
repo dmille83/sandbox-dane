@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Hack @ttA|<</title>
+    <link rel="shortcut icon" href="sprites/icon.ico">
+
+	<style>
+		/*
+		body
+		{
+			background-image: url("sprites/stage/Banner.png");
+			background-repeat: repeat;
+		}
+		#bannerID
+		{
+			background-image: url("sprites/stage/Banner.png");
+			width: 623px;
+			height: 348px;
+			margin: auto;
+		}
+		*/
+	</style>
+
+    <script>
+        var thisIsTheClient = true;
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!--<script src="../jquery_local/jquery.min.js"></script>-->
+
+    <script src="js/lib/resources.js"></script>
+    <script src="js/lib/sprite.js"></script>
+    <script src="js/lib/input.js"></script>
+    <script src="js/lib/math_functions.js"></script>
+    <script src="js/lib/AudioPlayer.js?_=1"></script>
+
+    <!-- ACTORS -->
+    <script src="js/actors/Actor.js?_=11"></script>
+    <script src="js/actors/ActorPlayer.js"></script>
+    <script src="js/actors/ActorVirus001.js"></script>
+    <script src="js/actors/ActorClickme.js"></script>
+    <script src="js/actors/ActorUnkillable.js"></script>
+    <script src="js/actors/ActorWorm.js"></script>
+    <script src="js/actors/ActorPowerup.js"></script>
+    <script src="js/actors/ChromeShield.js"></script>
+    <script src="js/actors/Sword.js"></script>
+
+    <!-- STAGE -->
+    <script src="js/stage/Platform001.js"></script>
+    <script src="js/stage/Door001.js"></script>
+    <script src="js/stage/levelData.js"></script>
+</head>
+<body>
+    <canvas id="canvasScreenID"></canvas>
+    <!--<div id="bannerID"></div>-->
+	<div style="text-align: center;">
+		<button onclick="data_muteMusic = !data_muteMusic">Mute Music</button>
+	</div>
+</body>
+<script src="js/data.js"></script>
+<script src="js/update.js"></script>
+</html>

@@ -1,0 +1,21 @@
+Messages:
+<div id="lineOutput"></div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	//$("#lineOutput").load("../upload/managerMessage.txt" + '?_=' + (new Date()).getTime(), function(data) {
+	
+	var managerMessateInterval;
+	$.get("../upload/managerMessage.txt", function(data) {
+		var items = data.split('\n');
+		var i = 0;
+		$('#lineOutput').html(items[i++])
+		managerMessateInterval = setInterval(function(){
+			$('#lineOutput').html(items[i++])
+			if (i > items.length) i=0;
+		}, 6000);
+	});
+
+	
+</script>

@@ -1,0 +1,579 @@
+<html>
+
+<!--
+SOURCE:  http://stackoverflow.com/questions/18042087/getting-data-from-node-js-file-and-displaying-it-in-html-js-page
+-->
+
+<head>
+	<title>Void Pirates</title>
+	<link rel="shortcut icon" href="img/bookmark.ico">
+	<link rel="stylesheet" href="./css/styles.css?_=1" />
+</head>
+<body>
+	<table id="game-outer-menu-wrapper">
+		<tbody>
+			<tr>
+
+
+				<td style="width: 250px;">
+					<table>
+						<canvas id="canvasHUD"></canvas>
+						<tbody>
+							<tr>
+								<td>
+									<canvas id="canvasMinimap"></canvas>
+								</td>
+								<td class="magnify-wrapper-table">
+									<table>
+										<tbody>
+											<tr>
+												<td>
+													<img src="./img/stage/magnify.png"> <!-- onclick="document.getElementById('magnify-slider-id').value+=0.01;" -->
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<input id="minimap-slider-scale" type="range" min="0.01" max="0.1" step="0.01" orient="vertical" value="0.04" onchange="globalMinimapScale = this.value;" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<img src="./img/stage/unmagnify.png"> <!-- onclick="document.getElementById('magnify-slider-id').value-=0.01;" -->
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan='3'>
+									<div class="control-menu-header">Server Messages</div>
+									<div id="myWarningMessages" style="text-align: center;"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+
+
+				<td>
+					<canvas id="canvasScreenID" oncontextmenu="return false"></canvas>
+				</td>
+
+
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="sidebar-splash">Void Pirates</div>
+	<div class="sidebar-splash-B">Void Pirates</div>
+
+	<div id="instructions-wrapper-01" class="gameplay-instructions">
+			
+			
+			<div class="control-menu-header fixed-menu-banner">
+				<button id="begin-game-button" style="display:none;" onclick="beginGameButtonClick()">BEGIN GAME!</button>
+				<button id="loading-button">Loading Game Data...</button>
+			</div>
+			
+			<h2>Gameplay</h2>
+			<p>Defeat enemy ships to earn points and try to beat the high score!</p>
+			<p class="image-wrapper" style="height:300px;">
+				<img style="border: 1px solid white;" src="img/welcome/gameplay_shot.png" alt="gameplay" />
+			</p>
+			<p>There is a crazy variety of weapons out there. Most deal damage with an additional gimmick, but a few are focused on defense, and allow you to teleport, shield yourself, or even lock a nearby enemy in a tractor beam, dragging them around with you!</p>
+			<p class="image-wrapper" style="height:115px;">
+				<img style="border: 1px solid white;" src="img/welcome/hud_shot.png" alt="gameplay" />
+			</p>
+			<p>Loot fallen enemies! Replace your currently-equipped weapon or your armor using the assigned number keys.</p>
+			<p class="image-wrapper" style="height:177px;">
+				<img style="border: 1px solid white;" src="img/welcome/loot_shot.png" alt="gameplay" />
+			</p>
+			<p>As you fly around space, keep an eye on your engine temperature. If it overheats, it will stall out, dealing minor damage and leaving you adrift for a few seconds.</p>
+			<p class="image-wrapper" style="height:30px;">
+				<img style="border: 1px solid white;" src="img/welcome/thermometer_shot.png" alt="gameplay" />
+			</p>
+			
+			<h2>Wormholes</h2>
+			<p class="image-wrapper" style="height:75px;">
+				<img src="img/welcome/wormhole_shot.gif" alt="gameplay" />
+			</p>
+			<p>Wormholes are wildcards. Be sure to check your minimap to see where they exit, or you may find yourself teleported into a very sudden demise!</p>
+			<p>Wormholes will linger for a while after they are created, but their lifespan will decrease every time a spaceship flies through them.</p>
+			<p>Bullets fired through a wormhole will emerge to strike targets on the other side (and do not decrease its lifespan), so do not hesitate to make tactical use of them!</p>
+			
+			<h2>Planets</h2>
+			<p class="image-wrapper" style="height:300px;">
+				<img height="100px" width="auto" src="img/stage/planet/planet1.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet2.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet3.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet4.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet5.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet7.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet10.png" alt="gameplay" />
+				<img height="100px" width="auto" src="img/stage/planet/planet11.png" alt="gameplay" />
+			</p>
+			<!--<p>Orbiting a planet will restore your health, but beware! Shooting a planet or its moons will cause it to spawn AI-driven ships to defend it!</p>-->
+			<p>Orbit a planet to repair your damaged ship, but beware! Your callous strip-mining will aggro the natives, and they will send out their own ships to defend their homeworld!</p>
+			<p class="image-wrapper" style="height:20px;">
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+				<img src="img/sprite/healing_exp.png" alt="healing graphic" />
+			</p>
+			<p>You can also blow up planets and their moons for the lols (and for some points), unleashing a devastating wave of asteriods that will wreak havok on... pretty much everything. Including <strong>you</strong>, if you don't put some distance between yourself and them, <strong>fast</strong>!</p>			
+
+			<h2>BEWARE THE SUN!</h2>
+			<p class="image-wrapper" style="height:239px;">
+				<img style="border: 1px solid white;" src="img/welcome/sun_shot.png" alt="gameplay" />
+			</p>
+			<p>Flying within the sun's aura will rapidly recharge your weapons and increase your firing rate, but it will also quickly overheat your engine, setting your ship on fire and leaving you at the mercy of its powerful gravity!</p>
+			<p>Making contact with the sun is usually instantly fatal, but has a very small chance to open up a wormhole on impact, moving you to... "relative" safety. Probably. Well, <i>wherever</i> you end up is "safer" relative to the guaranteed death of plunging into a giant ball of plasma!</p>
+
+			<h2>Tips</h2>
+			<p><strong>Fun tip #1:</strong> AI-driven ships from different planets will attack ANY approacing ship from another faction on sight! You can use this to distract an annoyingly persistent opponent!</p>
+			<p><strong>Fun tip #2:</strong> Ever wanted to cause an inter-planetary war? Attack two planets in a close orbit to one-another, then take a step back and watch the carnage!</p>
+
+			<h2>Display Options</h2>
+			<p style="text-align: center;">Before you begin, choose your gameplay experience!</p>
+			<p style="text-align: center;">
+				<table class="display-pre-menu">
+					<tbody>
+						<tr>
+							<td>
+								<button onclick="setGlobalOrientation(true);">Orient Screen Around Player</button>
+							</td>
+							<td>
+								&nbsp; or &nbsp;
+							</td>
+							<td>
+								<button onclick="setGlobalOrientation(false);">Use Static Orientation</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button onclick="renderSimplifiedSun = 0;">Use Hi-Def Sun Graphics</button>
+							</td>
+							<td>
+								&nbsp; or &nbsp;
+							</td>
+							<td>
+								<button onclick="renderSimplifiedSun = 1;">Use Simpler Sun Graphics</button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button onclick="globalUseParticles = false;
+														globalUseDualRockets = false;
+														globalUseParticleFilling = false;
+														particleEffectCycleState = 0;">Enable Particle Effects</button>
+							</td>
+							<td>
+								&nbsp; or &nbsp;
+							</td>
+							<td>
+								<button onclick="globalUseParticles = true;
+														globalUseDualRockets = false;
+														globalUseParticleFilling = false;
+														particleEffectCycleState = 4;">Disable Particle Effects</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+			<!--
+			<p>&nbsp;</p>
+			<div class="control-menu-header">
+				<button id="begin-game-button2" onclick="beginGameButtonClick()">BEGIN GAME!</button>
+			</div>
+			-->
+			<!--<p>&nbsp;</p>-->
+	</div>
+	
+	
+	<div class="edit-controls-wrapper">
+		<table class="control-key-table">
+			<tbody>
+				<tr>
+					<td colspan=5>
+						<h2 class="control-menu-header">Controls</h2>
+						(click a control to edit its keybinding)
+					</td>
+				</tr>
+				<tr>
+
+					<td>
+						<table class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td>
+										<button id="loot_weapon" class="pan-viewport-btn weapon-btn" onclick="setUserInputControl('loot_weapon', this)">
+											loot weapon 1
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="loot_weapon2" class="pan-viewport-btn weapon-btn" onclick="setUserInputControl('loot_weapon2', this)">
+											loot weapon 2
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="loot_armor" class="pan-viewport-btn weapon-btn" onclick="setUserInputControl('loot_armor', this)">
+											loot armor/engine
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+							<tbody>
+						</table>
+					</td>
+
+
+					<td>
+						<table class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td>
+										<button id="fire" class="pan-viewport-btn" onclick="setUserInputControl('fire', this)">
+											fire<br>weapon
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="swap_weapons" class="pan-viewport-btn" onclick="setUserInputControl('swap_weapons', this)">
+											switch<br>weapons
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="1">
+										<button id="brake" class="pan-viewport-btn" onclick="setUserInputControl('brake', this)">
+											ship's<br>brakes
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+
+
+					<td>
+						<table class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td colspan=3>
+										Strafe
+									</td>
+								</tr>
+								<tr>
+									<td>
+									
+									</td>
+									<td>
+										<button id="up" class="pan-viewport-btn" onclick="setUserInputControl('up', this)">
+											&#8593;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+									<td>
+									
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="left" class="pan-viewport-btn" onclick="setUserInputControl('left', this)">
+											&#8592;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+									<td>
+										<button id="down" class="pan-viewport-btn" onclick="setUserInputControl('down', this)">
+											&#8595;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+									<td>
+										<button id="right" class="pan-viewport-btn" onclick="setUserInputControl('right', this)">
+											&#8594;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</td>
+
+
+					<td>
+						<table id="keyboard-orientation" class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td colspan=2>
+										Turn
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="rleft" class="pan-viewport-btn" onclick="setUserInputControl('rleft', this)">
+											&#8630;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+									<td>
+										<button id="rright" class="pan-viewport-btn" onclick="setUserInputControl('rright', this)">
+											&#8631;
+											<div class="btn-key-class"></div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button class="pan-viewport-btn" style="visibility: hidden;">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<table id="mouse-orientation" style="display:none;" class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td colspan=2>
+										Mouse Controls
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button class="pan-viewport-btn">
+											L Click
+											<div class="btn-key-class">fire weapon 1</div>
+										</button>
+									</td>
+									<td>
+										<button class="pan-viewport-btn">
+											R Click
+											<div class="btn-key-class">fire weapon 2</div>
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td colspan=2>
+										<button class="pan-viewport-btn">
+											Middle Click
+											<div class="btn-key-class">switch weapons</div>
+										</button>
+										<!--<button class="pan-viewport-btn" style="visibility: hidden;">-->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+
+
+					<td>
+						<table class="control-key-table menu-segment">
+							<tbody>
+								<tr>
+									<td>
+										Display Options
+									</td>
+									<td>
+										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="toggleScreenOrientation" onclick="setGlobalOrientation(!globalOrientWorldAroundPlayer);">Toggle Screen Orientation</button>
+									</td>
+									<td>
+										<button id="toggleScreenOrientation" onclick="renderSimplifiedSun = !renderSimplifiedSun; if (renderSimplifiedSun) { this.innerHTML = 'Use High-Def Sun Graphic'; } else { this.innerHTML = 'Use Low-Def Sun Graphic'; }">Use Simpler Sun Graphic</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button id="toggleParticles" onclick="cycleParticleEffects()">Toggle Particle Rendering</button>
+									</td>
+									<td>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+
+
+				</tr>
+			<tbody>
+		</table>
+	</div>
+	
+
+
+</body>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--<script src="../jquery_local/jquery.min.js"></script>-->
+
+<script type="text/javascript">
+	var thisIsTheClient = true;
+
+	//$(":input, a").attr("tabindex", "-1"); // Prevet TAB from being used.
+</script>
+
+<!--
+<script type="text/javascript" src="./js/shared/world/actors/WorldObject.js"></script>
+<script type="text/javascript" src="./js/shared/world/actors/Spaceship.js"></script>
+-->
+
+<script type="text/javascript" src="./js/shared/lib/math_functions.js"></script>
+<script type="text/javascript" src="./js/shared/lib/input.js"></script>
+<script type="text/javascript" src="./js/shared/lib/sprite.js"></script>
+<script type="text/javascript" src="./js/shared/lib/sprite_client.js"></script>
+<script type="text/javascript" src="./js/shared/lib/sprite_sun.js"></script>
+<script type="text/javascript" src="./js/shared/lib/resources.js"></script>
+<script type="text/javascript" src="./js/shared/lib/get_url_parameters.js"></script>
+
+<script>
+	var ioloaded = 0;
+</script>
+
+<!--<script id="iosrc" src="http://cislinux.cis.ksu.edu:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" src="http://nodejs-dane.rhcloud.com:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" src="http://nodejs-dane.rhcloud.com/VoidPirates/node_modules/socket.io/node_modules/socket.io-client/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" src="http://192.168.0.5:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" src="http://localhost:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" onload="ioloaded=1" src="http://24.255.217.135:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+
+<!-- localhost -->
+<!--<script id="iosrc" onload="ioloaded=1" src="http://169.254.8.29:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" onload="ioloaded=1" src="http://192.168.0.3:1337/socket.io/socket.io.js" type="text/javascript"></script>-->
+<!--<script id="iosrc" onload="ioloaded=1" src="http://24.255.217.135:1337/socket.io/socket.io.js" type="text/javascript"></script>--> <!-- technically works -->
+
+
+<!-- heroku -->
+<script id="iosrc" onload="ioloaded=1" src="https://voidpirates.herokuapp.com/socket.io/socket.io.js" type="text/javascript"></script>
+
+<!-- technically works: ngrok -->
+<!--<script id="iosrc" src="http://6254fbda.ngrok.io/socket.io/socket.io.js" type="text/javascript"></script>-->
+
+
+<script type="text/javascript" src="./js/client/node_connection.js?_=1"></script>
+
+
+<script type="text/javascript" src="./js/client/particle_fumes.js"></script>
+<script type="text/javascript" src="./js/client/data.js?_=8"></script>
+<script type="text/javascript" src="./js/client/update.js?_=6"></script>
+
+<script type="text/javascript">
+	
+	$( document ).ready(function() {
+		
+		// Check if resources are loaded before allowing game to begin
+		if (ioloaded === 0) {
+			//document.getElementById("loading-button").innerHTML = "socket.io <span style='color:#FF0000;'>failed</span> to load! server is <span style='color:#FF0000;'>off</span>";
+			//document.getElementById("loading-button").innerHTML = "socket.io <span style='color:#FF0000;'>failed</span> to load!<br/>Server may be <span style='color:#FF0000;'>down</span>!";
+			document.getElementById("loading-button").innerHTML = "sorry, game server is <span style='color:#FF0000;'>offline</span>";
+			document.getElementById("loading-button").style.border = "1px solid #FF0000";
+			return;
+		}
+		
+		// Show button
+		document.getElementById("begin-game-button").style.display = ""; //"inline-block"; //display:none;
+		document.getElementById("loading-button").style.display = "none";
+		// Un-grey button
+		document.getElementById("begin-game-button").style.backgroundColor = ""; //background-color: #666;
+		// Initialize display /control settings to default
+		setGlobalOrientation(globalOrientWorldAroundPlayer);
+		
+		// Auto-start if page was reloaded
+		if (QueryString().autostart == 1) { 
+			postWarningMessage("red", "RELOADED PAGE DUE TO LAG");
+			loadNewGameSessionData(); 
+		} // Game reloaded due to lag
+	});
+	
+	
+	function beginGameButtonClick() 
+	{
+		// Check if resources are loaded before allowing game to begin
+		if (document.readyState === "complete") {
+			loadNewGameSessionData();
+		} else {
+			alert("Please wait for resources to finish loading!")
+		}
+	}
+	
+
+	var particleEffectCycleState = 4;
+	function cycleParticleEffects()
+	{
+		if (particleEffectCycleState == 4)
+		{
+			globalUseParticles = false;
+			globalUseDualRockets = false;
+			globalUseParticleFilling = false;
+			particleEffectCycleState = 0;
+		}
+		else
+		{
+			globalUseParticles = true;
+			globalUseDualRockets = false;
+			globalUseParticleFilling = false;
+			particleEffectCycleState = 4;
+		}
+
+		/*
+		particleEffectCycleState = (particleEffectCycleState+1) % 5;
+		switch (particleEffectCycleState)
+		{
+			case 4:
+				globalUseParticles = true;
+				globalUseDualRockets = false;
+				globalUseParticleFilling = false;
+				break;
+			case 3:
+				globalUseParticles = true;
+				globalUseDualRockets = false;
+				globalUseParticleFilling = true;
+				break;
+			case 2:
+				globalUseParticles = true;
+				globalUseDualRockets = true;
+				globalUseParticleFilling = false;
+				break;
+			case 1:
+				globalUseParticles = true;
+				globalUseDualRockets = true;
+				globalUseParticleFilling = true;
+				break;
+			default:
+				globalUseParticles = false;
+				globalUseDualRockets = false;
+				globalUseParticleFilling = false;
+				break;
+		}
+		*/
+
+	}
+</script>
+
+</html>

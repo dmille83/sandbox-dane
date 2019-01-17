@@ -1,0 +1,204 @@
+<html style="width: 100%; margin: 0; padding: 0;">
+<head>
+<title>ITAC - CSS Scrubber</title>
+
+<!--
+Version: 52.1
+-->
+
+<!--
+	IDEAS:
+		Find a way to use this?: 
+			var styleSheetList = document.styleSheets;
+			console.log(styleSheetList);
+			The Document.styleSheets read-only property returns a StyleSheetList of StyleSheet objects for stylesheets explicitly linked into or embedded in a document.
+-->
+
+<link rel="shortcut icon" href="https://s.ksucloud.net/k-state-static/2011/0.9.5/img/favicon.ico">
+
+<style>
+	html, body
+	{
+		width: 100%; 
+		margin: 0; 
+		padding: 0; 
+		background-color: #242424;
+		color: white;
+	}
+	body
+	{
+		background-image: url("./images/zwartevilt.png");
+	}
+
+	.scrubberFont
+	{
+		font-family: "Calibri";
+	}
+	.scrubberHeader
+	{
+		background-color: #4f2684;
+		color: white;
+		text-align: center;
+		line-height: 70px;
+		width: 100%;
+		margin: 0;
+	}
+	.scrubberParagraph
+	{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	input[type="checkbox"]
+	{
+		position: relative;
+		top: 2px;
+	}
+	button
+	{
+		background-color: #4f2684;
+		color: white;
+		font-weight: bold;
+		border: 0px solid #999;
+		border-radius: 7px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	button:hover
+	{
+		background-color: purple;
+		color: white;
+		font-weight: bold;
+		border: 3px solid #4f2684;
+		border-radius: 7px;
+		padding-top: 1px;
+		padding-bottom: 1px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
+	.editorOptions, .editorOptionsTop
+	{
+		background-color: #999;
+		border: 0;
+		padding: 10px;
+	}
+	.editorOptionsTop
+	{
+		margin-top: 0px;
+		position: relative;
+	}
+	
+	#scrubberTextInputID
+	{
+		width:100%;
+		margin:0;
+		
+		height: 300px;
+		resize: vertical;
+		border:0;
+		
+		/*
+		background-color: black;
+		color: white;
+		*/
+		/* font-weight: bold; */
+	}
+	#scrubberOutputFrame
+	{
+		/* 
+		border: 3px dotted black;
+		width: calc(100% - 6px);
+		height: 300px;
+		*/
+		border: 0;
+		padding: 0px;
+		background-color:white;
+		display: block;
+		height: 418px;
+		width: 100%;
+		margin:0;
+		position: relative;
+	}
+	
+	.scrubberDisplayRow
+	{
+		height: 400px;
+	}
+	
+</style>
+</head>
+<body>
+	<h1 class="scrubberHeader scrubberFont">ITAC - CSS Scrubber / HTML Editor</h1>
+	<!--
+	<p class="scrubberParagraph scrubberFont">
+	The HTML editor used to create <strong>Knowledge Base</strong> articles in <strong>Service-Now</strong> is prone to adding redundant SPAN tags and "messy" CSS, making it difficult to cleanly alter a heavily-edited page.
+	This tool will strip out all inline CSS (and references to external CSS stylesheets) to allow a fresh start and easier editing of the page content.
+	Copy the HTML from the article and paste it in the editor below, then click <strong>Scrub CSS</strong>. Once this has been done, copy the cleaned-up HTML out of the editor and back into the HTML view of the <strong>Knowledge Base</strong> article in <strong>Service-Now</strong>.
+	</p>
+	-->
+	<p class="scrubberParagraph scrubberFont">
+	The <strong>Knowledge Base</strong> editor is prone to adding excessive CSS (font styling) to its HTML script, making older articles difficult to edit.
+	Copy the HTML from the <strong>Knowledge Base</strong> article and paste it in the editor below, then click <strong>Scrub CSS</strong>. 
+	Once this has been done, copy the cleaned-up HTML out of the editor and back into the HTML view of the <strong>Knowledge Base</strong> article in <strong>Service-Now</strong>.
+	</p>
+	<p class="scrubberParagraph scrubberFont">
+	Use the key-combination <strong>Ctrl+S</strong> if you want to save your work as an HTML file.
+	</p>
+	<table style="width: 100%; table-layout:fixed;">
+		<tr>
+			<td class="scrubberDisplayRow" style="vertical-align: top;">
+				<div class="scrubberParagraph scrubberFont editorOptionsTop" style="vertical-align: top;">
+					<strong>Optional Scrubber Settings:</strong>
+					&nbsp;&nbsp;
+					<label><input type="checkbox" id="clearSpanId" checked="1" /> Scrub SPAN tags</label>
+					&nbsp;&nbsp;
+					<label><input type="checkbox" id="clearClassesId" checked="1" /> Scrub CSS classes</label>
+					&nbsp;&nbsp;
+					<button onclick="scrubCSS();">Scrub CSS</button>
+				</div>
+				<textarea id="scrubberTextInputID" wrap="off" placeholder="Paste your HTML code here!"></textarea>
+				<div style=height: 200px;" class="editorOptions">
+				
+					<div id="inequalTagsNotice" style="display:inline-block; min-width: 260px; width: 100%; text-align:right; color:red; background-color:#ddd; visibility:hidden; float:right;">&nbsp; there is an unfinished tag on <span id="unfinishedIndexID"></span> &nbsp;</div>
+					
+					<strong>Editor Settings:</strong>
+					<button style="float: right;" onclick="beautifyEditor()">normalize indentation</button>
+					<br>
+					<label><input type="checkbox" id="scrubberTextWrap" onclick="setWrap()"> Text Wrap in Editor</label>
+					<br>
+					<label><input type="checkbox" checked="1" id="scrubberAutoUpdate"> Auto-Update Preview Window While Typing.</label> <!--(any <strong>javascript</strong> in the page will not be updated until <strong>Update Preview</strong> is clicked)-->
+					<br>
+					<label><input type="checkbox" id="editorAutoBeautify" onclick="showHideAutoCompleteOption()"> Auto-Beautify Editor Format While Typing.</label>
+					<br>
+					<label  id="editorAutoCompleteLabel"><input type="checkbox" checked id="editorAutoComplete" style="margin-left:30px;"> Auto-Complete HTML Tags While Typing.</label>
+					
+					<div style="display:inline-block; width: 220px; text-align:right; float:right;">&nbsp; last edit was on line: <span id="lineSelectionID"></span> &nbsp; </div>
+					
+				</div>
+			</td>
+			<td class="scrubberDisplayRow" style="vertical-align: top;">
+				<div class="scrubberParagraph scrubberFont editorOptionsTop">
+					<strong>Preview Window:</strong>
+					&nbsp;&nbsp;
+					<button onclick="updatePreviewWithoutScrubbingCSS();">Reload Preview Window (run Javascript)</button>
+				</div>
+				<iframe id="scrubberOutputFrame" class="scrubberParagraph"></iframe>
+			</td>
+		</tr>
+	</table>
+	<div style="text-align:center; font-size: 0.8em; margin-top: 5px;">&copy; Dane Miller. ITAC Help Desk Developer, K-State Uiversity</div>
+</body>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--<script type="text/javascript" src="./jquery_local/jquery.min.js"></script>-->
+
+<!--
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+-->
+
+<script src="js/css_scrubber.js"></script>

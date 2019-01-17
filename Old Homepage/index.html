@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Dane's Sandbox Server</title>
+
+<link rel="shortcut icon" href="images/tornadominds_icon02.ico">
+<!--<link rel="stylesheet" href="./stylesheets/stylesheet_dark.css">-->
+
+
+<!-- LOAD JAVASCRIPT LIBRARIES: -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+<script>
+	
+	// SOURCE:  http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
+	var isMobileDevice = false;
+	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		//$("#mydivid").text("This is a mobile device");
+		isMobileDevice = true;
+	} else {
+		//$("#mydivid").text("This is NOT a mobile device");
+		isMobileDevice = false;
+	}
+	
+	if (isMobileDevice == true) 
+	{
+		$('head').append('<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet_mobile.css">');
+	}
+	else
+	{
+		$('head').append('<link rel="stylesheet" type="text/css" href="./stylesheets/stylesheet_browser.css">');
+	}
+	
+	window.onload = (function(){
+		
+		// The rest of the javascript stuff goes here.
+		
+		
+		if (isMobileDevice == true) 
+		{
+			/*
+			$('.outerwrapper').each(function(){
+				$(this).css("width", "100%");
+			});
+			*/
+		}
+		
+		function RollIntroAnimation()
+		{
+			var curPosition = -600;
+			var myInterval = setInterval(function(){
+				document.getElementById("tornadobackground").style.left = curPosition + "px";
+				curPosition = curPosition + 30;
+				if (curPosition > $(window).width())
+				{
+					clearInterval(myInterval);
+					document.getElementById("tornadobackground").style.display = "none";
+				}
+			},50);
+		}
+		//alert('window.innerWidth=' + window.innerWidth);
+		console.log('window.innerWidth=' + window.innerWidth);
+		if (window.innerWidth >= 860 && isMobileDevice == false) {
+			RollIntroAnimation();
+		} else {
+			document.getElementById("tornadobackground").style.display = "none";
+		}
+		
+	});
+</script>
+
+<meta name="google-site-verification" content="O03cdL-iBPTmuMQWcdLn86S2Hv7HnAjSGJkLpDefmB4" />
+
+</head>
+<body>
+	<div id="tornadobackground"><img id="tornadoimage" src="./images/tornado_grey_faster.gif" alt="tornado"></div>
+	<div class="outerwrapper">
+		<div class="wrapper">
+			<div class="innerwrapper">
+				<h1>Welcome to Dane's Sandbox Server &gt;&gt;</h1>
+				
+				<p style="text-align:right;">
+					<i>
+						The web is where I'm happier than a tornado in a trailer park.
+						<br>
+						...but much less destructive.
+						<br>
+					</i>
+				</p>
+				
+				<p>
+					This server is a hosting resource to conveniently demonstrate various web-apps I have designed.
+				</p>
+				<p>
+					All of the applications below were designed and used by <a target="_blank" href="http://www.k-state.edu/its/" title="KSU ITAC">Kansas State University</a>.
+					<ul style="margin: 5px;">
+						<li>
+							<!--<a target="_blank" href="http://status-ksu.rhcloud.com/" title="Provides multiple news feeds in a single easy-to-use interface. Features include drag-and-drop panel arrangement, panel height adjustment, and periodic reloading of panels to display updated content.">K-State - ITAC Online Status Board</a>-->
+							<a target="_blank" href="./itacstatusblog/" title="Provides multiple news feeds in a single easy-to-use interface. Features include drag-and-drop panel arrangement, panel height adjustment, and periodic reloading of panels to display updated content.">K-State - ITAC Online Status Board</a>
+						</li>
+						<li>
+							<a target="_blank" href="./css-scrubber/" title="Cleans out excess CSS and SPAN tags from Service-Now Knowledge Base articles and provides an easy interface for editing HTML code.">CSS Scrubber (HTML Editor)</a>
+						</li>
+						<li>
+							<a target="_blank" href="./scantron/" title="Includes support for all question types. Example files are included on the page.">Scantron to Canvas converter <!--<span style="float:right;">(includes support for all question types)</span>--></a>
+						</li>
+						<li>
+							<a target="_blank" href="./qti/" title="Includes support for all question types.">Axio (.csv) to Canvas QTI 2.0 converter <!--<span style="float:right;">(includes support for all question types)</span>--></a>
+						</li>
+						<li>
+							<a target="_blank" href="./bubbles/" title="Used in conjunction with an SQL database.">SQL Database Associations Map</a>
+						</li>
+					</ul>
+				</p>
+				<p>
+					Other miscellaneous projects:
+					<ul style="margin: 5px;">
+						<li>
+							<a target="_blank" href="./VoidPirates/" title="Multiplayer asteroids-themed shooter game.">Void Pirates <span style="float:right;">(multiplayer online game)</span></a>
+						</li>
+						<li>
+							<a target="_blank" href="./HackAttack/" title="Computer-security themed platformer game.">Hack @ttA|<<span style="float:right;">(online platformer game)</span></a>
+						</li>
+					</ul>
+				</p>
+				<p>
+					<ul class="horizontal-nav">
+						<li>
+							<a target="_blank" href="./resume/Resume_Dane_Miller.pdf" title="Read my resume if you are interested in learning more!">My Resume</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://www.linkedin.com/profile/view?id=400019677" title="Find me on LinkedIn!">LinkedIn</a>
+						</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>

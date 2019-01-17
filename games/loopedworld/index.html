@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script>
+        var thisIsTheClient = true;
+    </script>
+	
+	<link rel="shortcut icon" href="sprites/bookmark.ico">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!--<script src="../jquery_local/jquery.min.js"></script>-->
+
+    <script src="js/lib/resources.js"></script>
+    <script src="js/lib/sprite.js"></script>
+    <script src="js/lib/input.js"></script>
+    <script src="js/lib/math_functions.js"></script>
+
+    <script src="js/actors/Actor.js"></script>
+    <script src="js/actors/Victim.js"></script>
+    <script src="js/actors/Monster.js"></script>
+	<script src="js/actors/Obstacle.js"></script>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+	
+	<style>
+		div {
+			text-align: center;
+		}
+	</style>
+	
+</head>
+<body>
+	<div>In this demo, the worldspace is looped, allowing actors to smoothly recalculate the shortest path to a target. Use the mouse and WASD keys to control your ship.</div>
+    <canvas id="canvasScreenID" oncontextmenu="return false"></canvas>
+</body>
+<script src="js/data.js"></script>
+<script src="js/update.js"></script>
+</html>

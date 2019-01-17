@@ -1,0 +1,139 @@
+<!--<link rel="stylesheet" href="http://pinger-ksu.rhcloud.com/framecontrol.css">--> <!-- DISABLE THIS SINCE IT WILL BE INCLUDED BY THE MAIN CONTENT CONTROLLER PAGE. -->
+<!--<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>--> <!-- COMMENT THIS OUT SINCE IT WILL BE IMPORTED BY THE MAIN CONTENT CONTROLLER PAGE. -->
+
+<link rel="stylesheet" href="../stylesheet/framecontrol.css">
+
+
+<h1 id='pingerid' class='header pinger'><a target='blank' href='http://www.ksu.edu'>K-State</a> Server Status</h1>
+<div class='pingersubmenu'>
+	<span class='pingerspacer2'>Ping Response Time</span>
+	<span>Domain</span>
+</div>
+<div id="fieldbox1" class="statusBox"></div>
+
+
+<script>
+// Source:  https://gist.github.com/jerone/3487795
+
+
+/*
+Ping
+*/
+$.extend($, 
+{
+	Ping: function Ping(url, label, timeout) 
+	{
+		timeout = timeout || 1500;
+		var timer = null;
+ 
+		return $.Deferred(function deferred(defer) 
+		{
+			var img = new Image();
+			img.onload = function () { success("onload"); };
+			img.onerror = function () { success("onerror"); }; // onerror is also success, because this means the domain/ip is found, only the image not;
+ 
+			var start = new Date();
+			img.src = url += ("?cache=" + +start);
+			timer = window.setTimeout(function timer() { fail(); }, timeout);
+ 
+			function cleanup() 
+			{
+				window.clearTimeout(timer);
+				timer = img = null;
+			}
+ 
+			function success(on) 
+			{
+				cleanup();
+				defer.resolve(true, url, new Date() - start, on, label);
+			}
+ 
+			function fail() 
+			{
+				cleanup();
+				//defer.reject(false, url, new Date() - start, "timeout", label);
+				defer.reject(false, url, "DOWN", "timeout", label);
+			}
+		}).promise();
+	}
+});
+
+var sixBarThreshold = 500;
+var fiveBarThreshold = 2000;
+var fourBarThreshold = 4000;
+var threeBarThreshold = 6000;
+var twoBarThreshold = 8000;
+var oneBarThreshold = 9000;
+
+
+//var retryonce = 1;
+
+function sendPingDomain(domain, title)
+{
+	var timeoutTime = 10000;// 10 seconds
+
+		var container = document.createElement("div");
+		container.innerHTML = "<div class='pinger statusline'><div class='pinger servertitle'><a target='_blank' href='http://" + domain + "'>" + title + "</a></div><div class='lightAndBars stillchecking'>checking...</div></div>"; // LABEL HOLDS OUR PLACE IN LINE, LATER UPDATE WITH FULL CONTENTS (LIGHTS / BARS / ETC...).
+		document.getElementById("fieldbox1").appendChild(container); 
+
+		$.Ping("http://www." + domain, title, timeoutTime).done(function (success, url, time, on, label) {
+			var pingbars = document.createElement("div");
+			if (time > 0 && time <= sixBarThreshold) pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar2"></div><div class="bar3"></div><div class="bar4"></div><div class="bar5"></div><div class="bar6 barEnd"></div></div> '; // 6
+			else if (time > 0 && time <= fiveBarThreshold) pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar2"></div><div class="bar3"></div><div class="bar4"></div><div class="bar5"></div><div class="bar0 barEnd"></div></div> '; // 5
+			else if (time > 0 && time <= fourBarThreshold) pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar2"></div><div class="bar3"></div><div class="bar4"></div><div class="bar0"></div><div class="bar0 barEnd"></div></div> '; // 4
+			else if (time > 0 && time <= threeBarThreshold) pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar2"></div><div class="bar3"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0 barEnd"></div></div> '; // 3
+			else if (time > 0 && time <= twoBarThreshold) pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar2"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0 barEnd"></div></div> '; // 2
+			else pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0 barEnd"></div></div> ';
+
+			//var container = document.createElement("div");
+			container.innerHTML = "<div class='pinger statusline'><div class='pinger servertitle'><a target='_blank' href='http://" + domain + "'>" + title + "</a></div><div class='lightAndBars'><img src='./images/png_Green.png' class='statuslight'> " + pingbars.innerHTML + "<span class='pingrate'> " + time + "MS</span></div></div>";
+			//document.getElementById("fieldbox1").appendChild(container); 
+
+		}).fail(function (failure, url, time, on, label) {
+
+			//if (retryonce == 1)
+			//{
+			//	retryonce = 0;
+			//	setTimeout(function(){ sendPingDomain(domain, title); },2000);
+			//}
+			//else
+			//{
+
+				var pingbars = document.createElement("div");
+				pingbars.innerHTML = '<div class="servicebars barEnd barBegin"><div class="bar1 barBegin"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0"></div><div class="bar0 barEnd"></div></div> ';
+
+				//var container = document.createElement("div");
+				container.innerHTML = "<div class='pinger statusline'><div class='pinger servertitle'><a target='_blank' href='http://" + domain + "'>" + title + "</a></div><div class='lightAndBars'><img src='./images/gif_Red.gif' class='statuslight'> " + pingbars.innerHTML + "<span class='pingrate'> " + time + "</span></div></div>";
+				//document.getElementById("fieldbox1").appendChild(container); 
+			//}
+		});
+}
+
+// CHOOSE SITES THAT WE WILL PING.
+function checkList()
+{
+	$("#fieldbox1").html( "" ); // document.getElementById("fieldbox1").innerHTML = "";
+	//sendPingDomain(DOMAIN, LABEL_DISPLAYED);
+
+	sendPingDomain('eid.ksu.edu', 'KEAS / eProfile');
+	sendPingDomain('connect.ksu.edu', 'Single Sign-On');
+	sendPingDomain('online.ksu.edu', 'K-State Online');
+	sendPingDomain('webmail.ksu.edu', 'Webmail');
+	sendPingDomain('pod51042.outlook.com', 'Outlook Server');
+	sendPingDomain('ksu.edu', 'K-State Homepage');
+	sendPingDomain('ksis.ksu.edu', 'iSIS');
+	//sendPingDomain('as.ksu.edu', 'HRIS');
+	sendPingDomain('hris.k-state.edu', 'HRIS');
+
+	//sendPingDomain('pharosps.ads.ksu.edu', 'Pharos');
+}
+
+// Check sites immediately when page is loaded, then check them again every XX seconds.
+checkList();
+//setInterval(function(){
+//	checkList();
+//},10000);
+// WE DON'T NEED TO RE-RUN THIS ON THIS PAGE IF WE ARE RELOADING THE ENTIRE PAGE FROM THE STATUSBOARD.
+
+
+</script>

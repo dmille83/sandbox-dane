@@ -1,0 +1,315 @@
+
+/* ---- particles.js container ---- */
+
+#particles-js, #particles2-js, #particles3-js {
+  display:block;
+  vertical-align:bottom;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  /*z-index: 0;*/
+  background-color: rgba(255, 255, 255, 0.90);
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+#particles2-js {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- base ---- */
+
+html, body {
+	width:100%;
+	height:100%;
+	background:#fff;
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+}
+
+#ajaxloading {
+	width: 100px;
+	height: 15px;
+	position: absolute;
+	top: calc(50% - 17px);
+	left: calc(50% - 50px);
+}
+#content-wrapper {
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.scrollFade {
+	position: relative;
+}
+
+#bio, #scrollarea {
+	/*z-index: 10;*/
+}
+
+#bio, #topRightFrame > ol, #topRightFrame p, .outerFrame, .floatWrap {
+	overflow: hidden; /* Applying an ol { overflow: hidden; } to the ol ensures that the box itself is pushed aside by the float, instead of the contents of the box. */
+	zoom: 1; /* for IE.6 */
+	position: relative;
+}
+#bio, .outerFrame {
+	margin-bottom: 20px;
+}
+
+#portraitImg {
+	height: 100%;
+	width: auto;
+	float: left;
+	position: relative;
+	display: none; // hide portrait until page is fully loaded
+}
+
+.floatWrap p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#topLeftFrame {
+	display: inline-block;
+	overflow: hidden;
+	text-align: center;
+	white-space:nowrap;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	//background-color: #3B3B43;
+	//background-image: url('../img/code-wallpaper-2.jpg');
+	
+	//rgb(168, 158, 190)// I like this color a lot
+	
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(right, rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100)), url('../img/code-wallpaper-2.jpg'); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100)), url('../img/code-wallpaper-2.jpg'); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100)), url('../img/code-wallpaper-2.jpg'); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 100)), url('../img/code-wallpaper-2.jpg'); /* Standard syntax */
+	
+}
+
+#topRightFrame {
+	padding: 10px;
+	//width: 100%;
+	//overflow: hidden;
+}
+#topRightFrame ol {
+	position: relative; 
+	left: 10px;
+}
+
+h3, .navLink {
+	color: #512888;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	//border-bottom: 3px solid rgba(187,187,187, 1.0);
+	margin-top: 0;
+}
+
+.spacerDiv, .bottomFrame {
+	margin-top: 60px;
+}
+.spacerDiv .leftFrame > h3 {
+	border-bottom: 3px solid rgba(187,187,187, 1.0);
+	font-size: 2.5em;
+	margin-bottom: 0px;
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(right, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.spacerDiv .rightFrame {
+	min-height: 70px;
+}
+
+.bottomFrame {
+	text-align: center;
+	background-color: #000;
+	color: #fff;
+	line-height: 30px;
+	height: 30px;
+	font-weight: bold;
+}
+
+.navLink, h3 a {
+	font-size: 25px;
+	border-bottom: 0px;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+.navLink:hover, h3 a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+.navImg {
+	max-height: 200px;
+	width: auto;
+}
+
+
+/* BROWSER-SPECIFIC STUFF */
+
+table 
+{
+	border: none;
+	width: 100%;
+}
+table tr td
+{
+	width: 50%;
+	//vertical-align: middle;
+	vertical-align: top;
+}
+table tr td h3
+{
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.innerFrame > p, .innerFrame > h3 {
+	padding: 10px;
+	margin-top: 0px;
+}
+.leftFrame, .rightFrame {
+	//width: 50%;
+}
+.leftFrame {
+	vertical-align: top;
+	text-align: right;
+	//padding-right: 2%;
+	
+	float: left;
+	width: 48%
+}
+.rightFrame {
+	text-align: left;
+	//padding-left: 2%;
+	
+	float: right;
+	width: 48%
+}
+.leftFrame > h3, .rightFrame > h3 {
+	margin-bottom: 0px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.leftFrame > h3, .gradientLeft {
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.rightFrame > h3, .gradientRight {
+	padding-left: 10px;
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.rightFrame {
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.rightFrame > a {
+	//padding-left: 10px;
+}
+
+.shortNav {
+	background: transparent;
+	position: relative;
+	right: -10px;
+	//width: calc(100% + 10px);
+}
+.shortNav > h3 {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+/* FLUFF */
+
+/* folded page corner */
+.note, #note {
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(top right, #888888, #888888, rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(bottom left, #888888, #888888, rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(bottom left, #888888, #888888, rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom left, #888888, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.note:before {
+	content: "";
+	float: right;
+	position: relative;
+	top: -10px;
+	right: -10px;
+	border-width: 0 70px 70px 0;
+	border-style: solid;
+	border-color: #848484 #fff;
+	//border-color: #53535b #fff;
+}
+
+#note {
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(top, rgba(119,119,119, 0.8), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0), rgba(119,119,119, 0.8)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(top, rgba(119,119,119, 0.8), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0), rgba(119,119,119, 0.8)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(top, rgba(119,119,119, 0.8), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0), rgba(119,119,119, 0.8)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom, rgba(119,119,119, 0.8), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0), rgba(119,119,119, 0.8)); /* Standard syntax */
+}
+
+/* NAV ITEMS */
+
+.omgItsFullOfStars {
+	background-image: url('../img/stage.png');
+	display:inline-block;
+	height: 200px;
+	padding: 0px;
+	overflow: hidden;
+}
+.omgItsFullOfStars a {
+	padding-left: 40px;
+	display:inline-block;
+	height: 100%;
+	text-align: center;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 10px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+#scrollToTopBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}

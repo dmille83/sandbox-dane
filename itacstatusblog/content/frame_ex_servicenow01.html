@@ -1,0 +1,96 @@
+<!--
+To-Do List:
+	ServiceNow does not show the full report unless you are SIGNED INTO ServiceNow in the same browser.
+	SOLUTION ??? : http://davidwalsh.name/curl-post
+-->
+
+
+<style>
+	#servicenowiframe1
+	{
+		height: 800px;
+		width: 800px;
+		position: relative;
+		top: -105px;
+		/* left: calc(50% - 400px); */
+
+		/*
+	       -moz-transform: scale(0.85);
+	       -moz-transform-origin: -121% 0;
+
+	       -o-transform: scale(0.65);
+	       -o-transform-origin: -121% 0;
+	
+	       -webkit-transform: scale(0.85);
+	       -webkit-transform-origin: -121% 0;
+	
+		-ms-transform: scale(0.85);
+		-ms-transform-origin: -126% 0;
+	
+		transform: scale(.85, .85);
+		transform-origin: -121% 0;
+	
+		border:0px dashed red;
+		*/
+	}
+</style>
+
+
+<iframe scrolling="no" id="servicenowiframe1" frameborder="0" src="https://kstate.service-now.com/sys_report_display.do?sysparm_report_id=507a5971e54995802cae49399a7dc6e5"></iframe>
+
+<script>
+
+// WHEN BROWSER WINDOW IS RESIZED, AUTOMATICALLY RESIZE PAGE TO FIT NEW WINDOW DIMENSIONS.
+var timersvcnow1;
+$(window).bind('resize', function()
+{
+	clearTimeout(timersvcnow1); // Do nothing until user FINISHES resizing the browser window, otherwise you end up with an insane number of function calls getting added up every second that you are still dragging the window.
+	timersvcnow1 = setTimeout(function()
+	{
+		svcnwResize();
+	}, 1000);
+});
+
+function svcnwResize()
+{
+	var parentFrameSvcNow01 = $('#servicenowiframe1').parent();
+	//console.log($('#servicenowiframe1').attr('id') + ' parent id: ' + parentFrameSvcNow01.attr('id'));
+
+	var svcnwTotal = $(window).width();
+	var svcnw01Width = $(parentFrameSvcNow01).width();
+	var svcnw01Height = $(parentFrameSvcNow01).height();
+	var svcnwIframe01Width = 800; //$("#servicenowiframe1").width()
+	var svcnwIframe01Height = 600; //$("#servicenowiframe1").height()
+
+	var iframe1transformoriginX = 0;
+	var iframe1transformoriginY = 110;
+	
+	var iframe1transformscale = svcnw01Width/svcnwIframe01Width;
+	if (iframe1transformscale*svcnwIframe01Height > svcnw01Height)
+	{
+		iframe1transformscale = svcnw01Height/svcnwIframe01Height;
+		$("#servicenowiframe1").css("margin-left", "calc(50% - " + (iframe1transformscale*svcnwIframe01Width/2) + "px)");
+	}
+	else
+	{
+		$("#servicenowiframe1").css("margin-left", "");
+	}
+		
+	document.getElementById("servicenowiframe1").style.MozTransformOrigin=iframe1transformoriginX + " " + iframe1transformoriginY + "px";
+	document.getElementById("servicenowiframe1").style.MozTransform="scale(" + iframe1transformscale + ")";
+		
+	document.getElementById("servicenowiframe1").style.transformOrigin=iframe1transformoriginX + " " + iframe1transformoriginY + "px";
+	document.getElementById("servicenowiframe1").style.transform="scale(" + iframe1transformscale + ")";
+		
+	document.getElementById("servicenowiframe1").style.msTransformOrigin=iframe1transformoriginX + " " + iframe1transformoriginY + "px";
+	document.getElementById("servicenowiframe1").style.msTransform="scale(" + iframe1transformscale + ")";
+		
+	document.getElementById("servicenowiframe1").style.webkitTransformOrigin=iframe1transformoriginX + " " + iframe1transformoriginY + "px";
+	document.getElementById("servicenowiframe1").style.webkitTransform="scale(" + iframe1transformscale + ")";
+		
+	document.getElementById("servicenowiframe1").style.OTransformOrigin=iframe1transformoriginX + " " + iframe1transformoriginY + "px";
+	document.getElementById("servicenowiframe1").style.OTransform="scale(" + iframe1transformscale + ")";
+}
+svcnwResize(); // RUN THIS FUNCTION ONCE WHEN PAGE IS LOADED.
+
+</script>

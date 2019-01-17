@@ -1,0 +1,265 @@
+	html, body
+	{
+		font-family: "Calibri";
+		width: 100%;
+		height: 100%;
+		margin:0;
+		padding:0;
+		background-color: #ddd;
+		
+		overflow-x: hidden;
+	}
+	
+	.outerwrapper
+	{
+		padding-top: 20px;
+	}
+	.wrapper
+	{
+		display: block;
+		border: 0px solid blue;
+		border-radius: 300px;
+		background-color: #242424; /* #4f2684; */
+		background-image: url("../css-scrubber/images/zwartevilt.png");
+		width: 860px;
+		position: absolute;
+		left: calc(50% - 430px);
+	}
+	.innerwrapper
+	{
+		display: block;
+		border-radius: 30px;
+		
+		background-color: white;
+		//background-image: url("../images/sand_background_small.jpg");
+		opacity: 0.85;
+		
+		font-size: 1em;
+		font-weight: bold;
+		color: black;
+		//text-shadow: -2px 0 #ddd, 0 2px #ddd, 2px 0 #ddd, 0 -2px #ddd;
+		/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+		
+		//color: white;
+		//text-shadow: -2px 0 grey, 0 2px grey, 2px 0 grey, 0 -2px grey;
+		
+		
+		padding-top: 0px;
+		padding-left: 50px;
+		padding-right: 50px;
+		padding-bottom: 10px;
+		
+		margin-left: 40px;
+		margin-right: 40px;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		
+		/*
+		background: 
+			url(http://cis.ksu.edu/sites/all/themes/ksu2011/images/header-masthead-seal.png) 
+			no-repeat scroll 
+			221px 
+			top 
+			solid;
+		*/
+	}
+	
+@media screen and (min-width: 859px) {
+	.innerwrapper
+	{
+		background-image: url("../images/sand_background_small.jpg");
+		text-shadow: -2px 0 #ddd, 0 2px #ddd, 2px 0 #ddd, 0 -2px #ddd;
+	}
+}
+	
+	.wrapper404
+	{
+		width: 960px;
+		position: absolute;
+		left: calc(50% - 480px);
+	}
+	
+	h1
+	{
+		margin-top: 50px;
+		margin-bottom: 20px;
+		
+		padding-top: 20px;
+		font-size: 2em;
+		text-align: center;
+		
+		text-shadow: none;
+		/*text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;*/
+	}
+	
+	a, a:visited
+	{
+		color: black;
+		text-decoration: none;
+	}
+	a:hover
+	{
+		color: blue;
+		//text-shadow: -2px 0 blue, 0 2px blue, 2px 0 blue, 0 -2px blue;
+	}
+	.innerwrapper p, .innerwrapper li
+	{
+		font-size: 1.1em;
+		margin: 5px;
+	}
+	.innerwrapper > p
+	{
+		margin-top: 20px;
+	}
+	
+	.indent100
+	{
+		margin-left: 100px;
+	}
+	.indent200
+	{
+		margin-left: 200px;
+	}
+	.indent300
+	{
+		margin-left: 300px;
+	}
+	.indent400
+	{
+		margin-left: 400px;
+	}
+
+	
+/*==================================================*/
+	
+	
+@media screen and (max-width: 860px) {
+	html, body
+	{
+		overflow-x: show;
+		background-color: #000000;
+		//height: calc(100% + 10px);
+	}
+	
+	h1
+	{
+		margin-top: 5px;
+		margin-bottom: 20px;
+		padding-top: 10px;
+	}
+	
+	.outerwrapper
+	{
+		width: 100%;
+		height: 100%;
+		padding-top: 0px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+    .wrapper
+	{
+		border-radius: 0px;
+		
+		position: relative;
+		left: 0px;
+		top: 0px;
+		
+		width: 100%;
+		min-height: calc(100% - 20px);
+		
+		padding: 2px;
+		margin: 0px;
+	}
+	
+	.innerwrapper
+	{
+		display: block;
+		border-radius: 30px;
+		
+		width: calc(100% - 20px);
+		min-height: 100%;
+		
+		background-color: #FFFFFF;
+		/*background-image: url("../images/sand_background_small.jpg");*/
+		//background-image: url("");
+		//opacity: 0.85;
+		opacity: 1.0;
+		
+		font-size: 1em;
+		font-weight: bold;
+		color: black;
+		/*text-shadow: -2px 0 #ddd, 0 2px #ddd, 2px 0 #ddd, 0 -2px #ddd;*/
+		
+		padding-top: 2px;
+		padding-left: 2px;
+		padding-right: 2px;
+		padding-bottom: 2px;
+		
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		
+	}
+}
+	
+/*==================================================*/
+
+	.horizontal-nav
+	{
+		list-style-type: none;
+   	margin: 0;
+		padding: 0;
+		
+		width: 100%;
+		text-align: center;
+	}
+	.horizontal-nav > li
+	{
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+	.horizontal-nav > li:before
+	{
+		content: " | ";
+		text-align: center;
+		display: inline-block;
+		width: 15px;
+		
+	}
+	.horizontal-nav > li:first-child:before
+	{
+		content: " ";
+		
+	}
+	
+/*==================================================*/
+
+#tornadobackground
+{
+	overflow: hidden;
+	display: block;
+	height: 100%;
+
+	position: absolute;
+	z-index: 0;
+	top: -20;
+	left: -600px;
+	
+	transform: skew(17deg);
+	-moz-transform: skew(17deg);
+	-o-transform: skew(17deg);
+	-webkit-transform: skew(17deg);
+	-ms-transform: skew(17deg);
+	
+	//transform: scale(1.5,1.0);
+}
+
+#tornadoimage
+{
+	width: 400px;
+	height: calc(100% + 200px);
+}
+	

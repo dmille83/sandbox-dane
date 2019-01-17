@@ -1,0 +1,27 @@
+.rss-class {
+	font-family: Arial, Verdana, Trebuchet MS, Helvetica, lucida grande, "sans-serif";
+	font-size: 12px;
+}
+.rss-class > a {
+	color: #37D;
+	text-decoration: none;
+}
+.rss-class > a:hover {
+	text-decoration: underline;
+}
+.rss-class ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+.rss-class ul li {
+	padding: 10px;
+	border-top: 1px dashed #AAA;
+	background-color: #EFEFEF;
+}
+.rss-class ul li:first-child {
+	border-top: none;
+}
+.rss-class ul li:nth-child(2n) {
+	background-color: white;
+}

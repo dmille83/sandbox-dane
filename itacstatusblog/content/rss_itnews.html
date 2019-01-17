@@ -1,0 +1,13 @@
+<!-- SOURCE:  https://github.com/sdepold/jquery-rss -->
+<script>
+  jQuery(function($) {
+	$("#rss-feeds1").rss("http://blogs.k-state.edu/it-news/feed", {
+	  limit: 15,
+	  effect: 'slideFastSynced'
+	})
+  })
+</script>
+<div>
+  <h1 class="header"><a href="https://blogs.k-state.edu/it-news/" target="_blank">IT News RSS</a></h1>
+  <div id="rss-feeds1" class="rss-class"></div>
+</div>

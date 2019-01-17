@@ -1,0 +1,2129 @@
+<html>
+<head>
+<title>NPC List Puller</title>
+
+<style>
+
+	//css stuff goes here.
+	
+	body
+	{
+		//width: 100%;
+		//height: 100%;
+	}
+	
+	.mystuff
+	{
+		display: inline-block;
+		border: 1px solid blue;
+		color: blue;
+		background: grey;
+		font-size: 1.5em;
+		font-weight: bold;
+		min-width: 30px;
+		text-align: center;
+		text-decoration: none;
+	}
+	
+	.myiframe{
+		display: inline-block;
+		width: 300px;
+		//height: 800px;
+		height: calc(100% - 10px + 320px);
+		position: absolute;
+		top: -310px;
+	}
+	
+	#a{ width: 900px; background: grey;}
+	
+	.mycontainer
+	{
+		display: block;
+		//width: 1000px;
+		width: 100%;
+		//height: 480px;
+		height: calc(100% - 50px);
+		position: relative;
+		overflow: hidden;
+		border: 2px solid #000000;
+	}
+	
+	.mynotes
+	{
+		display: inline-block;
+		position: absolute;
+		left: 310px;
+		top: 5px;
+		height: calc(100% - 50px);
+		//width: 380px;
+		width: calc(100% - 320px);
+	}
+	
+	label
+	{
+		margin-right: 10px;
+		//margin-left: 10px;
+	}
+	
+	td
+	{
+		//border: 1px solid black;
+		vertical-align: top;
+	}
+	
+	#myspelllist
+	{
+		border: 1px solid black;
+	}
+	
+	.slotslabel
+	{
+		display: inline-block;
+		width: 140px;
+	}
+	
+</style>
+
+<!-- LOAD JAVASCRIPT LIBRARIES: -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+</head>
+<body>
+
+</div>
+<span class="mystuff">NPCs</span>
+<a class="mystuff" href="./NPC_Pull_List.html" target=_blank>+</a>
+<a class="mystuff" href="./NPC_Pull_List.html?savant=1" target=_blank>+s</a>
+&nbsp;&nbsp;<a href="http://rpgtinker.com/index.php" target=_blank>http://rpgtinker.com/index.php</a>
+&nbsp;&nbsp;<a href="http://www.dxcontent.com/5e_RandomSpellTables.html" target=_blank>Random Spell Tables</a>
+</div>
+
+<div class="mycontainer" id="npc1">
+	<iframe class="myiframe" src="
+	http://rpgtinker.com/index.php?template=Soldier&race=Human&radioattribute=Standard+Array+%2815%2C14%2C13%2C12%2C10%2C8%29&numberofhitdice=6&hitdice=d8
+	
+	"></iframe>
+	
+	<!--<iframe class="myiframe" src=http://rpgtinker.com/index.php?template=Evoker&race=Human&radioattribute=Standard+Array+%2815%2C14%2C13%2C12%2C10%2C8%29&numberofhitdice=3&hitdice=d8"></iframe>-->
+	
+	<div class="mynotes">
+		<span style="white-space:nowrap;"><label for="hit">Hit Points Remaining:</label><input type="text" name="hit" style="width:30px;"></input></span>
+		
+		&nbsp;&nbsp;
+		
+		<span style="white-space:nowrap;"><label for="hit">Token:</label><input type="text" name="token" style="width:65px;"></input></span>
+		<br/>
+		Spells:
+		<div id="myspelllist"></div>
+		<label for="notes">Notes/Conditions:</label><textarea type="textarea" name="notes" style="width:100%;height:calc(100% - 320px);"></textarea>
+	</div>
+</div>
+
+
+<div style="display:none;">
+
+
+<table class="SpellTable" id="spelllevel0">
+    <caption>
+    Table 1.0<br>
+    Cantrips <br>
+    (all Classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=41">Acid Splash</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03-04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=70">Blade Ward</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05-06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=80">Chill Touch</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07-08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=381">Control Flames</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09-10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=380">Create Bonfire </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=98">Dancing Lights</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=119">Druidcraft</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15-16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=145">Eldritch Blast</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17-18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=276">Fire Bolt</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=290">Friends</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=389">Frostbite </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=170">Guidance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=390">Gust </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27-28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=35">Light</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=208">Mage Hand</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=398">Magic Stone</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33-34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=223">Mending</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=220">Message</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=226">Minor Illusion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=401">Mold Earth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=252">Poison Spray</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43-44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=257">Prestidigitation</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45-46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=260">Produce Flame</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=295">Ray Of Frost</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=37">Resistance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51-52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=38">Sacred Flame</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53-54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=404">Shape Water </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55-56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=313">Shillelagh</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=314">Shocking Grasp</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=39">Spare The Dying</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=40">Thaumaturgy</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63-64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=342">Thorn Whip</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65-66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=409">Thunderclap </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67-68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=351">True Strike</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-70</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=356">Vicious Mockery</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">71-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel1">
+    <caption>
+    Table 1.1<br>
+    1st Level Spells <br>
+    (all classes)
+    </caption>  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=375">Absorb Elements </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=42">Alarm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=44">Animal Friendship</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=55">Armor Of Agathys</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=56">Arms Of Hadar</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=2">Bane</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=377">Beast Bond </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=3">Bless</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=76">Burning Hands</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=76">Burning Hands</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=79">Charm Person</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=81">Chromatic Orb</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=88">Color Spray</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=4">Command</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=91">Compelled Duel</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=92">Comprehend Languages</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=141">Create Or Destroy Water</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=6">Cure Wounds</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=7">Detect Evil And Good</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=8">Detect Magic</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=9">Detect Poison And Disease</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=106">Disguise Self</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=110">Dissonant Whispers</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=113">Divine Favor</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=385">Earth Tremor </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=148">Ensnaring Strike</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=149">Entangle</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=153">Expeditious Retreat</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=265">Faerie Fire</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=266">False Life</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=268">Feather Fall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=271">Find Familiar</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=341">Floating Disk</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=285">Fog Cloud</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=372">Goodberry</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=165">Grease</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=10">Guiding Bolt</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=172">Hail Of Thorns</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=11">Healing Word</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=178">Hellish Rebuke</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=181">Heroism</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=187">Hex</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=336">Hideous Laughter</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=185">Hunter's Mark</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=391">Ice Knife </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=189">Identify</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=190">Illusory Script</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=12">Inflict Wounds</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=195">Jump</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=206">Longstrider</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=207">Mage Armor</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=211">Magic Missile</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=13">Protection From Evil And Good</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=14">Purify Food And Drink</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=296">Ray Of Sickness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=15">Sanctuary</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=305">Searing Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=312">Shield</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=16">Shield Of Faith</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=315">Silent Image</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=317">Sleep</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=320">Speak With Animals</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=343">Thunderous Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=344">Thunderwave</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=354">Unseen Servant</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=369">Witch Bolt</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=369">Witch Bolt</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">68-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel2">
+    <caption>
+    Table 1.2<br>
+    2nd Level Spells <br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=222">Acid Arrow</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=376">Aganazzar's Scorcher </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=17">Aid</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=43">Alter Self</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=45">Animal Messenger</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=54">Arcane Lock</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=239">Arcanist's Magic Aura</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=18">Augury</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=2">Bane</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=64">Barkskin</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=66">Beast Sense</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=19">Blindness/Deafness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=74">Blur</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=75">Branding Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=20">Calm Emotions</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=86">Cloud Of Daggers</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=21">Continual Flame</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=135">Cordon Of Arrows</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=138">Crown Of Madness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=97">Darkness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=99">Darkvision</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=104">Detect Thoughts</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=383">Dust Devil </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=384">Earthbind </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=399">Earthen Grasp </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=22">Enhance Ability</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=147">Enlarge/Reduce</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=150">Enthrall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=272">Find Steed</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=274">Find Traps</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=280">Flame Blade</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=282">Flaming Sphere</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=24">Gentle Repose</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=171">Gust Of Wind</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=179">Heat Metal</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=25">Hold Person</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=194">Invisibility</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=196">Knock</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=200">Lesser Restoration</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=201">Levitate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=204">Locate Animals Or Plants</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=27">Locate Object</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=212">Magic Mouth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=213">Magic Weapon</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=228">Mirror Image</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=230">Misty Step</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=232">Moonbeam</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=244">Pass Without Trace</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=245">Phantasmal Force</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=28">Prayer Of Healing</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=29">Protection From Poison</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=403">Pyrotechnics </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=294">Ray Of Enfeeblement</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=302">Rope Trick</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=303">Scorching Ray</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=306">See Invisibility</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=311">Shatter</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=30">Silence</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=406">Skywrite </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=407">Snowball Swarm </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=323">Spider Climb</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=324">Spike Growth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=31">Spiritual Weapon</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=331">Suggestion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=32">Warding Bond</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=415">Warding Wind </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=364">Web</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=33">Zone Of Truth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel3">
+    <caption>
+    Table 1.3
+    <br>
+    3rd Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=50">Animate Dead</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=60">Aura Of Vitality</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=65">Beacon Of Hope</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=67">Bestow Curse</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=72">Blinding Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=73">Blink</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=77">Call Lightning</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=84">Clairvoyance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=124">Conjure Animals</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=125">Conjure Barrage</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=136">Counterspell</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=134">Create Food And Water</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=142">Crusader's Mantle</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=100">Daylight</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=109">Dispel Magic</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=146">Elemental Weapon</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=387">Erupting Earth </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=267">Fear</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=270">Feign Death</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=277">Fireball</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=388">Flame Arrows </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=284">Fly</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=155">Gaseous Form</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=162">Glyph Of Warding</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=176">Haste</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=184">Hunger Of Horror</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=186">Hypnotic Pattern</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=202">Lightning Arrow</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=203">Lightning Bolt</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=209">Magic Circle</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=214">Major Image</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=217">Mass Healing Word</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=221">Meld Into Stone</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=400">Minute Meteors </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=238">Nondetection</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=247">Phantom Steed</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=251">Plant Growth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=263">Protection From Energy</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=298">Remove Curse</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=301">Revivify</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=308">Sending</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=318">Sleet Storm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=319">Slow</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=321">Speak With Dead</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=322">Speak With Plants</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=325">Spirit Guardians</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=327">Stinking Cloud</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=410">Tidal Wave </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=199">Tiny Hut</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=346">Tongues</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=355">Vampiric Touch</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=413">Wall of Sand </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=414">Wall of Water </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=362">Water Breathing</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=363">Water Walk</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=367">Wind Wall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel4">
+    <caption>
+    Table 1.4
+    <br>
+    4th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=52">Arcane Eye</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03-04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=58">Aura Of Life</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05-06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=59">Aura Of Purity</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07-08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=63">Banishment</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09-10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=152">Black Tentacles</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=71">Blight</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=94">Compulsion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15-16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=93">Confusion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17-18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=373">Conjure Minor Elementals</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=130">Conjure Woodland Beings</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=137">Control Water</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=96">Death Ward</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=105">Dimension Door</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27-28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=111">Divination</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=114">Dominate Beast</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=386">Elemental Bane </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33-34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=264">Fabricate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=233">Faithful Hound</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=278">Fire Shield</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=289">Freedom Of Movement</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=159">Giant Insect</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43-44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=164">Grasping Vine</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45-46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=166">Greater Invisibility</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=168">Guardian Of Faith</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=174">Hallucinatory Terrain</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51-52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=188">Ice Storm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53-54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=205">Locate Creature</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55-56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=246">Phantasmal Killer</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=254">Polymorph</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=235">Private Sanctum</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=241">Resilient Sphere</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63-64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=198">Secret Chest</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65-66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=326">Staggering Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67-68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=328">Stone Shape</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-70</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=329">Stoneskin</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">71-72</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=408">Storm Sphere </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">73-74</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=412">Vitriolic Sphere </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">75-76</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=357">Wall Of Fire</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">77-78</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=416">Watery Sphere </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">79-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel5">
+    <caption>
+    Table 1.5
+    <br>
+    5th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=47">Animate Objects</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03-04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=48">Antilife Shell</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05-06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=68">Arcane Hand</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07-08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=61">Awaken</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09-10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=62">Banishing Smite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=83">Circle Of Power</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=87">Cloudkill</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15-16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=89">Commune</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17-18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=90">Commune With Nature</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=95">Cone Of Cold</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=126">Conjure Elemental</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=128">Conjure Volley</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=131">Contact Other Plane</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27-28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=129">Contagion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=382">Control Winds </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=139">Creation</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33-34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=102">Destructive Wave</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=108">Dispel Evil And Good</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=116">Dominate Person</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=118">Dream</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=281">Flame Strike</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43-44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=157">Geas</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45-46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=167">Greater Restoration</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=173">Hallow</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=182">Hold Monster</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51-52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=392">Immolation </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53-54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=193">Insect Plague</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55-56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=197">Legend Lore</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=397">Maelstrom </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=215">Mass Cure Wounds</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=229">Mislead</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63-64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=231">Modify Memory</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65-66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=243">Passwall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67-68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=249">Planar Binding</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-70</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=291">Raise Dead</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">71-72</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=297">Reincarnate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">73-74</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=304">Scrying</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">75-76</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=307">Seeming</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">77-78</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=334">Swift Quiver</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">79-80</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=337">Telekinesis</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">81-82</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=293">Telepathic Bond</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">83-84</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=339">Teleportation Circle</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">85-86</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=411">Transmute Rock </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">87-88</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=348">Tree Stride</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">89-90</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=358">Wall Of Force</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">91-92</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=360">Wall Of Stone</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">93-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel6">
+    <caption>
+    Table 1.6<br>
+    6th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-02</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=53">Arcane Gate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">03-04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=69">Blade Barrier</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05-06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=378">Bones of the Earth </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07-08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=78">Chain Lightning</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09-10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=82">Circle Of Death</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=123">Conjure Fey</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-14</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=132">Contingency</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">15-16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=140">Create Undead</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17-18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=107">Disintegrate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=154">Eyebite</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-22</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=273">Find The Path</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">23-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=283">Flesh To Stone</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-26</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=286">Forbiddance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">27-28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=240">Freezing Sphere</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=161">Globe Of Invulnerability</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=169">Guards And Wards</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33-34</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=175">Harm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">35-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=177">Heal</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-38</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=180">Heroes' Feast</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">39-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=117">Instant Summons</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=393">Investiture of Flame </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43-44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=394">Investiture of Ice </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45-46</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=395">Investiture of Stone </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">47-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=396">Investiture of Wind </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=242">Irresistible Dance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51-52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=210">Magic Jar</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53-54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=218">Mass Suggestion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55-56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=237">Move Earth</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-58</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=248">Planar Ally</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">59-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=402">Primordial Ward </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-62</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=261">Programmed Illusion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">63-64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=332">Sunbeam</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65-66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=347">Transport Via Plants</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67-68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=352">True Seeing</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-70</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=359">Wall Of Ice</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">71-72</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=361">Wall Of Thorns</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">73-74</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=366">Wind Walk</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">75-76</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=370">Word Of Recall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">77-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel7">
+    <caption>
+    Table 1.7
+    <br>
+    7th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-04</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=236">Arcane Sword</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">05-08</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=127">Conjure Celestial</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">09-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=101">Delayed Blast Fireball</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-16</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=112">Divine Word</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">17-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=151">Etherealness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=275">Finger Of Death</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-28</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=279">Fire Storm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">29-32</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=287">Forcecage</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">33-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=234">Magnificent Mansion</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=227">Mirage Arcane</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-44</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=250">Plane Shift</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">45-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=258">Prismatic Spray</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-52</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=262">Project Image</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">53-56</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=292">Regenerate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">57-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=299">Resurrection</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-64</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=300">Reverse Gravity</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">65-68</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=309">Sequester</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">69-72</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=316">Simulacrum</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">73-76</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=335">Symbol</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">77-80</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=340">Teleport</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">81-84</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=417">Whirlwind </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">85-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel8">
+    <caption>
+    Table 1.8<br>
+    8th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-05</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=46">Animal Shapes</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">06-10</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=49">Antimagic Field</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">11-15</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=51">Antipathy/sympathy</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">16-20</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=85">Clone</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">21-25</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=143">Control Weather</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">26-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=103">Demiplane</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-35</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=115">Dominate Monster</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">36-40</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=120">Earthquake</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">41-45</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=269">Feeblemind</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">46-50</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=160">Glibness</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">51-55</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=183">Holy Aura</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">56-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=374">Horrid Wilting </a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-65</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=192">Incendiary Cloud</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">66-70</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=219">Maze</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">71-75</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=225">Mind Blank</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">76-80</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=256">Power Word Stun</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">81-85</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=333">Sunburst</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">86-90</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=338">Telepathy</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">91-95</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=353">Tsunami</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">96-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+<table class="SpellTable" id="spelllevel9">
+    <caption>
+    Table 1.9<br>
+    9th Level Spells<br>
+    (all classes)
+    </caption>
+  <thead>
+    <tr>
+      <td>d% Roll</td>
+      <td>Spell</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="SpellTableRoll">01-06</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=57">Astral Projection</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">07-12</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=288">Foresight</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">13-18</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=156">Gate</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">19-24</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=191">Imprisonment</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">25-30</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=216">Mass Heal</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">31-36</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=224">Meteor Swarm</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">37-42</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=253">Power Word Heal</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">43-48</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=255">Power Word Kill</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">49-54</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=259">Prismatic Wall</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">55-60</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=310">Shapechange</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">61-66</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=330">Storm Of Vengeance</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">67-72</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=345">Time Stop</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">73-78</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=349">True Polymorph</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">79-84</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=350">True Resurrection</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">85-90</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=365">Weird</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">91-96</td>
+    <td><a target="_blank" href="http://www.dxcontent.com/SDB5e_SpellBlock.asp?SDBID=368">Wish</a></td>
+  </tr>
+  <tr>
+    <td class="SpellTableRoll">97-100</td>
+    <td>Re-Roll</td>
+  </tr>
+</tbody>
+</table>
+
+
+</div>
+
+</body>
+
+<script>
+
+//javascript stuff goes here.
+
+var url = "http://rpgtinker.com/index.php?template=Soldier&race=Human&radioattribute=Standard+Array+%2815%2C14%2C13%2C12%2C10%2C8%29&numberofhitdice=2&hitdice=d8";
+
+/*
+.get('a.html', null, function(text){
+    alert($(text).find('#name'));
+});
+*/
+
+/*
+var request = new XMLHttpRequest();
+request.addEventListener("load", function(evt){
+    console.log(evt);
+}, false);
+request.open('GET', url, true),
+request.send();
+*/
+
+/*
+window.onload = function() {
+	
+	var myIframe = document.getElementById('myiframe');
+	var xcoord = 0;
+	var ycoord = 100;
+	myIframe.contentWindow.scrollTo(xcoord,ycoord);
+	
+};
+*/
+
+</script>
+
+<script>
+	function S_GET(id){
+		var a = new RegExp(id+"=([^&#=]*)");
+		if (a.exec(window.location.search) != null) {
+			return decodeURIComponent(a.exec(window.location.search)[1]);
+		}
+		return;
+	}
+</script>
+
+
+<script>
+
+	//javascript stuff goes here.
+	
+	window.onload = function() {
+		
+		//var maxspells = getRandomInt(5);
+		//for(var i = 0; i < maxspells; i++) getRandomSpell(getRandomInt(3)-1);
+		
+		
+		//console.log('savant=' + S_GET('savant'));
+		if (S_GET('savant') == 1)
+		{
+			console.log('is a savant');
+			
+			// RANDOM UNLEVELED
+			getSpellsOfLevel(0,3,0);
+			getSpellsOfLevel(getRandomInt(5)+1,getRandomInt(3),0);
+			getSpellsOfLevel(getRandomInt(5)+1,getRandomInt(3),0);
+			
+		} 
+		else 
+		{
+			console.log('is not a savant');
+			
+			// CANTRIPS
+			getSpellsOfLevel(0,0,3);
+			
+			// 1ST LVL
+			getSpellsOfLevel(1,3,2);
+			
+			// 2ND LVL
+			getSpellsOfLevel(2,4,0);
+			
+			// 3RD LVL
+			getSpellsOfLevel(3,4,-1);
+		}
+		
+		
+		
+	};
+	
+	
+	function getSpellsOfLevel(spelllevel, spellcountmax, spellcountplus)
+	{
+		// SPELLS OF LVL ...
+		console.log('adding spells of lvl ' + spelllevel);
+		var maxspells = getRandomInt(spellcountmax)+spellcountplus;
+		if (maxspells > 0)
+		{
+			var spellslots = (maxspells + getRandomInt(4)-2);
+			if (spellslots < 1) spellslots = 1;
+			var myslots = document.createElement("div");
+			myslots.innerHTML = '<span style="white-space:nowrap;">--- <label for="hit" class="slotslabel">Lvl ' + spelllevel + ' slots (' + spellslots + '), used </label><input type="text" name="slots1" style="width:30px;"></input> </span>';
+			document.getElementById('myspelllist').appendChild(myslots);
+			for(var i = 0; i < maxspells; i++) getRandomSpell(spelllevel);
+		}
+	}
+	
+	function getRandomSpell(spelllevel) {
+		
+		var spelllevellist = document.getElementById('spelllevel' + spelllevel);
+		if (spelllevellist == null) 
+		{
+			getRandomSpell(spelllevel-1);
+			return;
+		}
+		var allspells = spelllevellist.getElementsByClassName('SpellTableRoll');
+		var r = getRandomInt(100);
+		if (r < 10) {
+			r = "0" + r
+		}
+		var myspelllist = document.getElementById('myspelllist');
+		
+		for(var i = 0; i < allspells.length; i++)
+		{
+			var spellid = allspells[i].innerHTML;
+			//var res = spellid.split("-");
+			
+			//if (spellid.includes(String(r) + "-") == true || spellid.includes("-" + String(r)) == true) {
+			if (spellid.includes(String(r)) == true) {
+				
+				try {
+					var myspell = allspells[i].parentNode.childNodes[3].childNodes[0];
+					//console.log(myspell.innerHTML);
+					
+					if (myspell.innerHTML.includes("Re-Roll") == true) {
+						console.log(myspell.innerHTML);
+						getRandomSpell(spelllevel);
+						console.log(myspell.innerHTML);
+						return;
+					}
+				} catch(err) {
+					getRandomSpell(spelllevel);
+					return;
+				}
+				
+				var mylvl = document.createElement("div");
+				mylvl.innerHTML = spelllevel + "&nbsp;&nbsp;";
+				mylvl.appendChild(myspell);
+				//console.log(mylvl.innerHTML);
+				
+				myspelllist.appendChild(mylvl);
+				
+				return;
+			}
+		}
+		
+		getRandomSpell(spelllevel);
+	}
+	
+	function getRandomInt(max) {
+		var min = 1;
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min;
+	}
+
+</script>

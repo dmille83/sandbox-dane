@@ -1,0 +1,321 @@
+	/* -------- LAYOUT CSS -------- */
+
+	#wrapper{
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		overflow:hidden;
+		background-color: #4f2684;
+		min-height: calc(390px + 10px); /* topRowFrame PLUS footerFrame PLUS BOTTOMMARGIN. */
+		min-width: 550px;
+	}
+
+	.footerFrame, .topRowFrame, .feedRowFrame, .middleRowFrame
+	{
+		width: 100%;
+		height: calc(80px); /* MINUS THE WIDTH OF THE BOTTOM BORDER */
+		border: 0px dotted blue;
+		background-color: white;
+		display: inline-block;
+	}
+	.topRowFrame, .feedRowFrame
+	{
+		float: left;
+		width: calc(33% - 5px);  /* MINUS 1/2 LEFTMARGIN. */
+		height: 310px;
+	}
+	.feedRowFrame
+	{
+		height: calc(50% - 155px - 40px - 15px); /* MINUS 1.5 x BOTTOMMARGIN. */
+		margin-top: 10px; /* BOTTOMMARGIN. */
+	}
+	.RowFrameCenter
+	{
+		width: calc(34% - 10px); /* MINUS LEFTMARGIN. */
+		margin-left: 10px; /* LEFTMARGIN. */
+	}
+	.RowFrameRight
+	{
+		float: right;
+	}
+
+	.footerFrame
+	{
+		position:absolute;
+		bottom:0;
+		left:0;
+	}
+
+
+/*
+http://www.w3schools.com/css/css_float.asp
+Turning off Float - Using Clear (breaks floats into a new section)
+lements after the floating element will flow around it. To avoid this, use the clear property.
+.text_line
+{
+clear:both;
+}
+http://www.w3schools.com/css/tryit.asp?filename=trycss_float_clear
+*/
+
+.innerFrame
+{
+	width: calc(100% - 11px);  /* MINUS 2 x BORDER WIDTH, PLUS 1 PX */
+	height: calc(100% - 11px); /* MINUS 2 x BORDER WIDTH, PLUS 1 PX */ /* PLUS 6 PX TO HIDE BOTTOM MARGIN */
+	border: 6px solid black;
+	/* border-bottom: 0px; */
+	overflow: hidden;
+}
+
+/* -------- OVERLAY PANEL CSS -------- */
+/*
+.overlay
+{
+	 position:absolute;
+    top:0; left:0;
+    display:block;
+    z-index:2001;
+	width: 20px;
+	height: 20px;
+	background-color: blue;
+}
+*/
+.overlay {
+    opacity:0;
+    filter: alpha(opacity = 0);
+    position:absolute;
+    top:0; bottom:0; left:0; right:0;
+    display:block;
+    z-index:2001;
+    background:transparent;
+}
+
+
+.inertOverlay {
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    position:absolute;
+    top:0; bottom:0; left:0; right:0;
+    display:block;
+    z-index:2001;
+    background:transparent;
+}
+.hoveringLeftRightArrows
+{
+	position: absolute;
+	 opacity: 0.2;
+    filter: alpha(opacity = 0.2);
+}
+
+
+#fullscreenOverlayID {
+	opacity:0;
+	filter: alpha(opacity = 0);
+	position:absolute;
+	top:0; bottom:0; left:0; right:0;
+	display:block;
+	z-index:2001;
+	background:transparent;
+}
+
+#closefullscreenbutton
+{
+	width:150px;
+	height:150px;
+	//background-color:#4f2684;
+	background-color: transparent;
+	border: 0px;
+	padding: 0px;
+	position:absolute;
+	right:20px;
+	bottom:20px;
+	z-index:4001;
+}
+#closefullscreenbutton img
+{
+	width: calc(100% - 12px);
+	height: calc(100% - 12px);
+	margin: 0px;
+	border: 6px solid black;
+}
+
+
+/* -------- MARGIN WIDTH CONTROLLER -------- */
+	.aspectRatio
+	{
+		position:absolute;
+		top:10px;
+		right:10px;
+		/* opacity:0.3; */
+
+		z-index:5099;
+
+		padding-right:3px;
+		padding-left:10px;
+		//padding-bottom:5px;
+
+		text-align: right;
+
+		border: 1px solid #999;
+		background-color: white;
+	}
+	.aspectRatio input[type="range"]
+	{
+		padding: 0;
+		margin:0;
+		vertical-align: bottom;
+		position: relative;
+		top: 1px;
+		width: 100px;
+		//padding-bottom:5px;
+		//padding-bottom:5px;
+	}
+	.aspectRatio input:active
+	{
+		background-color:yellow;
+	}
+	.aspectRatio .layoutMenuLabel
+	{
+		color: black;
+		position: relative;
+		top: 0.4em;
+	}
+	.aspectRatioHidden
+	{
+		display:none;
+	}
+
+	.aspectRatio:hover .aspectRatioHidden
+	{
+		display: inline-block !important;
+		margin-top:10px;
+	}
+	.aspectRatio:hover
+	{
+		border: 1px solid #999;
+		padding-bottom:5px;
+	}
+
+
+	#sizemenugear
+	{
+		z-index: 1;
+		padding: 0;
+		margin:0;
+		width:35px;
+		height:35px;
+		float: right;
+
+		/*
+		position:absolute;
+		top:10px;
+		right:10px;
+		*/
+	}
+
+
+	#rangevalue
+	{
+		width: 20px;
+		display: inline-block;
+		text-align: right;
+	}
+
+	img.loadingBar
+	{
+		width:100px;
+		height:20px;
+		position:relative;
+		top: calc(50% - 10px);
+		left: calc(50% - 50px);
+	}
+
+	img.loadingBarUncentered
+	{
+		width:100px;
+		height:20px;
+		position:relative;
+		top: calc(50% - 10px);
+	}
+
+
+/* -------- SLIDER BAR CSS -------- */
+	.slidervertical
+	{
+		width:100%;
+		padding: 0;
+		position:absolute;
+		top:310px;
+		left:0;
+		z-index:3099;
+		opacity: 0.0;
+
+		margin-top: -16px;
+
+		border-top:12px solid red;
+		background-color:#900000;
+		height:5px;
+		border-bottom:12px solid red;
+	}
+	.slidervertical:hover
+	{
+		opacity:0.3;
+		cursor: ns-resize;
+	}
+
+	/* Slider position ToolTip */
+	.slidervertical span
+	{
+		position: relative;
+		top: -20px;
+		left: 70px;
+		background-color: white;
+		border: 1px solid blue;
+	}
+
+	.sliderhorizontal
+	{
+		height:100%;
+		padding: 0;
+		position:absolute;
+		left:330px;
+		top:0px;
+		z-index:3099;
+		opacity: 0.0;
+
+		border-left:12px solid red;
+		background-color:#900000;
+		width:5px;
+		border-right:12px solid red;
+	}
+	.sliderhorizontal:hover
+	{
+		opacity:0.3;
+		cursor: ew-resize;
+	}
+
+	/* Slider position ToolTip */
+	.sliderhorizontal span
+	{
+		position: relative;
+		top: 50px;
+		left: 4px;
+		background-color: white;
+		border: 1px solid blue;
+	}
+
+/* -------- BLOG PAGES CSS -------- */
+
+	.page-frame-class
+	{
+		position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+
+	}
+	.innerIframe
+	{
+		width: calc(100%);  /* MINUS 2 x BORDER WIDTH, PLUS 1 PX */
+		height: calc(100%); /* MINUS 2 x BORDER WIDTH, PLUS 1 PX */ /* PLUS 6 PX TO HIDE BOTTOM MARGIN */
+		overflow: hidden;
+	}

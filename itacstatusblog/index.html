@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>K-State - ITAC Online Status Board</title>
+	<link rel="shortcut icon" href="https://s.ksucloud.net/k-state-static/2011/0.9.5/img/favicon.ico">
+
+
+	<!-- CSS STYLESHEETS. -->
+	<link rel="stylesheet" href="./stylesheet/contentcontrol.css?_=5">
+	<link rel="stylesheet" href="./stylesheet/layoutcontrol.css">
+	<link rel="stylesheet" href="./stylesheet/rsscontrol.css?_=8">
+
+	<!-- LOAD JAVASCRIPT LIBRARIES. -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	
+	<!-- ALERT MESSAGE TELLING THE USER TO LOG INTO SERVICENOW SO THAT THE SERVICENOW REPORTS ON THIS PAGE WILL WORK CORRECTLY. -->
+	<!-- SINCE ALERTS PAUSE THE PAGE LOADING,THIS ALERT NEEDS TO APPEAR BEFORE THE REST OF THE PAGE STARTS LOADING SO THAT USERS DO NOT SEE AN UGLY HALF-LOADED PAGE VISIBLE BEHIND IT. -->
+	<script type='text/javascript'>
+		//alert('Log into Service-Now in another tab to allow the Service-Now reports to be viewed on this page.');
+	</script>
+
+	<!-- RSS FEEDS -->
+	<!--<script src="javascript/jquery/jquery.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+	<script src="javascript/jquery/jquery.rss.js"></script>
+	
+	<!-- LOAD THE LAYOUT CONTROLS SCRIPT. -->
+	<script src="./javascript/layout.js?_=2"></script>
+	<!--<script src="./javascript/sagscroller.js"></script>-->
+	<!--<script src="./javascript/sagscroller_autoScroll.js"></script>-->
+
+	<!-- LOAD SCRIPTS USED TO CONTROL THE GMAIL FRAME -->
+	<script src="./javascript/scrollbarWidthDetection.js"></script>
+	<script src="./javascript/jquery.scrollTo.min.js"></script>
+	<script src="./javascript/animatedScrollDown.js?_=22"></script>
+	
+	<!-- INITIAL LOAD OF CONTENT INTO ALL FRAMES. -->
+	<!-- EVERYTHING BUT THE RSS FEEDS ARE LOADED, MANAGED, AND HAVE THEIR CONTENT REFRESHED BY THIS SCRIPT. -->
+	<script src="./javascript/initialcontentload.js?_=7"></script> 
+	<!--<script src="./javascript/load_rssfeeds.js"></script>-->
+	
+
+	<!-- DRAG AND DROP FRAMES TO REORGANIZE THEM -->
+	<!--
+	<style>
+		.ui-state-hover div {
+			background:lightyellow;
+		}
+		.ui-state-active div {
+			background:lightgray
+		}
+		.ui-state-active div img
+		{
+			width: 10px;
+		}
+	</style>
+	<script src="./javascript/dragDrop.js"></script>
+	-->
+
+
+</head>
+<body>
+<div id="wrapper">
+
+
+<div class="topRowFrame" id="wrapper01">
+	<div class="innerFrame" id="frame01">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="topRowFrame RowFrameCenter" id="wrapper02">
+	<div class="innerFrame" id="frame02">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="topRowFrame RowFrameRight" id="wrapper03">
+	<div class="innerFrame" id="frame03">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<br>
+
+
+<div class="middleRowFrame" id="wrapperMiddle">
+	<div class="innerFrame" id="frameMiddle">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<!-- <iframe class="innerFrame" id="frameMiddle" src="./content/frame_ex_pages.php"></iframe> -->
+	<div class="overlay"></div>
+</div>
+
+
+<br>
+
+
+<div class="feedRowFrame" id="wrapper04">
+	<div class="innerFrame" id="frame04">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+		<!--<h1 class="header"><a href="https://blogs.k-state.edu/it-news/" target="_blank">IT News</a></h1>
+		<div id="mysagscroller1" class="sagscroller"></div>-->
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="feedRowFrame RowFrameCenter" id="wrapper05">
+	<div class="innerFrame" id="frame05">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+		<!--<h1 class="header"><a href="http://www.k-state.edu/its/status/" target="_blank">IT Status</a></h1>
+		<div id="mysagscroller2" class="sagscroller"></div>-->
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="feedRowFrame RowFrameRight" id="wrapper06">
+	<div class="innerFrame" id="frame06">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+<!--
+<br>
+
+
+<div class="feedRowFrame" id="wrapper07">
+	<div class="innerFrame" id="frame07">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="feedRowFrame RowFrameCenter" id="wrapper08">
+	<div class="innerFrame" id="frame08">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div>
+
+
+<div class="feedRowFrame RowFrameRight" id="wrapper09">
+	<div class="innerFrame" id="frame09">
+		<img class="loadingBar" src="./images/ajaxloading.gif">
+	</div>
+	<div class="overlay"></div>
+</div> -->
+
+
+<br>
+
+
+<div class="footerFrame"><div class="innerFrame" id="footer">
+
+	<!--<div id="marqueeleftid" class="marqueeleft">-->
+	<div id="sidebar" class="managermessagecenter">
+		<span id="marqueeleftspanid" rel=""> <!-- Set rel value with seperate variable, check if width of marqueeleftspanid is greater than or equal to totalwidth before populating it, if less, use ""? -->
+			<img class="loadingBarUncentered" src="./images/ajaxloading.gif">
+		</span>
+		<div class="inertOverlay" onclick="reloadAndResizeManagerMessage(messageCurrentIndex+1);" style="text-align: right;"></div>
+		<div class="inertOverlay" onclick="reloadAndResizeManagerMessage(messageCurrentIndex-1);" style="width: 50%; text-align: left;"></div>
+			<img src="./images/transparent-left.png" class="hoveringLeftRightArrows" style="left: 0;">
+			<img src="./images/transparent-right.png" class="hoveringLeftRightArrows" style="right: 0;">
+	</div>
+
+</div></div>
+
+
+
+<!--<div id="fullScreenWrapper" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:white; border:3px solid black; z-index:4001;"><div id="fullscreenOverlayID"></div></div>-->
+<!--<button id="closefullscreenbutton" type="button"><span>&#x21ba;</span></button>-->
+<button id="closefullscreenbutton" type="button"><img src="images/back_arrow.jpg" alt="back"></button>
+<!--<button id="closefullscreenbutton" type="button"><img src="images/arrow-back-android.jpg" alt="back"></button>-->
+
+
+</div>
+</body>

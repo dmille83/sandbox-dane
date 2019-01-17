@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Database Map</title>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href=".\img\bookmark.ico">
+<!--<link rel="shortcut icon" href="C:\Users\Public\Documents\bin\icons\logo_wildcats.ico">-->
+
+<style>
+	
+	html, body { 
+		text-align: left; 
+		margin: 0px; 
+		padding: 0px; 
+		height: 100%; 
+		width: 100%; 
+		font-family: calibri; 
+	}
+	
+	.title-header {
+		font-weight: bold;
+		font-size: 18px;
+	}
+	
+	.zoom_in {
+		cursor: -moz-zoom-in; 
+		cursor: -webkit-zoom-in; 
+		cursor: zoom-in;
+	}
+	.zoom_out {
+		cursor: -moz-zoom-out; 
+		cursor: -webkit-zoom-out; 
+		cursor: zoom-out;
+	}
+	
+	#canvasScreenID, #zoom {
+		display: inline-block;
+	}
+	
+	#zoom {
+		position:absolute; 
+		top:0; 
+		left:0; 
+		display:none; 
+		border:1px black solid; 
+		box-shadow: 5px 5px 10px #1e1e1e;
+	}
+	
+	.toolwrapper {
+		text-align: left;
+		border-bottom: 1px solid black;
+		padding: 5px;
+		position: relative;
+	}
+	
+	.toolwrapper > div {
+		margin-bottom: 5px;
+	}
+	
+	.copyright {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding-right: 3px;
+		padding-top: 1px;
+	}
+	
+</style>
+
+
+<!-- LOAD JAVASCRIPT LIBRARIES: -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+</head>
+<body>
+
+<div id="datemodified" class="copyright">11/28/2018</div>
+
+<div class="toolwrapper">
+	
+	<div class='title-header'>SQL Database Associations Map</div>
+
+	<div>
+		Select a database to view its backend/frontend associations: 
+	</div>
+	<div>
+		
+		<select id="selectDb" onchange="generateMapSelect()"></select>
+		
+		&nbsp;
+		Show degrees of separation:
+		<select id="selectRecsv" onchange="generateMapSelect()">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+		
+		&nbsp;
+		Format:
+		<select id="selectFormat" onchange="reopenUrl();">
+			<option value="columns">columns</option>
+			<option value="diagram">diagram</option>
+		</select>
+		
+		&nbsp;
+		Backends:
+		<select id="selectSide" onchange="reopenUrl();">
+			<option value="left">left</option>
+			<option value="right">right</option>
+		</select>
+		
+		<img id="processing" src=".\img\processing.gif" style="display: inline-block;">
+	</div>
+	<!--
+	<div>
+		Backend databases on the <strong>left</strong> are rounded and colorful, frontend applications on the <strong>right</strong> are square and rimmed in dark blue.
+	</div>
+	-->
+</div>
+
+<canvas id="canvasScreenID"></canvas>
+<canvas id="zoom" width="400" height="200"></canvas>
+
+<div id="myFile" style="display: none;">EISP,Accounting.accdb
+FinanceOfficeAccounting,Accounting.accdb
+EmailLists,Address_Tools.accdb
+KSIS,Address_Tools.accdb
+Alumni,Alumni.accdb
+Distance Learning Grads.xlsx,Alumni.accdb
+EISP,Auxil_Explorer_User.accdb
+FinanceOfficeAccounting,Auxil_Explorer_User.accdb
+MCS_Billing,Auxil_Explorer_User.accdb
+MONTHLYCPSEXPORT.xlsx,Auxil_Explorer_User.accdb
+AbilaMIP,Auxil_WorkZone.accdb
+MailJet,Auxil_WorkZone.accdb
+MCS_Billing,Auxil_WorkZone.accdb
+WorkZone,Auxil_WorkZone.accdb
+Canvas,Canvas_Reports.accdb
+TrakData,CNCP_LabelRequests.accdb
+Canvas,CNCP_Programs.accdb
+CNCP_Programs,CNCP_Programs.accdb
+Alumni,Contacts.accdb
+Contacts,Contacts.accdb
+Contacts_Admin,Contacts.accdb
+master,Contacts.accdb
+DB_MASTER_WordMergeReports.accdb,CoursesForEducatorsBrochure.accdb
+EISP,CoursesForEducatorsBrochure.accdb
+filetoimport.xls,CoursesForEducatorsBrochure.accdb
+EISP,EIS-KSIS accounting.accdb
+FinanceOfficeAccounting,EIS-KSIS accounting.accdb
+EmailSQL,EmailSQL.accdb
+EmailSQL,EmailSQL_Attachments.accdb
+MailJet,EmailSQL_Attachments.accdb
+Public,EnroleReport_Downloader.accdb
+Public,EnroleReport_RegistrationsCrosstab.accdb
+EISP,FinanceOfficeAccounting.accdb
+FinanceOfficeAccounting,FinanceOfficeAccounting.accdb
+EISP,FinanceOfficePayrollSystem2007.accdb
+FinanceOfficePayroll,FinanceOfficePayrollSystem2007.accdb
+GrantFundedProjects,GFP.accdb
+KSIS,GlobalCampusFiles.accdb
+PowerBi,GlobalCampusFiles.accdb
+TrakData,GoMembersDownloader.accdb
+Inventory,Inventory_v2017.accdb
+JMIH,JMIH.accdb
+KCCTO,KCCTO_Certificates.accdb
+KCCTO,KCCTO_ContactManager.accdb
+KCCTO,KCCTO_CourseManager.accdb
+KCCTO,KCCTO_EmailComposer.accdb
+KCCTO,KCCTO_Excel_SplitSheets.accdb
+KCCTO,KCCTO_FacilityManager.accdb
+MailMergeData.accdb,KCCTO_FacilityManager.accdb
+KCCTO,KCCTO_LegacyTranscripts.accdb
+Ooey Gooey Registrations 2016.xlsx,KCCTO_LegacyTranscripts.accdb
+KCCTO,KCCTO_Main.accdb
+KCCTO,KCCTO_ReportManager.accdb
+MailMergeData.accdb,KCCTO_ReportManager.accdb
+KCCTO,KCCTO_Wufoo.accdb
+EmailLists,KSISLabelRequest_TimeToEnroll.accdb
+KSIS,KSISLabelRequest_TimeToEnroll.accdb
+UiMap,LogShortcuts.vbs
+MailJet,MailJet_SubAccount.accdb
+Public,MailJet_SubAccount.accdb
+EmailLists,MailJet_Uploader.accdb
+MailJet,MailJet_Uploader.accdb
+MailJet_SFS,MailJet_Uploader.accdb
+MCS,MailJet_Uploader.accdb
+Public,MailJet_Uploader.accdb
+MailJet,MCS_Checklist.accdb
+MCS,MCS_Checklist.accdb
+MCS_Forms,MCS_Forms.accdb
+FILES.xls,MCS_LabelRequests.accdb
+MailJet,MCS_LabelRequests.accdb
+AbilaMIP,MIP_CanvasCourses_InternalAccounts.accdb
+Abila MIP Download.xlsx,MIP_Importer.accdb
+Abila MIP Refunds Download.xlsx,MIP_Importer.accdb
+AbilaMIP,MIP_Importer.accdb
+EISP,MIP_Importer.accdb
+FinanceOfficeAccounting,MIP_Importer.accdb
+FinanceOfficePayroll,MIP_Importer.accdb
+MCS_Billing,MIP_Importer.accdb
+ODBC,mtksql.accdb
+TrakData,mtksql.accdb
+TrakData2,mtksql.accdb
+traktemp.accdb,mtksql.accdb
+EmailSQL,ParkingPermits.accdb
+MailJet,ParkingPermits.accdb
+ParkingPermits,ParkingPermits.accdb
+EISP,Postal_User.accdb
+FinanceOfficeAccounting,Postal_User.accdb
+MCS_Billing,Postal_User.accdb
+KSIS,PowerBI_Uploader.accdb
+PowerBi,PowerBI_Uploader.accdb
+Programs,ProgramsDatabase.accdb
+KSIS,Retention.accdb
+Programs,Retention.accdb
+Retention,Retention.accdb
+ROD,Rod_User.accdb
+EmailSQL,ServiceNow_Wireframe.accdb
+MailJet,SFS_MailJet_Reporting.accdb
+MailJet_SFS,SFS_MailJet_Reporting.accdb
+Public,SFS_MailJet_Reporting.accdb
+DB_MASTER_SfsLocalCache.accdb,SFS11_MissingData_Importer.accdb
+EISP,SFS11_MissingData_Importer.accdb
+KSIS,SFS11_MissingData_Importer.accdb
+SFS,SFS11_MissingData_Importer.accdb
+DB_MASTER_SfsLocalCache.accdb,SFS11_User.accdb
+EISP,SFS11_User.accdb
+KSIS,SFS11_User.accdb
+SFS,SFS11_User.accdb
+EISP,SFS18_User.accdb
+EmailSQL,SFS18_User.accdb
+KSIS,SFS18_User.accdb
+MailJet_SFS,SFS18_User.accdb
+Public,SFS18_User.accdb
+SFS,SFS18_User.accdb
+SFS18,SFS18_User.accdb
+master,SQL Server Creator.accdb
+TestDatabase,SQL Server Creator.accdb
+MailJet,TaskManager.accdb
+TaskManager,TaskManager.accdb
+UiMap,UiMap.accdb</div>
+
+</body>
+
+<script>
+	//$("#myFile").load("qryExport.txt");
+	//readTextFile("qryExport.txt");
+	
+	function isChrome() {
+		var isChromium = window.chrome,
+			winNav = window.navigator,
+			vendorName = winNav.vendor,
+			isOpera = winNav.userAgent.indexOf("OPR") > -1,
+			isIEedge = winNav.userAgent.indexOf("Edge") > -1,
+			isIOSChrome = winNav.userAgent.match("CriOS");
+		
+		if(isIOSChrome){
+			return true;
+		} else if(isChromium !== null && isChromium !== undefined && vendorName === "Google Inc." && isOpera == false && isIEedge == false) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
+	if (isChrome() !== true) {
+		alert("Must be using Chrome to run!");
+	}
+	
+</script>
+
+<script src=".\js\string_width.js?v=10032018"></script>
+<script src=".\js\readtxt.js?v=10032018"></script>
+<script src=".\js\csv_reader.js?v=10032018"></script>
+<script src=".\js\csvtoarray.js?v=10032018"></script>
+<script src=".\js\collision.js?v=10032018"></script>
+<script src=".\js\canvas_roundedrectangle.js?v=10032018"></script>
+<script src=".\js\colorisdark.js?v=10032018"></script>
+
+<!--
+<script src=".\js\bubble_col.js?v=11282018"></script>
+<script src=".\js\dorylovesbubbles_col.js?v=11282018"></script>
+-->
+
+<script src=".\js\load_js.js?v=10032018"></script>
+<script src=".\js\get_url_parameters.js?v=10032018"></script>
+<script>
+	
+	// LOAD LIBRARY TYPE
+	
+	var params = QueryString();
+	
+	if (params["format"] == "diagram") {
+		document.getElementById('selectFormat').value = "diagram";
+		loadJS(".\\js\\bubble.js?v=11282018");
+		loadJS(".\\js\\dorylovesbubbles.js?v=11282018");
+	} else {
+		document.getElementById('selectFormat').value = "columns";
+		loadJS(".\\js\\bubble_col.js?v=11282018");
+		loadJS(".\\js\\dorylovesbubbles_col.js?v=11282018");
+	}
+	
+	function reopenUrl(url) {
+		window.location.href = location.protocol + '//' + location.host + location.pathname + '?format=' + document.getElementById('selectFormat').value + '&database=' + document.getElementById('selectDb').value + '&degrees=' + document.getElementById('selectRecsv').value + '&side=' + document.getElementById('selectSide').value;
+	}
+	
+</script>
+
+<script>
+	var main = document.getElementById("canvasScreenID");
+	var zoom = document.getElementById("zoom");
+	var ctx = main.getContext("2d")
+	var zoomCtx = zoom.getContext("2d");
+	var str = document.getElementById('myFile').innerHTML;
+	var n = str.indexOf("\n");
+</script>
+

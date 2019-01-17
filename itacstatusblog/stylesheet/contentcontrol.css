@@ -1,0 +1,516 @@
+/* ----- HEADERS/LABELS ----- */
+html, body
+{
+	font-family:Arial, Veranda, Sans-serif;
+	background-color:#4f2684;
+}
+
+.header 
+{
+	font-size:25pt;
+	margin-top: 0px;
+	margin-bottom: 6px;
+	text-decoration:underline;
+	background-color:#FFFFFF;
+}
+.header a 
+{
+	text-decoration:underline; 
+	color:#000000;
+} 
+
+
+/* enlist items here that need to be offset from the left side by XX pixels */
+.leftoffset, .header, .marqueeverticalcontainer, .statuslight, .pingersubmenu, .statusline
+{
+	padding-left:10px;
+}
+
+
+/*---------- SPECIFICS & EXCEPTIONS ----------*/
+
+
+/* used to crop the edges of the Twitter widget */
+#twitterouter
+{
+	/* z-index:-1; */ /* breaks content when there is a background-color assigned to this element. */
+	overflow:hidden;
+}
+
+#twitterinner
+{
+	position:relative;
+	top:-50px; /* hides the Twitter label and top section of the Twitter widget */
+	left:-60px;
+	width:calc(100% + 85px); /* a little extra to hide the scrollbar on the right side */
+	/* z-index:-2; */ /* breaks content when there is a background-color assigned to this element. */
+	overflow:hidden;
+}
+
+.twitter-timeline 
+{
+	position:relative;
+	width:100%;
+}
+
+/*---------- MANAGER MESSAGE STATIONARY ----------*/
+
+.managermessagecenter
+{
+	width:100%;
+	height:100%;
+	display:inline-block;
+	position:relative;
+	text-align: center;
+	font-weight: bold;
+}
+
+.managermessagecenter span
+{
+	font:12px arial, sans-serif; 
+	white-space: nowrap;
+	display:inline-block;
+	font-weight: bold;
+
+	position: relative;
+	top: 30%;
+
+	border: 0px dashed blue;
+}
+
+
+
+/* ----- PINGER ----- */
+.pinger, servertitle, statusline, header
+{ 
+	text-align:left; 
+}
+
+/* unvisited link */
+.pinger a:link
+{
+	text-decoration:none; 
+	color:#000000;
+}
+
+/* visited link */
+.pinger a:visited
+{
+	text-decoration:none; 
+	color:#000000;
+}
+
+/* mouse over link */
+.pinger a:hover 
+{
+	text-decoration:underline; 
+	color:#000000;
+} 
+
+/* selected link */
+.pinger a:active 
+{
+	text-decoration:underline; 
+	color:#000000;
+} 
+
+.stillchecking
+{
+	color: #FF6600;
+}
+
+.statusline 
+{
+	/* font-size: 16pt; */
+	display:inline-block;
+	font-weight: bold;
+	/* white-space:nowrap; */
+	padding-bottom:0px;
+
+	width:100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid #999;
+
+	/* margin-top:-1px; 
+	border-bottom: 1px solid #999; */
+}
+
+.lightAndBars
+{
+	display:inline-block;
+	width: 163px;
+	vertical-align:top;
+
+	margin-left: 5px;
+	margin-right: 10px;
+	float:right;
+	border: 0px solid orange;
+}
+
+.servertitle 
+{ 
+	font-size: 16pt;
+
+	font-weight:bold;
+	text-wrap:suppress;
+	/* width: 200px; */
+	display:inline-block;
+	height:28px;
+	border: 0px solid red;
+}
+
+.pingrate
+{
+	font-size: 10pt;
+	font-size: 10pt; 
+	display: inline-block; 
+	width:48px;
+	margin-left:5px;
+
+
+	border: 0px solid pink;
+}
+
+.servicebars
+{
+	vertical-align:middle;
+	display:inline-block;
+	background-color: grey;
+	padding-left: 5px;
+	padding-right: 3px;	
+	width: 60px;
+	height:25px;
+}
+.bar0, .bar1, .bar2, .bar3, .bar4, .bar5, .bar6
+{
+	display:inline-block;
+	height:21px;
+	width:8px;
+	padding:0px;
+	margin-top:2px;
+	margin-right:2px;
+}
+.bar0
+{
+	background-color:#999999;
+	opacity:0.5;
+}
+/*
+.barEnd
+{
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+.barBegin
+{
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+*/
+.bar1
+{
+	background-color:#FF0000;
+}
+.bar2
+{
+	background-color:#FF8000;
+}
+.bar3
+{
+	background-color:#FFF000;
+}
+.bar4
+{
+	background-color:#FFF800;
+}
+.bar5
+{
+	background-color:#00FF00;
+}
+.bar6
+{
+	background-color:#00BF00;
+}
+
+.statuslight
+{
+	width:22px;
+	height:22px;
+	vertical-align:middle;
+	border: 3px solid grey;
+	border-radius:25px;
+	padding-left:0px;
+}
+
+.pingersubmenu 
+{
+	font-size:10pt;
+	font-weight:bold;
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.pingerspacer
+{
+	width:148px;
+	display:inline-block;
+	border: 0px solid green;
+}
+
+.pingerspacer2
+{
+	width:163px;
+	display:inline-block;
+}
+
+#pingerresizeframe
+{
+       -moz-transform: scale(1.50);
+       -moz-transform-origin: 0 0;
+
+       -o-transform: scale(1.50);
+       -o-transform-origin: 0 0;
+
+       -webkit-transform: scale(1.50);
+       -webkit-transform-origin: 0 0;
+
+	-ms-transform: scale(1.50);
+	-ms-transform-origin: top center;
+}
+
+
+
+/* ----- SAG SCROLLER (RSS FEEDS) ----- */
+
+.sagscroller
+{
+	width: 100%;
+	height:calc(100% - 45px);
+	overflow:hidden;
+	position:relative; /* bumps rss feed below the title, but also pushes the 'down' button below the bottom edge of the frame. */
+	border:0px solid black;
+}
+
+.sagscroller ul
+{
+	position:absolute;
+	margin:0;
+	padding:0;
+	background:white;
+	list-style:none;
+	width: 100%;
+}
+
+.sagscroller ul li
+{
+	display:block;
+	padding:7px;
+	border-bottom:1px solid gray;
+	margin-bottom:7px; /*bottom spacing between each LI*/
+}
+
+/*div containing body of each RSS entry*/
+.sagscroller ul li .rsscontent
+{
+	font-size:90%;
+}
+
+/*div containing label of each RSS entry*/
+.sagscroller ul li .rsslabel
+{
+	margin-top:5px;
+	background: #eee;
+	font-size:12px;
+	clear: both;
+}
+
+.sagscroller a
+{
+	font-weight:bold;
+}
+
+/* unvisited link */
+.sagscroller a:link 
+{
+	text-decoration:none; 
+	color:#000000; 
+	font-size:16pt;
+} 
+
+/* visited link */
+.sagscroller a:visited 
+{
+	text-decoration:none; 
+	color:#000000;
+} 
+
+/* mouse over link */
+.sagscroller a:hover 
+{
+	text-decoration:underline; 
+	color:#000000;
+}
+
+/* selected link */
+.sagscroller a:active 
+{
+	text-decoration:underline; 
+	color:#000000;
+}
+
+.statusLine 
+{
+	margin-top:0px; 
+	margin-bottom:10px;
+}
+
+.sliderdesc
+{
+	
+	position: relative;
+	bottom: 0px;
+	
+
+	/*
+	position: relative;
+	top: 0px;
+	height: 100%;
+	*/
+}
+
+
+/* ----- STUDENT OF THE MONTH ----- */
+
+.imageuploadouterwrapper
+{
+	width:100%;
+	height:90px;
+	margin:0px;
+	padding:0px;
+	border:0px solid green;
+}
+
+.imageuploadouterwrapper h1, h2
+{
+	display: inline;
+	white-space:nowrap;
+}
+
+.imageuploadinnerwrapper
+{
+	width:100%;
+	margin:0px;
+	margin-top: 10px;
+	padding:0px;
+	border:0px solid red;
+	text-align:center;
+}
+
+.imageuploadimagewrapper
+{
+	/*
+	width:100%;
+	height: calc(90% - 70px);
+	max-height: 250px;
+	min-height: 0px;
+	*/
+
+	/*
+	display: inline-block;
+	width: calc(100% - 26px);
+	max-width: 250px;
+	position: relative;
+	left: calc(50% - 125px);
+	*/
+
+	display: inline-block;
+	height: calc(100% - 110px);
+	width: calc(100% - 26px);
+	//max-width: 500px;
+	position: relative;
+	left: 10px;
+
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	border:0px solid blue;
+}
+
+.studentphoto
+{
+	height: 100%;
+	width:auto;
+
+	max-height: 330px;
+
+	color:silver; 
+	border:3px solid black;
+}
+
+.hiddenSecondStudentPhoto
+{
+	display: none;
+}
+
+/* ----- HELPDESK-L ----- */
+
+#marqueeUpOuterFrame
+{
+	width:100%;
+	height:100%;
+	//border: 0px solid blue;
+	//overflow:hidden;
+	//position: relative;
+
+	overflow-x:hidden;
+	overflow-y:scroll;
+	position: relative;
+}
+#marqueeUpInnerFrame
+{
+	position:relative;
+	top: 0px;
+	left:0px;
+	width:calc(100% - 20px);
+	min-height: 1000px;
+	margin-left: 10px;
+	margin-right: 10px;
+	/* height:350px; */
+	border: 0px solid green;
+	overflow:hidden;
+}
+
+#finalemailframe
+{
+	border: 0px dashed green;
+}
+
+/* fix over-spaced paragraph tags pulled in by IMAP */
+.emailBody p
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.emailDividerLine
+{
+	height:5px;
+	width:100%;
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+}
+
+.morePingersAreHiddenNotification
+{
+	display: inline-block;
+	position: absolute;
+	bottom: 4px;
+	left: 5px;
+	padding-left: 3px;
+
+	background-color: white;
+	border: 1px solid black;
+	//opacity:0.5;
+	font-weight: bold;
+}

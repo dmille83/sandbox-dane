@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>Scene3 - Will's Lines</title>
+    <link rel="shortcut icon" href="sprites/icon.ico">
+
+	<style>
+		/*
+		body
+		{
+			background-image: url("sprites/stage/Banner.png");
+			background-repeat: repeat;
+		}
+		#bannerID
+		{
+			background-image: url("sprites/stage/Banner.png");
+			width: 623px;
+			height: 348px;
+			margin: auto;
+		}
+		*/
+	</style>
+	
+    <!--<script src="../../jquery_local/jquery.min.js"></script>-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../js/AudioPlayer.js"></script>
+        
+    <script>
+    	var sounds = [
+    		"mp3s/NTFS-01.mp3",
+			"mp3s/NTFS-02.mp3",
+			"mp3s/NTFS-03.mp3",
+			"mp3s/NTFS-04.mp3",
+			"mp3s/NTFS-05.mp3",
+			"mp3s/NTFS-06.mp3",
+			"mp3s/NTFS-07.mp3",
+			"mp3s/NTFS-08.mp3",
+			"mp3s/NTFS-09.mp3",
+			"mp3s/NTFS-10.mp3",
+			"mp3s/NTFS-11.mp3",
+			"mp3s/NTFS-12.mp3",
+			"mp3s/NTFS-13.mp3",
+			"mp3s/NTFS-14.mp3",
+			"mp3s/NTFS-15.mp3",
+			"mp3s/NTFS-16.mp3",
+			"mp3s/NTFS-17.mp3",
+			"mp3s/NTFS-18.mp3",
+			"mp3s/NTFS-19.mp3",
+			"mp3s/NTFS-20.mp3",
+			"mp3s/NTFS-21.mp3",
+			"mp3s/NTFS-22.mp3",
+			"mp3s/NTFS-23.mp3",
+			"mp3s/NTFS-24.mp3",
+			"mp3s/NTFS-25.mp3",
+			"mp3s/NTFS-26.mp3",
+			"mp3s/NTFS-27.mp3",
+			"mp3s/NTFS-28.mp3"
+    	];
+    	
+    	var myAudio = new AudioPlayer(sounds);
+    	var currentLine = 0;
+    	var goToNextLine = true;
+		
+  		document.addEventListener('keydown', function(e) {
+			//console.log(e.keyCode);
+			
+			if (goToNextLine) {
+				goToNextLine = false;
+				
+				letThereBeNoise();
+				
+				if (e.keyCode == 32 || e.keyCode == 39) {
+					myAudio.playSound(sounds[currentLine++]);
+				}
+				if (e.keyCode == 37) {
+					myAudio.playSound(sounds[--currentLine]);
+				}
+				
+			}
+  		});
+  		document.addEventListener('keyup', function(e) {
+			goToNextLine = true;
+		});
+		
+		function letThereBeSilence() {
+			for (var i in sounds){ myAudio.stopSound(sounds[i]); }
+		}
+		function letThereBeNoise() {
+			letThereBeSilence();
+			//console.log("speak2me");
+				
+			if (currentLine < 0) { currentLine = 0; }
+			if (currentLine >= sounds.length) { currentLine = sounds.length; }
+			
+			myAudio.playSound(sounds[currentLine]);
+			
+			//setTimeout(function(){
+				document.getElementById('lineNumberID').innerHTML = currentLine;
+			//}, 500);
+		}
+    </script>
+    
+</head>
+<body>
+    <h2>PRESS SPACEBAR TO MAKE WILL SPEAK!</h2>
+    <button onclick="currentLine--; letThereBeNoise();">GO BACK</button>
+    <button onclick="letThereBeNoise(); currentLine++;">SPEAK TO ME!</button>
+	<br><br>
+	<div>Line Number: <span id="lineNumberID"></span></div>
+    <br><br>
+    <button onclick="for (var i in sounds){ myAudio.stopSound(sounds[i]); }">STOP TALKING!</button>
+</body>
+</html>
