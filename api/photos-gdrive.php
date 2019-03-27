@@ -3,10 +3,10 @@
 <head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/styles.css?v=0">
+<link rel="stylesheet" href="./css/styles.css?v=0">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/swipe.js?v=0"></script>
+<script src="./js/swipe.js?v=0"></script>
 <script src="./js/load-photos.js?v=0"></script>
 
 </head>
