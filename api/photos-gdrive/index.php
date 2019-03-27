@@ -31,7 +31,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 ?>
 
 
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>-->
 <html>
 <head>
 
