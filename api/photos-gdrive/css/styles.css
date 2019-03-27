@@ -13,34 +13,6 @@ img {
 	opacity: 1; transition: opacity 0.3s;
 }
 
-/*** NAVIGATION ***/
-.col-nav div, .col-nav a {
-	display: block;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-.col-nav div {
-	font-weight: bold;
-}
-.col-nav a {
-	color: white;
-	padding-left: 30px;
-}
-
-a.nav-icon {
-	background-color: #993924;
-	color: white;
-	font-size: 37px;
-	padding: 10px 16px;
-	display: block;
-	position: absolute;
-	right: 0;
-	top: 0;
-	font-weight: bold;
-	text-decoration: none;
-	border-radius: 0px 0px 0px 10px;
-}
-
 /*** PHOTO GALLERY ***/
 .photo-container img {
 	display: inline-block;
