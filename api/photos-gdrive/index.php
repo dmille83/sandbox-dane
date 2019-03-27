@@ -1,6 +1,7 @@
 
 <?php
 // PHP code to enable CORS
+/*
 // SOURCE:  https://www.kerstner.at/2015/02/enabling-cross-origin-resource-sharing-cors-for-php/
 // array holding allowed Origin domains
 $allowedOrigins = array(
@@ -19,6 +20,13 @@ if (isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] != '') {
 		}
 	}
 }
+*/
+
+// PHP code to enable CORS
+// SOURCE:  https://enable-cors.org/server_php.html
+header("Access-Control-Allow-Origin: *"); // all domains
+header('Access-Control-Allow-Methods: GET, POST');
+
 ?>
 
 
