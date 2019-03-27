@@ -38,7 +38,8 @@
 		//navpanel:{show:false},
 		rssdata:{
 			feeds: [
-				['IT Status', 'http://www.k-state.edu/its/status/status.xml']
+				//['IT Status', 'http://www.k-state.edu/its/status/status.xml']
+				['IT Status', 'http://ksu-its-status.blogspot.com/feeds/posts/default/']
 			],
 			linktarget: '_new',
 			displayoptions: 'datetime',
