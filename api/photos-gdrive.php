@@ -2,6 +2,10 @@
 <html>
 <head>
 
+<title>Google Drive - Photo Gallery View</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/styles.css?v=0">
 
@@ -88,3 +92,4 @@ loadPhotos();
 </script>
 
 </body>
+</html>
