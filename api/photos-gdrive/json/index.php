@@ -32,7 +32,7 @@ function loadFolder($array) {
 			$img_title = $link->getAttribute('title');
 			if (strpos($img_src, '/type/image/') == false) {
 				//echo '<img data-src="' . str_replace('=s190', '=s1080', $img_src) . '" title="' . $img_title . '" src="" alt="">';
-				if ($img > 0) echo ',';
+				if ($total > 0) echo ',';
 				echo "'" . str_replace('=s190', '=s1080', $img_src) . "'";
 				$total = $total + 1;
 			}
