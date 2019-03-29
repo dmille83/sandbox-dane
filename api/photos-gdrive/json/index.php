@@ -18,6 +18,7 @@ function loadFolder($array) {
 	//echo 'images: { data: [ ';
 	echo '[';
 	$array = explode(",", $array);
+	$total = 0;
 	for ($i = 0; $i < count($array); $i++) {
 		$id = $array[$i];
 		$id = preg_replace("/[^a-zA-Z0-9\-]+/", "", $id);
@@ -26,7 +27,6 @@ function loadFolder($array) {
 		$dom = new DOMDocument;
 		libxml_use_internal_errors(true);
 		$dom->loadHTML($page);
-		$total = 0;
 		foreach($dom->getElementsByTagName('img') as $link) {
 			$img_src = $link->getAttribute('src');
 			$img_title = $link->getAttribute('title');
