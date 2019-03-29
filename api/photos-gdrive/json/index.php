@@ -15,7 +15,8 @@ else {
 }
 
 function loadFolder($array) {
-	echo 'images: { data: [ ';
+	//echo 'images: { data: [ ';
+	echo '[';
 	$array = explode(",", $array);
 	for ($i = 0; $i < count($array); $i++) {
 		$id = $array[$i];
@@ -37,7 +38,8 @@ function loadFolder($array) {
 			}
 		}
 	}
-	echo ' ], count: ' . $total . ' }';
+	//echo ' ], count: ' . $total . ' }';
+	echo ']';
 }
 
 ?>
