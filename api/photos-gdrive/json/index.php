@@ -25,19 +25,19 @@ function loadFolder($array) {
 		$dom = new DOMDocument;
 		libxml_use_internal_errors(true);
 		$dom->loadHTML($page);
-		$img = 0;
+		$total = 0;
 		foreach($dom->getElementsByTagName('img') as $link) {
 			$img_src = $link->getAttribute('src');
 			$img_title = $link->getAttribute('title');
 			if (strpos($img_src, '/type/image/') == false) {
 				//echo '<img data-src="' . str_replace('=s190', '=s1080', $img_src) . '" title="' . $img_title . '" src="" alt="">';
 				if ($img > 0) echo ',';
-				echo $img . ":'" . str_replace('=s190', '=s1080', $img_src) . "'";
-				$img = $img + 1;
+				echo "'" . str_replace('=s190', '=s1080', $img_src) . "'";
+				$total = $total + 1;
 			}
 		}
 	}
-	echo ' ] }';
+	echo ' ], count: ' . $total . ' }';
 }
 
 ?>
