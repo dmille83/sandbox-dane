@@ -1,12 +1,11 @@
 <?php
-
-// PHP code to enable CORS
-// SOURCE:  https://enable-cors.org/server_php.html
+// PHP code to enable CORS: https://enable-cors.org/server_php.html
 header("Access-Control-Allow-Origin: *"); // all domains
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-//header('Content-Type: text/html');
-header('Content-type: application/json');
+?>
+
+<?php
 
 if (!empty($_GET['id'])) {
 	loadFolder($_GET['id']);
