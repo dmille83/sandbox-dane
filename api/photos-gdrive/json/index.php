@@ -44,6 +44,6 @@ if (empty($_GET['id'])) {
 	
 }
 
-echo '{ error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
+echo 'images: { error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
 
 ?>
