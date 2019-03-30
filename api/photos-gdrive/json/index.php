@@ -7,16 +7,19 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 <?php
 
-if (!empty($_GET['id'])) {
-	loadFolder($_GET['id']);
-}
-else {
-	echo 'please provide the id of a publically-shared Google Drive folder';
-}
-
-function loadFolder($array) {
+if (empty($_GET['id'])) {
+	
+	include('../error.html');
+	
+} else {
+	
+	// CONSTRUCT A PHOTO GALLERY PAGE ELEMENT
+	// READ THE PUBLIC GRID PAGE AND PARSE THE IMAGE URLS
+	// WHERE $array CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
+	
 	//echo 'images: { data: [ ';
 	echo '[';
+	$array = $_GET['id'];
 	$array = explode(",", $array);
 	$total = 0;
 	for ($i = 0; $i < count($array); $i++) {
@@ -40,6 +43,7 @@ function loadFolder($array) {
 	}
 	//echo ' ], count: ' . $total . ' }';
 	echo ']';
+	
 }
 
 ?>

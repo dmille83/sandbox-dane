@@ -9,7 +9,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 <html>
 <head>
 
-<title>Google Drive - Photo Gallery View</title>
+<title>API - Google Drive Photo Gallery View</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -53,11 +53,27 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 ***/
 
-// CONSTRUCT A PHOTO GALLERY PAGE ELEMENT
-// READ THE PUBLIC GRID PAGE AND PARSE THE IMAGE URLS
-// WHERE $array CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
-function loadPhotosGDrive($array) {
+if (empty($_GET['id'])) {
+	
+	/*
+	echo '<style>td { padding: 0 10px 0 10px; }</style>';
+	echo '<p>Please provide an "id" field in the URL query string, where "id" equals the alphanumeric id found at the end of the URL string of a public Google Drive folder.</p>';
+	echo '<table border=1>';
+	echo '<tr><td>Google Drive Folder URL</td><td>https://drive.google.com/drive/folders/&lt;ID&gt;</td></tr>';
+	$url = strtok( (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" , '?');
+	echo '<tr><td>Resulting API Query String</td><td>' . $url . '?id=&lt;ID&gt;</td></tr>';
+	echo '</table>';
+	*/
+	include('../error.html');
+	
+} else {
+	
+	// CONSTRUCT A PHOTO GALLERY PAGE ELEMENT
+	// READ THE PUBLIC GRID PAGE AND PARSE THE IMAGE URLS
+	// WHERE $array CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
+	
 	echo '<div class="photo-container" title="click on a photo to expand">';
+	$array = $_GET['id'];
 	$array = explode(",", $array);
 	for ($i = 0; $i < count($array); $i++) {
 		$id = $array[$i];
@@ -77,13 +93,7 @@ function loadPhotosGDrive($array) {
 		}
 	}
 	echo '</div>';
-}
-
-if (!empty($_GET['id'])) {
-	loadPhotosGDrive($_GET['id']);
-}
-else {
-	echo 'please provide an id for a google drive folder';
+	
 }
 
 ?>
