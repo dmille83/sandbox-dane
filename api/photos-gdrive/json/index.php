@@ -7,9 +7,9 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 <?php
 
-$data = "";
-$count = 0;
 $error = "";
+$count = 0;
+$data = "";
 
 if (empty($_GET['id'])) {
 	
@@ -44,6 +44,11 @@ if (empty($_GET['id'])) {
 	
 }
 
-echo 'images: { error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
+//echo 'images: { error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
+
+$json->error = $error;
+$json->count = $count;
+$json->data = $data;
+echo json_encode($json);
 
 ?>
