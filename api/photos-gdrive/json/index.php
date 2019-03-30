@@ -8,8 +8,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 <?php
 
 $error = "";
-$count = 0;
-$data = "";
+$data = [];
 
 if (empty($_GET['id'])) {
 	
@@ -19,12 +18,12 @@ if (empty($_GET['id'])) {
 	
 	// CONSTRUCT A PHOTO GALLERY PAGE ELEMENT
 	// READ THE PUBLIC GRID PAGE AND PARSE THE IMAGE URLS
-	// WHERE $array CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
+	// WHERE $folder_ids CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
 	
-	$array = $_GET['id'];
-	$array = explode(",", $array);
-	for ($i = 0; $i < count($array); $i++) {
-		$id = $array[$i];
+	$folder_ids = $_GET['id'];
+	$folder_ids = explode(",", $folder_ids);
+	for ($i = 0; $i < count($folder_ids); $i++) {
+		$id = $folder_ids[$i];
 		$id = preg_replace("/[^a-zA-Z0-9\-]+/", "", $id);
 		$url = 'https://drive.google.com/embeddedfolderview?id=' . $id . '#grid';
 		$page = file_get_contents($url);
@@ -35,20 +34,21 @@ if (empty($_GET['id'])) {
 			$img_src = $link->getAttribute('src');
 			//$img_title = $link->getAttribute('title');
 			if (strpos($img_src, '/type/image/') == false) {
-				if ($count > 0) $data .= ',';
-				$data .= '"' . str_replace('=s190', '=s1080', $img_src) . '"';
-				$count = $count + 1;
+				$data[] = str_replace('=s190', '=s1080', $img_src);
 			}
 		}
 	}
 	
 }
 
+//echo '[' . implode(',', $data) . ']';
 //echo 'images: { error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
 
-$json->error = $error;
-$json->count = $count;
-$json->data = $data;
+$json = (object) [
+	'error' => $error,
+	'count' => count($data),
+	'data' => $data
+];
 echo json_encode($json);
 
 ?>
