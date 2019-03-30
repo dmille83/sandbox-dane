@@ -54,18 +54,20 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 ***/
 
 if (empty($_GET['id'])) {
-	
-	/*
-	echo '<style>td { padding: 0 10px 0 10px; }</style>';
-	echo '<p>Please provide an "id" field in the URL query string, where "id" equals the alphanumeric id found at the end of the URL string of a public Google Drive folder.</p>';
-	echo '<table border=1>';
-	echo '<tr><td>Google Drive Folder URL</td><td>https://drive.google.com/drive/folders/&lt;ID&gt;</td></tr>';
-	$url = strtok( (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" , '?');
-	echo '<tr><td>Resulting API Query String</td><td>' . $url . '?id=&lt;ID&gt;</td></tr>';
-	echo '</table>';
-	*/
-	include('../error.html');
-	
+?>
+
+<style>td { padding: 0 10px 0 10px; }</style>
+<p>Please provide an "id" field in the URL query string, where "id" equals the alphanumeric id found at the end of the URL string of a public Google Drive folder.</p>
+<table border=1>
+<tr><td>Example Folder URL</td><td>https://drive.google.com/drive/folders/&lt;ID&gt;</td></tr>
+<tr><td>Example API Query</td><td><span id="id-url"></span>?id=&lt;ID&gt;</td></tr>
+</table>
+<script>
+var x = location.protocol + '//' + location.host + location.pathname;
+document.getElementById("id-url").innerHTML = x;
+</script>
+
+<?php
 } else {
 	
 	// CONSTRUCT A PHOTO GALLERY PAGE ELEMENT
