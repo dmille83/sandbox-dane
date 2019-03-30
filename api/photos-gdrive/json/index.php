@@ -9,7 +9,8 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 if (empty($_GET['id'])) {
 	
-	include('../error.html');
+	//include('../error.html');
+	echo '{ data: [], error: "Please provide an id field in the URL query string, where id equals the alphanumeric id found at the end of the URL string of a publicly-visible Google Drive folder" }';
 	
 } else {
 	
@@ -18,7 +19,8 @@ if (empty($_GET['id'])) {
 	// WHERE $array CONTAINS THE ID#S IN THE GOOGLE DRIVE FOLDER URLS
 	
 	//echo 'images: { data: [ ';
-	echo '[';
+	//echo '[';
+	echo '{ data: [';
 	$array = $_GET['id'];
 	$array = explode(",", $array);
 	$total = 0;
@@ -42,7 +44,8 @@ if (empty($_GET['id'])) {
 		}
 	}
 	//echo ' ], count: ' . $total . ' }';
-	echo ']';
+	//echo ']';
+	echo '] }';
 	
 }
 
