@@ -41,9 +41,6 @@ if (empty($_GET['id'])) {
 	
 }
 
-//echo '[' . implode(',', $data) . ']';
-//echo 'images: { error: "' . $error . '", count: ' . $count . ', data: [' . $data . '] }';
-
 $json = (object) [
 	'error' => $error,
 	'count' => count($data),
