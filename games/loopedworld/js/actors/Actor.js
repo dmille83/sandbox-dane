@@ -47,10 +47,10 @@ function Actor(sprite, x, y, angle, xspeed, yspeed, anglespeed)
 // ====== GET AND SET ======
 Actor.prototype.getRadius = function () {
 	if (this.hasOwnProperty('radius')) {
-		console.log(this.actortype + " using actor radius");
+		//console.log(this.actortype + " using actor radius");
 		return (this.radius * this.scale);
 	} else if (this.getSprite() && this.getSprite().hasOwnProperty('size')) {
-		console.log(this.actortype + " using sprite size");
+		//console.log(this.actortype + " using sprite size");
 		return (this.getSprite().size[0] * this.scale)/2; // For spherical collision-checks
 	}
 	return 20; // default
