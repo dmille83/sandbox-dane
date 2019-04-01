@@ -25,7 +25,7 @@ if (empty($_GET['id'])) {
 	for ($i = 0; $i < count($folder_ids); $i++) {
 		$id = $folder_ids[$i];
 		$id = preg_replace("/[^a-zA-Z0-9\-]+/", "", $id);
-		$url = 'https://drive.google.com/embeddedfolderview?id=' . $id . '#grid';
+		$url = '//drive.google.com/embeddedfolderview?id=' . $id . '#grid';
 		$page = file_get_contents($url);
 		$dom = new DOMDocument;
 		libxml_use_internal_errors(true);

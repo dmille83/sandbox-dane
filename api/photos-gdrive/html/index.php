@@ -1,5 +1,5 @@
 <?php
-// PHP code to enable CORS: https://enable-cors.org/server_php.html
+// PHP code to enable CORS: //enable-cors.org/server_php.html
 header("Access-Control-Allow-Origin: *"); // all domains
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
@@ -13,10 +13,10 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/styles.css?v=0">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./js/swipe.js?v=0"></script>
 <script src="./js/photos.js?v=0"></script>
 
@@ -27,9 +27,9 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 /***
 	TITLE:	LOAD FILES FROM A GOOGLE DRIVE FOLDER AS A PHOTO ALBUM
 	USES: 	GOOGLE DRIVE + PHP
-	SOURCE:	http://htmlparsing.com/php.html
-	SOURCE:	https://stackoverflow.com/questions/20681974/how-to-embed-a-google-drive-folder-in-a-website
-	SOURCE:	https://www.publicalbum.org/blog/embedding-google-photos-albums
+	SOURCE:	//htmlparsing.com/php.html
+	SOURCE:	//stackoverflow.com/questions/20681974/how-to-embed-a-google-drive-folder-in-a-website
+	SOURCE:	//www.publicalbum.org/blog/embedding-google-photos-albums
 	PROS:	easy to build, dynamically updates with the folder
 	CONS:	alphabetical with no custom sorting (yet)
 	
@@ -37,7 +37,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 	
 	WRAPPER OPTIONS:
 
-	<script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/dist/pa-embed-player.min.js" async></script>
+	<script src="//cdn.jsdelivr.net/npm/publicalbum@latest/dist/pa-embed-player.min.js" async></script>
 	<div class="pa-embed-player" style="width:100%; max-width:800px; height:480px; display:none;"
 		data-link=""
 		data-title="Little Apple Ren Fest"
@@ -59,7 +59,7 @@ if (empty($_GET['id'])) {
 <style>td { padding: 0 10px 0 10px; }</style>
 <p>Please provide an "id" field in the URL query string, where "id" equals the alphanumeric id found at the end of the URL string of a public Google Drive folder.</p>
 <table border=1>
-<tr><td>Example Folder URL</td><td>https://drive.google.com/drive/folders/&lt;ID&gt;</td></tr>
+<tr><td>Example Folder URL</td><td>//drive.google.com/drive/folders/&lt;ID&gt;</td></tr>
 <tr><td>Example API Query</td><td><span id="id-url"></span>?id=&lt;ID&gt;</td></tr>
 </table>
 <script>
@@ -81,7 +81,7 @@ document.getElementById("id-url").innerHTML = x;
 		$id = $array[$i];
 		//echo $id . '<br/>';
 		$id = preg_replace("/[^a-zA-Z0-9\-]+/", "", $id);
-		$url = 'https://drive.google.com/embeddedfolderview?id=' . $id . '#grid';
+		$url = '//drive.google.com/embeddedfolderview?id=' . $id . '#grid';
 		$page = file_get_contents($url);
 		$dom = new DOMDocument;
 		libxml_use_internal_errors(true);
