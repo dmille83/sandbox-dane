@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *"); // all domains
 header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-//header( 'Cache-Control: max-age=300' );
+header( 'Cache-Control: max-age=300' );
 ?>
 
 <?php
