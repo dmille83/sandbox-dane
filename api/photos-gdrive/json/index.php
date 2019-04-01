@@ -32,7 +32,6 @@ if (empty($_GET['id'])) {
 		$dom->loadHTML($page);
 		foreach($dom->getElementsByTagName('img') as $link) {
 			$img_src = $link->getAttribute('src');
-			//$img_title = $link->getAttribute('title');
 			if (strpos($img_src, '/type/image/') == false) {
 				$data[] = str_replace('=s190', '=s1080', $img_src);
 			}
