@@ -27,9 +27,9 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 /***
 	TITLE:	LOAD FILES FROM A GOOGLE DRIVE FOLDER AS A PHOTO ALBUM
 	USES: 	GOOGLE DRIVE + PHP
-	SOURCE:	//htmlparsing.com/php.html
-	SOURCE:	//stackoverflow.com/questions/20681974/how-to-embed-a-google-drive-folder-in-a-website
-	SOURCE:	//www.publicalbum.org/blog/embedding-google-photos-albums
+	SOURCE:	http://htmlparsing.com/php.html
+	SOURCE:	http://stackoverflow.com/questions/20681974/how-to-embed-a-google-drive-folder-in-a-website
+	SOURCE:	http://www.publicalbum.org/blog/embedding-google-photos-albums
 	PROS:	easy to build, dynamically updates with the folder
 	CONS:	alphabetical with no custom sorting (yet)
 	
@@ -37,7 +37,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 	
 	WRAPPER OPTIONS:
 
-	<script src="//cdn.jsdelivr.net/npm/publicalbum@latest/dist/pa-embed-player.min.js" async></script>
+	<script src="http://cdn.jsdelivr.net/npm/publicalbum@latest/dist/pa-embed-player.min.js" async></script>
 	<div class="pa-embed-player" style="width:100%; max-width:800px; height:480px; display:none;"
 		data-link=""
 		data-title="Little Apple Ren Fest"
@@ -81,7 +81,7 @@ document.getElementById("id-url").innerHTML = x;
 		$id = $array[$i];
 		//echo $id . '<br/>';
 		$id = preg_replace("/[^a-zA-Z0-9\-]+/", "", $id);
-		$url = '//drive.google.com/embeddedfolderview?id=' . $id . '#grid';
+		$url = 'https://drive.google.com/embeddedfolderview?id=' . $id . '#grid';
 		$page = file_get_contents($url);
 		$dom = new DOMDocument;
 		libxml_use_internal_errors(true);
