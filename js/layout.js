@@ -25,7 +25,6 @@ var pageLoad = (function(){
 	
 	// Init particle background
 	if (isMobileDevice == false) { initparticles(); }
-	//initparticles();
 	
 	if (useMobileLayout == true) 
 	{
@@ -100,26 +99,28 @@ var pageLoad = (function(){
 		applyRandomColorGradients("left");
 	}
 	
-	/*
-	// FANCY FADE IN/OUT OF PAGE ELEMENTS WHILE SCROLLING
-	// Reset scroll fade
-	$('.scrollFade').each(function(){
-		if ( $(this).css("z-index") !== "2" ) {
-			if( $(this).is(':animated') ) $(this).stop();
-			$(this).css("z-index","2");
-			$(this).animate({left: "0px", opacity: "1.0"}, 100);
-		}
-	});
 	// RUN FADE IN/OUT
-	if (isMobileDevice == false) 
-	{
+	if (isMobileDevice == false) fadeScroll();
+	
+	// FANCY FADE IN/OUT OF PAGE ELEMENTS WHILE SCROLLING
+	function fadeScroll() {
+		
+		// Reset scroll fade
+		$('.scrollFade').each(function(){
+			if ( $(this).css("z-index") !== "2" ) {
+				if( $(this).is(':animated') ) $(this).stop();
+				$(this).css("z-index","2");
+				$(this).animate({left: "0px", opacity: "1.0"}, 100);
+			}
+		});
 		
 		// SOURCE:  http://stackoverflow.com/questions/11760898/jquery-get-the-element-thats-on-the-middle-of-the-visible-screen-while-scroll
 		var permashow = false;
 		var scrollFade = (function(docElm){
 			var viewportHeight = docElm.clientHeight,
 				elements = $('.scrollFade')
-				s = 1000;
+				s = 1000
+				x = 10;
 			return function(e){
 				if( e && e.type == 'resize' ) viewportHeight = docElm.clientHeight;
 				
@@ -132,20 +133,19 @@ var pageLoad = (function(){
 				if(b==true) permashow = true;
 				if(permashow==true) b = true;
 				
-				// Are we scrolled to the very top?
+				// Are we scrolled to the very top (reset perma-show)?
 				//if(b==false) b = (window.pageYOffset == 0);
 				
 				elements.each(function(){
 					var pos = this.parentElement.getBoundingClientRect().top, 
 						d = false, 
-						lr = "-";
-					if ( ($(this).offset().left + $(this).width() > docElm.clientWidth/2) && (isMobileDevice == false) ) lr = "";
+						lr = -10;
+					if ( ($(this).offset().left + $(this).width() > docElm.clientWidth/2) && (isMobileDevice == false) ) lr *= -1;
 					
 					// Screen position of element as user scrolls down.
-					//if (pos < viewportHeight-$(this).height()) d = true; // works well!
-					if ( (pos < viewportHeight-$(this).height()) || (pos < viewportHeight-200) ) d = true;
+					//if ( (pos < viewportHeight-$(this).height()) || (pos < viewportHeight-200) ) d = true;
+					if ( pos < viewportHeight-150 ) d = true;
 					
-					//if( $(this).is(':animated') ) $(this).stop();
 					if ( b==true || c==true || d==true ) {
 						// SHOW
 						if ( $(this).css("z-index") !== "2" ) {
@@ -158,8 +158,7 @@ var pageLoad = (function(){
 						if ( $(this).css("z-index") !== "1" ) {
 							if( $(this).is(':animated') ) $(this).stop();
 							$(this).css("z-index","1");
-							//$(this).animate({left: lr + $(this).width()/3 + "px", opacity: "0.0"}, s);
-							$(this).animate({left: lr + 50 + "px", opacity: "0.0"}, 300);
+							$(this).animate({left: lr + "px", opacity: "0.0"}, 200);
 						}
 					}
 					
@@ -181,7 +180,6 @@ var pageLoad = (function(){
 		scrollFade();
 		
 	}
-	*/
 	
 	// Animated Code Gradient Fade
 	function gradientAnimated()
