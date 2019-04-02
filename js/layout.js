@@ -119,7 +119,7 @@ var pageLoad = (function(){
 		var scrollFade = (function(docElm){
 			var viewportHeight = docElm.clientHeight,
 				elements = $('.scrollFade')
-				s = 1000
+				s = 300
 				x = 10;
 			return function(e){
 				if( e && e.type == 'resize' ) viewportHeight = docElm.clientHeight;
@@ -158,7 +158,7 @@ var pageLoad = (function(){
 						if ( $(this).css("z-index") !== "1" ) {
 							if( $(this).is(':animated') ) $(this).stop();
 							$(this).css("z-index","1");
-							$(this).animate({left: lr + "px", opacity: "0.0"}, 200);
+							$(this).animate({left: lr + "px", opacity: "0.2"}, s);
 						}
 					}
 					
