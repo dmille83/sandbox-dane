@@ -63,8 +63,9 @@
 		for (var i = 1; i < backend_list.length; i++) {
 			//console.log(backend_list[i]);
 			
+			var c = getFrontendCount(backend_list[i]) + getBackendCount(frontend_list[i]);
 			var option = document.createElement("option");
-			option.text = backend_list[i] + " (back) (" + getFrontendCount(backend_list[i]) + ")";
+			option.text = backend_list[i] + " (back) (" + c + ")";
 			option.value = backend_list[i];
 			select.appendChild(option);
 		}
@@ -74,6 +75,11 @@
 		option.text = "";
 		option.value = "";
 		select.appendChild(option);
+		
+		// Create divider
+		option = document.createElement("option");
+		option.text = "";
+		option.value = "";
 		select.appendChild(option);
 		
 		// Create divider
@@ -86,16 +92,18 @@
 		for (var i = 1; i < frontend_list.length; i++) {
 			//console.log(backend_list[i]);
 			
-			var option = document.createElement("option");
-			option.text = frontend_list[i] + " (front) (" + getBackendCount(frontend_list[i]) + ")";
-			option.value = frontend_list[i];
-			select.appendChild(option);
+			if (frontend_list[i].includes(".") > 0) {
+				var option = document.createElement("option");
+				option.text = frontend_list[i] + " (front) (" + getBackendCount(frontend_list[i]) + ")";
+				option.value = frontend_list[i];
+				select.appendChild(option);
+			}
 		}
 		
 		// URL Parameters
 		var params = QueryString();
 		if (params["database"] == null) {
-			document.getElementById("selectDb").value = "Public";
+			document.getElementById("selectDb").value = "Shared";
 		} else {
 			document.getElementById("selectDb").value = params["database"];
 		}
@@ -220,7 +228,7 @@
 		ctx.stroke();
 		
 		renderedbubbles = [];
-		rootbubble.setPosition();
+		//rootbubble.setPosition();
 		rootbubble.render(ctx);
 		
 		ctx.restore();
@@ -233,6 +241,10 @@
 		// Prevent duplicates
 		var exisBub = getExistingBubble(title);
 		if (exisBub) return exisBub;
+		
+		if (!title.includes(".")) {
+			isbackend = true;
+		}
 		
 		var x = 0, y = 0;
 		
@@ -253,10 +265,6 @@
 		mybubbles.push(newbubble);
 		return newbubble;
 	}
-	// EXAMPLES:
-	//var newbubble = spawnNewBubble('My Frontend', 250, 300);
-	//newbubble.addLink(spawnNewBubble('My DB 1', 450, 150));
-	//newbubble.addLink(spawnNewBubble('My DB 2', 650, 500));
 	
 	function getExistingBubble(title) {
 		for(var i=0; i<mybubbles.length; i++) {
@@ -286,25 +294,24 @@
 	}
 	
 	function getFrontendCount(dbname) {
-		var dbcount = 0;
+		var dbs = [];
 		for (var i=0; i<myCSV.length; i++) {
-			//console.log(myCSV[i][0] + ", " + myCSV[i][1]);			
 			if (myCSV[i][0] == dbname || !dbname) {
-				dbcount += 1;
+				if (!inArray(myCSV[i][1], dbs))	dbs.push(myCSV[i][1]);
 			}
 		}
-		return dbcount;
+		return dbs.length;
 	}
 	
 	function getBackendCount(dbname) {
 		var dbcount = 0;
+		var dbs = [];
 		for (var i=0; i<myCSV.length; i++) {
-			//console.log(myCSV[i][0] + ", " + myCSV[i][1]);			
 			if (myCSV[i][1] == dbname || !dbname) {
-				dbcount += 1;
+				if (!inArray(myCSV[i][0], dbs)) dbs.push(myCSV[i][0]);
 			}
 		}
-		return dbcount;
+		return dbs.length;
 	}
 	
 	

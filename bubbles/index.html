@@ -69,10 +69,10 @@
 
 
 <!-- LOAD JAVASCRIPT LIBRARIES: -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 </head>
 <body>
@@ -88,11 +88,11 @@
 	</div>
 	<div>
 		
-		<select id="selectDb" onchange="generateMapSelect()"></select>
+		<select id="selectDb" onchange="reopenUrl(); generateMapSelect()"></select>
 		
 		&nbsp;
 		Show degrees of separation:
-		<select id="selectRecsv" onchange="generateMapSelect()">
+		<select id="selectRecsv" onchange="reopenUrl(); generateMapSelect()">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -100,12 +100,14 @@
 			<option value="5">5</option>
 		</select>
 		
-		&nbsp;
-		Format:
-		<select id="selectFormat" onchange="reopenUrl();">
-			<option value="columns">columns</option>
-			<option value="diagram">diagram</option>
-		</select>
+		<div style="display: none;">
+			&nbsp;
+			Format:
+			<select id="selectFormat" onchange="reopenUrl();">
+				<option value="columns">columns</option>
+				<option value="diagram">diagram</option>
+			</select>
+		</div>
 		
 		&nbsp;
 		Backends:
@@ -126,76 +128,47 @@
 <canvas id="canvasScreenID"></canvas>
 <canvas id="zoom" width="400" height="200"></canvas>
 
-<div id="myFile" style="display: none;">EISP,Accounting.accdb
-FinanceOfficeAccounting,Accounting.accdb
-EmailLists,Address_Tools.accdb
+<div id="myFile" style="display: none;">2PLUS2_BACKEND.accdb,2+2 Tracking System.accdb
+Email,Address_Tools.accdb
 KSIS,Address_Tools.accdb
-Alumni,Alumni.accdb
-Distance Learning Grads.xlsx,Alumni.accdb
 EISP,Auxil_Explorer_User.accdb
 FinanceOfficeAccounting,Auxil_Explorer_User.accdb
 MCS_Billing,Auxil_Explorer_User.accdb
 MONTHLYCPSEXPORT.xlsx,Auxil_Explorer_User.accdb
 AbilaMIP,Auxil_WorkZone.accdb
-MailJet,Auxil_WorkZone.accdb
 MCS_Billing,Auxil_WorkZone.accdb
 WorkZone,Auxil_WorkZone.accdb
 Canvas,Canvas_Reports.accdb
-TrakData,CNCP_LabelRequests.accdb
-Canvas,CNCP_Programs.accdb
-CNCP_Programs,CNCP_Programs.accdb
-Alumni,Contacts.accdb
+TrakData,CMS_LabelRequests.accdb
+Canvas,CMS_Programs.accdb
+CMS_Programs,CMS_Programs.accdb
+Contacts_Admin,Contacts
+Email,Contacts
 Contacts,Contacts.accdb
 Contacts_Admin,Contacts.accdb
 master,Contacts.accdb
-DB_MASTER_WordMergeReports.accdb,CoursesForEducatorsBrochure.accdb
-EISP,CoursesForEducatorsBrochure.accdb
-filetoimport.xls,CoursesForEducatorsBrochure.accdb
-EISP,EIS-KSIS accounting.accdb
-FinanceOfficeAccounting,EIS-KSIS accounting.accdb
-EmailSQL,EmailSQL.accdb
-EmailSQL,EmailSQL_Attachments.accdb
-MailJet,EmailSQL_Attachments.accdb
-Public,EnroleReport_Downloader.accdb
-Public,EnroleReport_RegistrationsCrosstab.accdb
+Shared,EnroleReport_Downloader.accdb
+Shared,EnroleReport_RegistrationsCrosstab.accdb
 EISP,FinanceOfficeAccounting.accdb
 FinanceOfficeAccounting,FinanceOfficeAccounting.accdb
+FinanceOfficeAccounting,FinanceOfficePayroll
 EISP,FinanceOfficePayrollSystem2007.accdb
 FinanceOfficePayroll,FinanceOfficePayrollSystem2007.accdb
 GrantFundedProjects,GFP.accdb
 KSIS,GlobalCampusFiles.accdb
 PowerBi,GlobalCampusFiles.accdb
-TrakData,GoMembersDownloader.accdb
+Shared,Holiday.vbs
 Inventory,Inventory_v2017.accdb
-JMIH,JMIH.accdb
-KCCTO,KCCTO_Certificates.accdb
-KCCTO,KCCTO_ContactManager.accdb
-KCCTO,KCCTO_CourseManager.accdb
-KCCTO,KCCTO_EmailComposer.accdb
-KCCTO,KCCTO_Excel_SplitSheets.accdb
-KCCTO,KCCTO_FacilityManager.accdb
-MailMergeData.accdb,KCCTO_FacilityManager.accdb
-KCCTO,KCCTO_LegacyTranscripts.accdb
-Ooey Gooey Registrations 2016.xlsx,KCCTO_LegacyTranscripts.accdb
-KCCTO,KCCTO_Main.accdb
-KCCTO,KCCTO_ReportManager.accdb
-MailMergeData.accdb,KCCTO_ReportManager.accdb
-KCCTO,KCCTO_Wufoo.accdb
-EmailLists,KSISLabelRequest_TimeToEnroll.accdb
+Email,KSIS
+Shared,KSIS
 KSIS,KSISLabelRequest_TimeToEnroll.accdb
 UiMap,LogShortcuts.vbs
-MailJet,MailJet_SubAccount.accdb
-Public,MailJet_SubAccount.accdb
-EmailLists,MailJet_Uploader.accdb
-MailJet,MailJet_Uploader.accdb
-MailJet_SFS,MailJet_Uploader.accdb
-MCS,MailJet_Uploader.accdb
-Public,MailJet_Uploader.accdb
-MailJet,MCS_Checklist.accdb
-MCS,MCS_Checklist.accdb
-MCS_Forms,MCS_Forms.accdb
-FILES.xls,MCS_LabelRequests.accdb
-MailJet,MCS_LabelRequests.accdb
+Email,MailJet.accdb
+Shared,MailJet.accdb
+AbilaMIP,MCS_Billing
+ODBC,MeetingTrak15.accdb
+TrakData,MeetingTrak15.accdb
+traktemp_meeting.accdb,MeetingTrak15.accdb
 AbilaMIP,MIP_CanvasCourses_InternalAccounts.accdb
 Abila MIP Download.xlsx,MIP_Importer.accdb
 Abila MIP Refunds Download.xlsx,MIP_Importer.accdb
@@ -208,8 +181,11 @@ ODBC,mtksql.accdb
 TrakData,mtksql.accdb
 TrakData2,mtksql.accdb
 traktemp.accdb,mtksql.accdb
-EmailSQL,ParkingPermits.accdb
-MailJet,ParkingPermits.accdb
+ODBC,OrientationTrak15.accdb
+TrakData2,OrientationTrak15.accdb
+traktemp_orientation.accdb,OrientationTrak15.accdb
+Email,ParkingPermits
+Email,ParkingPermits.accdb
 ParkingPermits,ParkingPermits.accdb
 EISP,Postal_User.accdb
 FinanceOfficeAccounting,Postal_User.accdb
@@ -217,34 +193,29 @@ MCS_Billing,Postal_User.accdb
 KSIS,PowerBI_Uploader.accdb
 PowerBi,PowerBI_Uploader.accdb
 Programs,ProgramsDatabase.accdb
+ODBC,RadonTrak10.accdb
+TrakData,RadonTrak10.accdb
+traktemp_radon.accdb,RadonTrak10.accdb
+Shared,Retention
 KSIS,Retention.accdb
 Programs,Retention.accdb
 Retention,Retention.accdb
 ROD,Rod_User.accdb
-EmailSQL,ServiceNow_Wireframe.accdb
-MailJet,SFS_MailJet_Reporting.accdb
-MailJet_SFS,SFS_MailJet_Reporting.accdb
-Public,SFS_MailJet_Reporting.accdb
-DB_MASTER_SfsLocalCache.accdb,SFS11_MissingData_Importer.accdb
-EISP,SFS11_MissingData_Importer.accdb
-KSIS,SFS11_MissingData_Importer.accdb
-SFS,SFS11_MissingData_Importer.accdb
-DB_MASTER_SfsLocalCache.accdb,SFS11_User.accdb
-EISP,SFS11_User.accdb
-KSIS,SFS11_User.accdb
-SFS,SFS11_User.accdb
+Shared,SFS18
 EISP,SFS18_User.accdb
-EmailSQL,SFS18_User.accdb
+Email,SFS18_User.accdb
 KSIS,SFS18_User.accdb
-MailJet_SFS,SFS18_User.accdb
-Public,SFS18_User.accdb
-SFS,SFS18_User.accdb
 SFS18,SFS18_User.accdb
+Shared,SFS18_User.accdb
 master,SQL Server Creator.accdb
 TestDatabase,SQL Server Creator.accdb
-MailJet,TaskManager.accdb
+Email,TaskManager
+Shared,TaskManager
+Email,TaskManager.accdb
 TaskManager,TaskManager.accdb
-UiMap,UiMap.accdb</div>
+UiMap,UiMap.accdb
+Email,WorkZone
+WorkZone,WorkZone_Reports.accdb</div>
 
 </body>
 

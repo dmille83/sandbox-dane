@@ -75,6 +75,11 @@
 		option.text = "";
 		option.value = "";
 		select.appendChild(option);
+		
+		// Create divider
+		option = document.createElement("option");
+		option.text = "";
+		option.value = "";
 		select.appendChild(option);
 		
 		// Create divider
@@ -87,16 +92,18 @@
 		for (var i = 1; i < frontend_list.length; i++) {
 			//console.log(backend_list[i]);
 			
-			var option = document.createElement("option");
-			option.text = frontend_list[i] + " (front) (" + getBackendCount(frontend_list[i]) + ")";
-			option.value = frontend_list[i];
-			select.appendChild(option);
+			if (frontend_list[i].includes(".") > 0) {
+				var option = document.createElement("option");
+				option.text = frontend_list[i] + " (front) (" + getBackendCount(frontend_list[i]) + ")";
+				option.value = frontend_list[i];
+				select.appendChild(option);
+			}
 		}
 		
 		// URL Parameters
 		var params = QueryString();
 		if (params["database"] == null) {
-			document.getElementById("selectDb").value = "Public";
+			document.getElementById("selectDb").value = "Shared";
 		} else {
 			document.getElementById("selectDb").value = params["database"];
 		}
@@ -133,13 +140,14 @@
 		
 		for (var i=0; i<myCSV.length; i++) 
 		{
-			//if (myCSV[i][0] === dbname) {
+			if (myCSV[i][0] === dbname) {
 				backend = spawnNewBubble(myCSV[i][0], 0, 0, true);
 				frontend = spawnNewBubble(myCSV[i][1], 0, 0, false);
 				
 				backend.addLink(frontend);
 				frontend.addLink(backend);
-			//}
+			}
+			
 		}
 		
 		rootbubble = getExistingBubble(dbname);
@@ -254,6 +262,11 @@
 		// Prevent duplicates
 		var exisBub = getExistingBubble(title);
 		if (exisBub) return exisBub;
+		
+		if (!title.includes(".")) {
+			isbackend = true;
+		}
+		
 		// Make new Bubble
 		var newbubble = new Bubble(title, x, y, isbackend);
 		mybubbles.push(newbubble);

@@ -17,8 +17,8 @@ function Bubble(title, x, y, isbackend, parentbubble)
 	//if (parentbubble) this.level = parentbubble.level + 1;
 	
 	// SOURCE:  http://stackoverflow.com/questions/1152024/best-way-to-generate-a-random-color-in-javascript
-	if (this.isbackend === true) this.lineColor = '#99ffcc';
-	else {
+	//if (this.isbackend === true) this.lineColor = '#99ffcc';
+	//else {
 		this.lineColor = '#000000';
 		while (this.lineColor == '#000000' || this.lineColor == '#FFFFFF' || this.lineColor == '#99ffcc' || this.lineColor.length < 7) {
 			// beware 5-digit colors in the rare instance that random() == 0
@@ -31,7 +31,7 @@ function Bubble(title, x, y, isbackend, parentbubble)
 			//this.lineColor = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ')';
 			
 		}
-	}
+	//}
 	
 	this.links = [];
 	//this.lines = [];
@@ -247,7 +247,7 @@ Bubble.prototype.render = function(ctx, recIdx){
 		roundRect(ctx, this.x - (xTxt/2), this.y - (yTxt * 2/3), xTxt, yTxt, 10, true);
 	}
 	ctx.fill();
-	ctx.stroke();
+	//ctx.stroke();
 	
 	// Render title
 	ctx.beginPath();

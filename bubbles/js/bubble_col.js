@@ -18,8 +18,8 @@ function Bubble(title, x, y, isbackend, parentbubble)
 	//if (parentbubble) this.level = parentbubble.level + 1;
 	
 	// SOURCE:  http://stackoverflow.com/questions/1152024/best-way-to-generate-a-random-color-in-javascript
-	if (this.isbackend !== backends_on_left) this.lineColor = '#99ffcc';
-	else {
+	//if (this.isbackend !== backends_on_left) this.lineColor = '#99ffcc';
+	//else {
 		this.lineColor = '#000000';
 		while (this.lineColor == '#000000' || this.lineColor == '#FFFFFF' || this.lineColor == '#99ffcc' || this.lineColor.length < 7) {
 			// beware 5-digit colors in the rare instance that random() == 0
@@ -32,7 +32,7 @@ function Bubble(title, x, y, isbackend, parentbubble)
 			//this.lineColor = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ')';
 			
 		}
-	}
+	//}
 	
 	this.links = [];
 	//this.lines = [];
@@ -41,6 +41,7 @@ function Bubble(title, x, y, isbackend, parentbubble)
 
 // ====== GET AND SET ======
 Bubble.prototype.addLink = function(nwLnk){
+	//console.log(this.title + ", " + nwLnk.title);
 	this.links.push(nwLnk);
 	//this.lines.push(nwLnk);
 };
@@ -58,13 +59,13 @@ Bubble.prototype.getHeight = function(){
 
 Bubble.prototype.setPosition = function(){
 	
-	this.x = canvas.width - 400;
+	this.x = canvas.width - 310;
 	if (this.isbackend == backends_on_left) {
 		this.x = 10;
 		this.y = yB;
 		yB += this.getHeight() + yRowOffset;
 	} else {
-		this.x = canvas.width - 400;
+		this.x = canvas.width - 310;
 		this.y = yF;
 		yF += this.getHeight() + yRowOffset;
 	}
@@ -78,12 +79,23 @@ Bubble.prototype.setPosition = function(){
 
 Bubble.prototype.render = function(ctx){
 	
+	if (this.level-1 > recursion_degrees) return;
+	if (this.rendered == true) return;
+	this.rendered = true;
+	
+	// POSITION
+	this.setPosition();
+	
+	console.log(this.title + ", " + this.level + "/" + recursion_degrees);
+	for(var i=0; i<this.links.length; i++) {
+		console.log("    " + this.title + ", " + this.links[i].title);
+	}
+	
 	// RENDER BUBBLE
 	
 	ctx.font = "bold 12px Tahoma"; //"bold 12px Georgia";
 	ctx.lineWidth = 0.5;
 	ctx.globalAlpha = 1.0;
-	
 	
 	// Get Title
 	var myTitle = this.title; // + " (" + (this.level) + ")";
@@ -91,17 +103,22 @@ Bubble.prototype.render = function(ctx){
 	var yTxt = this.getHeight(); //this.title.height(ctx.font) * (3/2); //20;
 	
 	// FOR DEBUGGING
-	//myTitle = this.title + " (" + (this.level) + ")";
-	//xTxt = this.getWidth() + 20;
-	
+	//myTitle = this.title + " (" + (this.level) + ")"; xTxt = this.getWidth() + 20;
 	
 	// Special highlight around root
 	if (this.level == 1) {
 		var lvl1margin = 5;
 		ctx.beginPath();
+		//ctx.fillStyle = this.lineColor;
+		//ctx.fillStyle = "rgba(0, 0, 0, 0.0)";
 		ctx.strokeStyle = '#ffff00'; //'#00ad2e';
 		ctx.lineWidth = 4.0;
-		roundRect(ctx, this.x - lvl1margin, this.y - lvl1margin, xTxt + (lvl1margin*2), yTxt + (lvl1margin*2), 10, true);
+		if (this.isbackend == true) {
+			ctx.rect(this.x - lvl1margin, this.y - lvl1margin, xTxt + (lvl1margin*2), yTxt + (lvl1margin*2));
+		} else {
+			roundRect(ctx, this.x - lvl1margin, this.y - lvl1margin, xTxt + (lvl1margin*2), yTxt + (lvl1margin*2), 10, true);
+		}
+		//ctx.fill();
 		ctx.stroke();
 	}
 	
@@ -113,21 +130,20 @@ Bubble.prototype.render = function(ctx){
 	if (this.lineColor !== ctx.fillStyle) console.log('missing color: ' + this.lineColor);
 	
 	ctx.beginPath();
-	if (this.isbackend == backends_on_left) {
-		// Rounded rectangle
-		roundRect(ctx, this.x, this.y, xTxt, yTxt, 10, true);
-	} else {
+	if (this.isbackend) {
 		// Rim in dark blue
 		ctx.strokeStyle = '#0000FF';
 		ctx.lineWidth = 2.0;
 		ctx.rect(this.x, this.y, xTxt, yTxt);
+	} else {
+		// Rounded rectangle
+		roundRect(ctx, this.x, this.y, xTxt, yTxt, 10, true);
 	}
 	ctx.fill();
-	ctx.stroke();
+	//ctx.stroke();
 	
 	// Render title
 	ctx.beginPath();
-	//if (colorisdark(this.lineColor) > 200) ctx.fillStyle = "black";
 	if (colorisdark(ctx.fillStyle) > 200) ctx.fillStyle = "black";
 	else ctx.fillStyle = "white";
 	ctx.textAlign = "left"; 
@@ -136,62 +152,94 @@ Bubble.prototype.render = function(ctx){
 	
 	// RECURSION
 	
-	if (this.level > recursion_degrees) return;
 	ctx.globalAlpha = 1.0;
 	
 	// SET LEVELS FOR ALL IMMEDIATE SUBORDINATES FIRST
 	for(var i=0; i<this.links.length; i++) {
 		if (this.links[i].level == 0) {
-			
-			// LEVEL
 			this.links[i].level = this.level + 1;
-			
-			// POSITION
-			this.links[i].setPosition();
-			
-			//this.rendered = false;
-			
 		}
 	}
-	
-	// RECURSION
+		
+	// RENDER LINES FOR LINKS
 	for(var i=0; i<this.links.length; i++) {
 		
-		if (!inArray(this.links[i].title, renderedbubbles)) {
-			renderedbubbles.push(this.title);
+		// RENDER BUBBLES
+		this.links[i].render(ctx);
+		
+		if (this.links[i].rendered == true && this.links[i].level > this.level) {
 			
-		//if (this.rendered == false) {
-			//this.rendered = true;
-			
-			// RENDER LINES FOR LINKS
 			var meY, meX, themY, themX;
-			if (this.isbackend == backends_on_left) {
-				
-				meX = this.x + (this.getWidth());
-				meY = this.y + (this.getHeight() * 0.5);
-				themX = this.links[i].x + 0;
-				themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
+			
+			if (this.links[i].level > this.level || this.isbackend == true) {
 				ctx.strokeStyle = this.lineColor;
 				ctx.fillStyle = this.lineColor;
-				
 			} else {
-				
-				meX = this.x + 0;
-				meY = this.y + (this.getHeight() * 0.5);
-				themX = this.links[i].x + (this.links[i].getWidth());
-				themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
 				ctx.strokeStyle = this.links[i].lineColor;
 				ctx.fillStyle = this.links[i].lineColor;
-				
 			}
+			
+			if (this.isbackend == backends_on_left) {
+				meX = this.x + (this.getWidth()-1);
+				themX = this.links[i].x + 1;
+			} else {
+				meX = this.x + 1;
+				themX = this.links[i].x + (this.links[i].getWidth()-1);
+			}
+			
+			/*
+			//meY = this.y + (this.getHeight() * 0.5);
+			//themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
+			if (this.links[i].level > this.level) {
+				if (this.isbackend) {
+					meY = this.y + (this.getHeight()-1);
+				} else {
+					meY = this.y + (this.getHeight() * 0.5);
+				}
+				if (this.links[i].isbackend) {
+					themY = this.links[i].y + 1;
+				} else {
+					themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
+				}
+			} else {
+				if (this.isbackend) {
+					meY = this.y;
+				} else {
+					meY = this.y + (this.getHeight() * 0.5);
+				}
+				if (this.links[i].isbackend) {
+					themY = this.links[i].y + this.links[i].getHeight();
+				} else {
+					themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
+				}
+			}
+			*/
+			
+			if (this.isbackend) {
+				meY = this.y + 1;
+				if (this.links[i].y >= this.y) meY += (this.getHeight()-2);
+			} else {
+				meY = this.y + (this.getHeight() * 0.5);
+			}
+			if (this.links[i].isbackend) {
+				themY = this.links[i].y + 1;
+				if (this.links[i].y <= this.y) themY += (this.links[i].getHeight()-2);
+			} else {
+				themY = this.links[i].y + (this.links[i].getHeight() * 0.5);
+			}
+			
+			/*
+			meY = this.y + 1;
+			if (this.links[i].y >= this.y) meY += (this.getHeight()-2);
+			themY = this.links[i].y + 1;
+			if (this.links[i].y <= this.y) themY += (this.links[i].getHeight()-2);
+			*/
+			
 			ctx.lineWidth = 1.0;
 			ctx.beginPath();
 			ctx.moveTo(meX, meY);
 			ctx.lineTo(themX, themY)
 			ctx.stroke();
-			
-			// RENDER BUBBLES
-			this.links[i].render(ctx);
 			
 		}
 		

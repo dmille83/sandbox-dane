@@ -69,10 +69,10 @@
 
 
 <!-- LOAD JAVASCRIPT LIBRARIES: -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 </head>
 <body>
@@ -88,11 +88,11 @@
 	</div>
 	<div>
 		
-		<select id="selectDb" onchange="generateMapSelect()"></select>
+		<select id="selectDb" onchange="reopenUrl(); generateMapSelect()"></select>
 		
 		&nbsp;
 		Show degrees of separation:
-		<select id="selectRecsv" onchange="generateMapSelect()">
+		<select id="selectRecsv" onchange="reopenUrl(); generateMapSelect()">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -100,12 +100,14 @@
 			<option value="5">5</option>
 		</select>
 		
-		&nbsp;
-		Format:
-		<select id="selectFormat" onchange="reopenUrl();">
-			<option value="columns">columns</option>
-			<option value="diagram">diagram</option>
-		</select>
+		<div style="display: none;">
+			&nbsp;
+			Format:
+			<select id="selectFormat" onchange="reopenUrl();">
+				<option value="columns">columns</option>
+				<option value="diagram">diagram</option>
+			</select>
+		</div>
 		
 		&nbsp;
 		Backends:
