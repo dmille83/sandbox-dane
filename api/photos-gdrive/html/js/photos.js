@@ -1,16 +1,21 @@
 var arr_photos = [];
 var arr_photos_idx = null;
-
-function navMenu(c) {
-	var x = document.getElementById("nav-menu");
-	if (x.style.display === "table-cell" || c === true) {
-		x.style.display = "";
-	} else {
-		x.style.display = "table-cell";
-	}
-}
+var arr_photos_idx_prev = null;
+var boolMobile = mobile_device();
 
 var loadPhotos = (function(){
+	
+	// Late-load image sources
+	[].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
+		img.setAttribute('src', img.getAttribute('data-src'));
+		img.onload = function() {
+			img.removeAttribute('data-src');
+		};
+	});
+	
+});
+
+var registerPhotos = (function(){
 	
 	/*
 	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -21,12 +26,7 @@ var loadPhotos = (function(){
 	*/
 	
 	// Late-load image sources
-	[].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
-		img.setAttribute('src', img.getAttribute('data-src'));
-		img.onload = function() {
-			img.removeAttribute('data-src');
-		};
-	});
+	loadPhotos();
 	
 	// Add event listeners to the photo gallery
 	var elementsContainer = document.getElementsByClassName("photo-container");
@@ -44,34 +44,36 @@ var loadPhotos = (function(){
 		var element = document.getElementById("photo-container-expand");
 		//var element = document.getElementById("photo-expanded");
 		detectswipe(element, handleswipe);
-		window.onkeydown = function(){ checkKey(); };
+		window.onkeydown = function(e){ checkKey(e); };
 	}
 	
 });
 
 function photoExpand(i) {
+	
+	var t = 400;
+	var photoContainer = document.getElementById("photo-container-expand");
+	var photoFrame = document.getElementById("photo-frame");
+	var photoTitle = $("#photo-title");
+	var photo = $("#photo-expanded");
+	
 	if (i === null) {
 		arr_photos_idx = null;
-		document.getElementById("photo-container-expand").style.display = "none";
+		photoContainer.style.display = "none";
 		document.body.style.overflow = "";
 	} else if (i < arr_photos.length && i >= 0) {
+		
+		// Index
+		arr_photos_idx_prev = arr_photos_idx;
 		arr_photos_idx = i;
-		console.log("photo " + (i+1) + "/" + arr_photos.length);
-		
+		var idx = (i+1) + "/" + arr_photos.length;
+		console.log("photo " + idx);
+		photoTitle.html(idx);
 		var element = arr_photos[i];
-		$("#photo-expanded").hide(1, function(){
-			$("#photo-expanded").show(100);
-			
-			document.body.style.overflow = "hidden";
-			document.getElementById("photo-container-expand").style.display = "block";
-			document.getElementById("photo-expanded").src = element.src;
-			document.getElementById("photo-expanded").title = element.title;
-			document.getElementById("photo-title").innerHTML = element.title;
-			
-		});
 		
-		var arrowLeft = document.getElementById("photo-container-expand").getElementsByClassName("nav-arrow-left")[0];
-		var arrowRight = document.getElementById("photo-container-expand").getElementsByClassName("nav-arrow-right")[0];
+		// Navigation Arrows
+		var arrowLeft = photoContainer.getElementsByClassName("nav-arrow-left")[0];
+		var arrowRight = photoContainer.getElementsByClassName("nav-arrow-right")[0];
 		if (i == 0) {
 			arrowLeft.style.display = "none";
 		} else {
@@ -81,6 +83,48 @@ function photoExpand(i) {
 			arrowRight.style.display = "none";
 		} else {
 			arrowRight.style.display = "";
+		}
+		
+		document.body.style.overflow = "hidden";
+		photoContainer.style.display = "block";
+		
+		$(photo).attr("title", element.title);
+		$(photo).attr("src", element.src);
+		
+		if (boolMobile === true) {
+			
+			// Photo Transition Animation - https://api.jqueryui.com/slide-effect/
+			$(photo).stop(true, true);
+			$(photo).hide(1, function(){
+				
+				$(photo).attr("title", element.title);
+				$(photo).attr("src", element.src);
+			
+				photoFrame.style.overflow = "hidden";
+				
+				if (arr_photos_idx_prev === null) {
+					
+					// Show - Slide Up
+					$(photo).animate({"marginTop": window.innerHeight + "px"},1).show(1).animate({"marginTop":"0px"},t, function(){
+						photoFrame.style.overflow = "";
+					});
+					
+				} else {
+					
+					// Show - Slide In
+					var d = window.innerWidth * 2;
+					if (arr_photos_idx_prev > arr_photos_idx) d *= -1;
+					$(photo).animate({marginLeft: d + "px"},1).show(1).animate({marginLeft:"0px"},t, function(){
+						photoFrame.style.overflow = "";
+					});
+					
+				}
+			
+			});
+			
+		} else {
+			$(photo).attr("title", element.title);
+			$(photo).attr("src", element.src);
 		}
 		
 	}

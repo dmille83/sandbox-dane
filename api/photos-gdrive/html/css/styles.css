@@ -44,10 +44,9 @@ img {
 	overflow-y: scroll;
 }
 #photo-container-expand #photo-title {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	right: 10px;
+	position: fixed;
+	bottom: 10px;
+	left: calc(50% - 30px);
 	display: inline-block;
 	font-weight: bold;
 	text-decoration: none;
@@ -73,7 +72,7 @@ img {
 	text-decoration: none;
 	text-align: center;
 }
-#photo-container-expand a.nav-arrow::before, #photo-container-expand a.nav-exit {
+#photo-container-expand a.nav-arrow::before, #photo-container-expand a.nav-exit, #photo-container-expand #photo-title {
 	background-color: rgba(0, 0, 0, 0.20);
 	color: white;
 	font-weight: bold;

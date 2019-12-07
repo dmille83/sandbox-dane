@@ -14,11 +14,12 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./css/styles.css?v=0">
+<link rel="stylesheet" href="./css/styles.css?v=1">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="./js/swipe.js?v=0"></script>
-<script src="./js/photos.js?v=0"></script>
+<script src="./js/mobile_device.js?v=0"></script>
+<script src="./js/swipe.js?v=1"></script>
+<script src="./js/photos.js?v=1"></script>
 
 </head>
 <body>
@@ -113,7 +114,7 @@ document.getElementById("id-url").innerHTML = x;
 
 <script>
 
-loadPhotos();
+registerPhotos();
 
 </script>
 

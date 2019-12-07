@@ -1,10 +1,16 @@
 function detectswipe(el,func) {
 	// SOURCE:	https://stackoverflow.com/questions/15084675/how-to-implement-swipe-gestures-for-mobile-devices
+	
+	var el_preview = document.getElementById("photo-frame");
+	
 	swipe_det = new Object();
 	swipe_det.sX = 0; swipe_det.sY = 0; swipe_det.eX = 0; swipe_det.eY = 0;
 	
-	var min_x = 60;		//min x swipe for horizontal swipe
-	var min_y = 120;	//min y swipe for vertical swipe
+	//var min_x = 60;		//min x swipe for horizontal swipe
+	//var min_y = 120;		//min y swipe for vertical swipe
+	
+	var min_x = window.innerWidth * 1/4;		//min x swipe for horizontal swipe
+	var min_y = window.innerHeight * 1/4;	//min y swipe for vertical swipe
 	
 	function detectswipexy() {
 		var x = swipe_det.eX - swipe_det.sX;
@@ -42,8 +48,8 @@ function detectswipe(el,func) {
 		else { el.style.top = ""; el.style.backgroundColor = ""; }
 		
 		// Photo nav left/right
-		if (v.x != 0) document.getElementById("photo-frame").style.left = v.x + "px";
-		else document.getElementById("photo-frame").style.left = "";
+		if (v.x != 0) el_preview.style.left = v.x + "px";
+		else el_preview.style.left = "";
 		
 	},false);
 	el.addEventListener('touchend',function(e){
@@ -53,13 +59,18 @@ function detectswipe(el,func) {
 		el.style.backgroundColor = "";
 		
 		// Photo nav left/right
-		document.getElementById("photo-frame").style.left = "";
-		document.getElementById("photo-frame").style.right = "";
+		el_preview.style.left = "";
+		el_preview.style.right = "";
 		
 		// Vector
 		var v = detectswipexy();
+		
 		//alert( "x: " + v.x + "\ny: " + v.y );
 		//alert( "x: " + (swipe_det.sX - swipe_det.eX) + "\ny: " + (swipe_det.sY - swipe_det.eY) );
+		if(Math.abs(v.x) > 0 || Math.abs(v.y) > 0) console.log("x: " + v.x + ", y: " + v.y);
+		
+		//if (Math.abs(v.x) > Math.abs(v.y)) v.y = 0;
+		//else v.x = 0;
 		
 		if (Math.abs(v.x) < min_x) v.x = 0;
 		if (Math.abs(v.y) < min_y) v.y = 0;
