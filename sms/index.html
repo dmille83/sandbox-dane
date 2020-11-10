@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Texting KIOSK</title>
+</script>
+
+<style>
+body {
+	font-family: arial, calibri;
+}
+table {
+	border-collapse: collapse;
+}
+#firstname, #lastname, #email, #submit {
+	width: 100%;
+}
+#submit {
+	margin: 0px;
+	background-color: #512888;
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 3px;
+	cursor: pointer;
+	width: calc(100% + 8px);
+}
+</style>
+
+</head>
+<body>
+
+<form action="https://login.compliantcampaign.com/gateway/contactmanager_keyword.asp" method="post" name="form1" id="form1" onSubmit="return checkform();">
+<table>
+<tr>
+<td colspan="2" ><strong><font>Opt-In For Text Notifications</font></strong>
+<input name="user_guid" type="hidden" value="{A82CD6F3-DE9C-45BE-B44C-1197C195BFD1}" />
+<input name="keyword" type="hidden" id="keyword" value="canvas0" />
+<input name="shortcode" type="hidden" id="shortcode" value="59925" />
+<input name="redirectURL" type="hidden" id="redirectURL" value="https://kccto.org/" /></td>
+</tr>
+<tr>
+<td width="150px"><strong>First Name:</strong></td>
+<td width="250px"><input name="firstname" type="text" id="firstname" /></td>
+</tr>
+<tr>
+<td><strong>Last Name:</strong></td>
+<td>
+<input name="lastname" type="text" id="lastname" /></td>
+</tr>
+<tr>
+<td><strong>Email Address: </strong></td>
+<td><input name="email" type="text" id="email" /></td>
+</tr>
+<tr>
+<td><strong>Mobile:</strong></td>
+<td>
+<input name="mobile1" type="text" id="mobile1" onkeyup="JavaScript:jumpmobile1();" size="3" maxlength="3" /> -
+<input name="mobile2" type="text" id="mobile2" onkeyup="JavaScript:jumpmobile2();" size="3" maxlength="3" /> -
+<input name="mobile3" type="text" id="mobile3" size="4" maxlength="4" />
+</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input type="submit" id="submit" name="Submit2" value="Submit"></td>
+</tr>
+</table>
+</form>
+
+</body>
+
+<SCRIPT type="text/javascript" language="javascript">
+function getCourseId(url, m) {
+	//courses/2436/assignments
+	var regex = new RegExp(m), results = regex.exec(url);
+	if (!results) return null;
+    if (!results[2]) return '';
+	return results[2];
+}
+function url_param(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var url = window.location.href;
+console.log(url);
+var id = url_param("id", url);
+if (!id) id = getCourseId(url, "courses/([0-9]*)~([0-9]*)");
+if (!id) id = getCourseId(url, "(courses/)([0-9]*)");
+var kw = "canvas" + id;
+console.log("keyword=" + kw);
+document.getElementById("keyword").value = kw;
+//document.getElementById("redirectURL").value = url;
+//if (kw == "canvasnull"){alert('Error: no campaign id was provided by the script. Please contact your instructor to report this issue.');}
+</SCRIPT>
+
+<SCRIPT type="text/javascript" language="javascript">
+function jumpmobile1() {if (document.getElementById("mobile1").value.length==3){document.getElementById("mobile2").focus();}}
+function jumpmobile2() {if (document.getElementById("mobile2").value.length==3){document.getElementById("mobile3").focus();}}
+function checkform(){
+if (form1.keyword.value == "canvasnull"){alert('Error: no campaign id was provided by the script. Please contact your instructor to report this issue.'); return false;}
+if (form1.firstname.value == ""){alert("Please enter your First Name"); return false;}
+if (form1.lastname.value == ""){alert("Please enter your Last Name"); return false;}
+if (form1.email.value == ""){alert("Please enter your Email Address"); return false;}
+if (form1.mobile1.value == ""){alert('Please enter your area code'); return false;}
+if (form1.mobile2.value == ""){alert('Please enter your phone prefix'); return false;}
+if (form1.mobile3.value == ""){alert('Please enter the last four digits of your phone number'); return false;
+}else{
+var regex = /^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,3}$/
+if (document.form1.email.value != "") {
+if (!regex.test(document.form1.email.value)) {
+alert("Invalid email address");
+document.form1.email.focus();
+return false;
+}
+}
+}
+function IsNumeric(sText) {
+if (sText.length == 0) {
+IsNumber = false;
+return IsNumber;
+}
+var ValidChars = "0123456789.";
+var IsNumber=true;
+var Char;
+for (i = 0; i < sText.length && IsNumber == true; i++)
+{
+Char = sText.charAt(i);
+if (ValidChars.indexOf(Char) == -1)
+{
+IsNumber = false;
+}
+}
+return IsNumber;
+}
+}
+</SCRIPT>
