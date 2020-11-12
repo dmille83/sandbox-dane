@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>KCCTO Opt-In For Text Notifications</title>
+<title>KCCTO Opt-In For SMS Notifications</title>
 </script>
 
 <style>
@@ -11,59 +11,121 @@ body {
 table {
 	border-collapse: collapse;
 }
-#firstname, #lastname, #email, #submit {
+ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.split {
+	border-top: 1px solid #ddd;
+}
+.linesingle {
+	width: 250px;
+}
+.lineessay {
 	width: 100%;
+}
+.lineessay {
+	width: 100%;
+	max-width: 400px;
+	height: 50px;
+}
+input[type=radio], input[type=radio] ~ label {
+	cursor: pointer;
 }
 #submit {
 	margin: 0px;
+	padding: 5px;
 	background-color: #512888;
 	color: #FFFFFF;
 	font-size: 16px;
 	font-weight: bold;
 	border-radius: 3px;
 	cursor: pointer;
-	width: calc(100% + 8px);
+	width: 100%;
+	max-width: 406px;
+	height: 50px;
 }
 </style>
 
 </head>
 <body>
 
+<p id="error" style="display: none; color: red;"><strong>Error:</strong> no campaign id was provided for this form. Please contact your instructor to report this issue.<br/>&nbsp;</p>
+
+<p>During the module session, your KCCTO trainer will contact you by phone to talk about necessary revisions, important information, topics in the course, and answer any questions you may have.</p>
+<p>Please complete the following information.</p>
+
 <form action="https://login.compliantcampaign.com/gateway/contactmanager_keyword.asp" method="post" name="form1" id="form1" onSubmit="return checkform();">
-<table>
-<tr>
-<td colspan="2" ><strong><font>Opt-In For Text Notifications</font></strong>
+
 <input name="user_guid" type="hidden" value="{A82CD6F3-DE9C-45BE-B44C-1197C195BFD1}" />
 <input name="keyword" type="hidden" id="keyword" value="canvas0" />
 <input name="shortcode" type="hidden" id="shortcode" value="59925" />
-<input name="redirectURL" type="hidden" id="redirectURL" value="https://sandbox-dane.com/sms/redirect.html" /></td>
+<input name="redirectURL" type="hidden" id="redirectURL" value="https://sandbox-dane.com/sms/redirect.html" />
+
+<p class="split"></p>
+<table>
+<tr>
+<td>
+</td>
 </tr>
 <tr>
-<td width="150px"><strong>First Name:</strong></td>
-<td width="250px"><input name="firstname" type="text" id="firstname" /></td>
+<td width="150px">
+<strong>First Name:</strong>
+</td>
+<td width="250px">
+<input class="linesingle" name="firstname" type="text" id="firstname" />
+</td>
 </tr>
 <tr>
 <td><strong>Last Name:</strong></td>
 <td>
-<input name="lastname" type="text" id="lastname" /></td>
+<input class="linesingle" name="lastname" type="text" id="lastname" /></td>
 </tr>
 <tr>
-<td><strong>Email Address: </strong></td>
-<td><input name="email" type="text" id="email" /></td>
+<td><strong>Email Address:</strong></td>
+<td><input class="linesingle" name="email" type="text" id="email" /></td>
 </tr>
+</table>
+
+<p class="split"></p>
+<p><strong>Please provide the best phone number to reach you during the module session.  Include if the phone number is your personal phone or a program phone number.</strong></p>
+<table>
 <tr>
-<td><strong>Mobile:</strong></td>
-<td>
+<td width="150px">
+<strong>Mobile:</strong>
+</td>
+<td width="250px">
 <input name="mobile1" type="text" id="mobile1" onkeyup="JavaScript:jumpmobile1();" size="3" maxlength="3" /> -
 <input name="mobile2" type="text" id="mobile2" onkeyup="JavaScript:jumpmobile2();" size="3" maxlength="3" /> -
 <input name="mobile3" type="text" id="mobile3" size="4" maxlength="4" />
 </td>
 </tr>
 <tr>
-<td >&nbsp;</td>
-<td><input type="submit" id="submit" name="Submit2" value="Submit"></td>
+<td style="padding-top: 10px;">
+	<strong>Phone Type:</strong>
+</td>
+<td style="padding-top: 10px;">
+	<input type="radio" id="phone1" name="custom4" value="Personal Phone">
+	<label for="phone1">Personal Phone</label><br>
+	<input type="radio" id="phone2" name="custom4" value="Program Phone">
+	<label for="phone2">Program Phone</label><br>
+</td>
 </tr>
+<tr>
 </table>
+
+<p class="split"></p>
+<p>
+<strong>
+Please provide any information that will assist your trainer in reaching you by phone during normal business hours (8:00 am - 5:00 pm).
+<ul><li>ex. can you be reached before 8:00 am, days or hours not normally scheduled with children, any helpful information</li></ul>
+</strong>
+</p>
+<p><textarea class="lineessay" name="custom5" id="custom5" maxlength="255"></textarea></p>
+
+<p class="split"></p>
+<p><input type="submit" id="submit" name="Submit2" value="Submit"></p>
+
 </form>
 
 </body>
@@ -93,48 +155,46 @@ if (!id) id = getCourseId(url, "(courses/)([0-9]*)");
 var kw = "canvas" + id;
 console.log("keyword=" + kw);
 document.getElementById("keyword").value = kw;
-//document.getElementById("redirectURL").value = url;
-//if (kw == "canvasnull"){alert('Error: no campaign id was provided by the script. Please contact your instructor to report this issue.');}
+if (kw == "canvasnull"){
+	document.getElementById('error').style.display = 'block';
+}
 </SCRIPT>
 
 <SCRIPT type="text/javascript" language="javascript">
 function jumpmobile1() {if (document.getElementById("mobile1").value.length==3){document.getElementById("mobile2").focus();}}
 function jumpmobile2() {if (document.getElementById("mobile2").value.length==3){document.getElementById("mobile3").focus();}}
 function checkform(){
-if (form1.keyword.value == "canvasnull"){alert('Error: no campaign id was provided by the script. Please contact your instructor to report this issue.'); return false;}
-if (form1.firstname.value == ""){alert("Please enter your First Name"); return false;}
-if (form1.lastname.value == ""){alert("Please enter your Last Name"); return false;}
-if (form1.email.value == ""){alert("Please enter your Email Address"); return false;}
-if (form1.mobile1.value == ""){alert('Please enter your area code'); return false;}
-if (form1.mobile2.value == ""){alert('Please enter your phone prefix'); return false;}
-if (form1.mobile3.value == ""){alert('Please enter the last four digits of your phone number'); return false;
-}else{
-var regex = /^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,3}$/
-if (document.form1.email.value != "") {
-if (!regex.test(document.form1.email.value)) {
-alert("Invalid email address");
-document.form1.email.focus();
-return false;
-}
-}
-}
-function IsNumeric(sText) {
-if (sText.length == 0) {
-IsNumber = false;
-return IsNumber;
-}
-var ValidChars = "0123456789.";
-var IsNumber=true;
-var Char;
-for (i = 0; i < sText.length && IsNumber == true; i++)
-{
-Char = sText.charAt(i);
-if (ValidChars.indexOf(Char) == -1)
-{
-IsNumber = false;
-}
-}
-return IsNumber;
-}
+	if (form1.keyword.value == "canvasnull"){alert('Error: no campaign id was provided by the script. Please contact your instructor to report this issue.'); return false;}
+	if (form1.firstname.value == ""){alert("Please enter your First Name"); return false;}
+	if (form1.lastname.value == ""){alert("Please enter your Last Name"); return false;}
+	if (form1.email.value == ""){alert("Please enter your Email Address"); return false;}
+	if (form1.mobile1.value == ""){alert('Please enter your area code'); return false;}
+	if (form1.mobile2.value == ""){alert('Please enter your phone prefix'); return false;}
+	if (form1.mobile3.value == ""){alert('Please enter the last four digits of your phone number'); return false;}
+	if (form1.custom4.value == ""){alert('Please select a phone type'); return false;}
+	var regex = /^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,3}$/
+	if (document.form1.email.value != "") {
+		if (!regex.test(document.form1.email.value)) {
+			alert("Invalid email address");
+			document.form1.email.focus();
+			return false;
+		}
+	}
+	function IsNumeric(sText){
+		if (sText.length == 0){
+			IsNumber = false;
+			return IsNumber;
+		}
+		var ValidChars = "0123456789.";
+		var IsNumber=true;
+		var Char;
+		for (i = 0; i < sText.length && IsNumber == true; i++){
+			Char = sText.charAt(i);
+			if (ValidChars.indexOf(Char) == -1){
+				IsNumber = false;
+			}
+		}
+		return IsNumber;
+	}
 }
 </SCRIPT>
