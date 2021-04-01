@@ -25,7 +25,7 @@
 	
 	var backends_on_left = false;
 	var recursion_degrees = 2;
-	var root_bubble_default = "Public";
+	var root_bubble_default = "Email";
 	
 	var xMax, xMin, yMax, yMin;
 	xMax = 0;
@@ -103,7 +103,7 @@
 		// URL Parameters
 		var params = QueryString();
 		if (params["database"] == null) {
-			document.getElementById("selectDb").value = "Shared";
+			document.getElementById("selectDb").value = "Email";
 		} else {
 			document.getElementById("selectDb").value = params["database"];
 		}
