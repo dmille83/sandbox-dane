@@ -97,8 +97,6 @@ html, body {
 
 #topRightFrame {
 	padding: 10px;
-	//width: 100%;
-	//overflow: hidden;
 }
 #topRightFrame ol {
 	position: relative; 
@@ -110,8 +108,11 @@ h3, .navLink {
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
-	//border-bottom: 3px solid rgba(187,187,187, 1.0);
 	margin-top: 0;
+}
+.resumeLink {
+	color: #dd3f31;
+	text-decoration: underline;
 }
 
 .spacerDiv, .bottomFrame {
@@ -316,6 +317,7 @@ table tr td h3
 	top: 0;
 	width: 100%;
 	background-color: #000;
+	overflow: hidden;
 }
 .layer1, .layer2, .layer3 {
 	background-repeat: no-repeat;
@@ -327,11 +329,32 @@ table tr td h3
 	height: 900px;
 }
 .layer2 {
-	margin-top: 10px;
 	background-color: #dd3f31;
-	height: 200px;
+	height: 300px;
+	margin-top: -5px;
+}
+.layer2 svg {
+	position: relative;
+	display: block;
+	width: calc(103% + 1.3px);
+	height: 262px;
 }
 .layer3 {
 	background-image: url('../svg/layer2.svg');
 	height: 400px;
+}
+
+/* WHITE BACKGROUND */
+
+#topRightFrame {
+	color: #000;
+}
+#bioName {
+	color: #000;
+}
+.layer0 {
+	background-color: #fff;
+}
+.layer2 .shape-fill {
+	fill: hsl(255, 100%, 100%);
 }
