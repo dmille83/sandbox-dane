@@ -28,6 +28,7 @@ var pageLoad = (function(){
 		// MOBILE DEVICE:
 		
 		// CSS
+		//$("#layer1").css("height", "3000px");
 		$("#topLeftFrame").css("height", "300px");
 		$("#topLeftFrame").css("width", "100%");
 		$("#topLeftFrame").css("border-bottom", "10px solid white");
@@ -62,6 +63,7 @@ var pageLoad = (function(){
 		// BROWSER:
 		
 		// CSS
+		//$("#layer1").css("height", "");
 		$("#topLeftFrame").css("height",$(window).height() + "px");
 		$("#topLeftFrame").css("width", $(window).height()*(969/1400) + "px"); // Portrait's proportional width
 		$("#topLeftFrame").css("border-bottom", "");
@@ -90,6 +92,8 @@ var pageLoad = (function(){
 		$("#note").css("background", "");
 		applyRandomColorGradients("left");
 	}
+	
+	$("#layer1").css("height", document.getElementById("darkAreaBegin").offsetTop + "px");
 	
 	// RUN FADE IN/OUT
 	if (isMobileDevice == false) fadeScroll();
