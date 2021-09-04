@@ -25,7 +25,8 @@
 html, body {
 	width:100%;
 	height:100%;
-	background:#fff;
+	background-color: #202731;
+	color: #fff;
 	margin: 0;
 	padding: 0;
 	font-family: arial;
@@ -85,10 +86,6 @@ html, body {
 	float: left;
 	margin-right: 20px;
 	margin-bottom: 10px;
-	//background-color: #3B3B43;
-	//background-image: url('../img/code-wallpaper-2.jpg');
-	
-	//rgb(168, 158, 190)// I like this color a lot
 	
 	background: transparent; /* For browsers that do not support gradients */
 	background: -webkit-linear-gradient(right, rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 100), rgba(0, 0, 0, 100)), url('../img/code-wallpaper-2.jpg'); /* For Safari 5.1 to 6.0 */
@@ -109,7 +106,7 @@ html, body {
 }
 
 h3, .navLink {
-	color: #512888;
+	color: #fff;
 	font-size: 30px;
 	font-weight: bold;
 	text-decoration: none;
@@ -125,10 +122,10 @@ h3, .navLink {
 	font-size: 2.5em;
 	margin-bottom: 0px;
 	background: transparent; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(right, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+	background: -webkit-linear-gradient(right, rgba(187,187,187, 1.0), rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to left, rgba(187,187,187, 1.0), rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* Standard syntax */
 }
 .spacerDiv .rightFrame {
 	min-height: 70px;
@@ -209,25 +206,24 @@ table tr td h3
 }
 .leftFrame > h3, .gradientLeft {
 	background: transparent; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
-}
-.rightFrame > h3, .gradientRight {
-	padding-left: 10px;
-	background: transparent; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(left, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to right, #ddd, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+	background: -webkit-linear-gradient(right, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(left, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(left, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to left, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
 }
 .rightFrame {
 	background: transparent; /* For browsers that do not support gradients */
-	background: -webkit-linear-gradient(left, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(to right, #eee, rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
+	background: -webkit-linear-gradient(left, #eee, rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #eee, rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #eee, rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #eee, rgba(255,255,255, 0.5), rgba(255,255,255, 0.0)); /* Standard syntax */
+}
+.rightFrame > h3, .gradientRight, .rightFrame2 {
+	background: transparent; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, rgba(221,221,221, 0.7), rgba(255,255,255, 0.0), rgba(255,255,255, 0.0)); /* Standard syntax */
 }
 .rightFrame > a {
 	//padding-left: 10px;
@@ -263,7 +259,6 @@ table tr td h3
 	border-width: 0 70px 70px 0;
 	border-style: solid;
 	border-color: #848484 #fff;
-	//border-color: #53535b #fff;
 }
 
 #note {
@@ -312,4 +307,31 @@ table tr td h3
 }
 #scrollToTopBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+}
+
+/* WAVES */
+
+.layer0 {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background-color: #000;
+}
+.layer1, .layer2, .layer3 {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+}
+.layer1 {
+	height: 900px;
+}
+.layer2 {
+	margin-top: 10px;
+	background-color: #dd3f31;
+	height: 200px;
+}
+.layer3 {
+	background-image: url('../svg/layer2.svg');
+	height: 400px;
 }

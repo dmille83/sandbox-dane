@@ -6,7 +6,6 @@ var pageLoad = (function(){
 	$("#content-wrapper").show();
 	$("#portraitImg").show(); // hide portrait until page is fully loaded
 	
-	
 	// SOURCE:  http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
 	var isMobileDevice = false;
 	var useMobileLayout = false;
@@ -19,19 +18,16 @@ var pageLoad = (function(){
 	}
 	// USE MOBILE DEVICE CSS IF PAGE IS NARROW
 	if ($(window).width() < 860) useMobileLayout = true;
-	//if ($(window).height() > $(window).width()*0.9) useMobileLayout = true;
 	if ($(window).width() - $(window).height() < 130) useMobileLayout = true;
-	//alert($(window).width());
 	
 	// Init particle background
-	if (isMobileDevice == false) { initparticles(); }
+	//if (isMobileDevice == false) { initparticles(); }
 	
 	if (useMobileLayout == true) 
 	{
 		// MOBILE DEVICE:
 		
 		// CSS
-		//$("#bio").css("height", "");
 		$("#topLeftFrame").css("height", "300px");
 		$("#topLeftFrame").css("width", "100%");
 		$("#topLeftFrame").css("border-bottom", "10px solid white");
@@ -44,7 +40,6 @@ var pageLoad = (function(){
 		});
 		$('.leftFrame > h3').each(function(){
 			gradientCss(this, "right", "#ddd");
-			//$(this).css("font-size", "2.5em");
 		});
 		$('.spacerDiv .leftFrame > h3').each(function(){
 			gradientCss(this, "right", "#bbb");
@@ -59,17 +54,14 @@ var pageLoad = (function(){
 			});
 			$("#bioName").css("font-size", "2.5em");
 		}
-		//$("#note").css("background", "transparent");
 		applyRandomColorGradients("right");
 		
-		//gradientAnimated();
 	}
 	else
 	{
 		// BROWSER:
 		
 		// CSS
-		//$("#bio").css("height",$(window).height() + "px");
 		$("#topLeftFrame").css("height",$(window).height() + "px");
 		$("#topLeftFrame").css("width", $(window).height()*(969/1400) + "px"); // Portrait's proportional width
 		$("#topLeftFrame").css("border-bottom", "");
@@ -127,14 +119,10 @@ var pageLoad = (function(){
 				// Are we scrolled to the very bottom?
 				var b = ($(window).scrollTop() + $(window).height() - $(document).height() >= 0);
 				var c = ($(window).scrollTop() + $(window).height() - $(document).height() >= -400); // some leeway so the bottom item isn't missed
-				//if(b==true) alert("bottom");
 				
 				// When we reach the bottom, perma-show all elements
 				if(b==true) permashow = true;
 				if(permashow==true) b = true;
-				
-				// Are we scrolled to the very top (reset perma-show)?
-				//if(b==false) b = (window.pageYOffset == 0);
 				
 				elements.each(function(){
 					var pos = this.parentElement.getBoundingClientRect().top, 
@@ -143,7 +131,6 @@ var pageLoad = (function(){
 					if ( ($(this).offset().left + $(this).width() > docElm.clientWidth/2) && (isMobileDevice == false) ) lr *= -1;
 					
 					// Screen position of element as user scrolls down.
-					//if ( (pos < viewportHeight-$(this).height()) || (pos < viewportHeight-200) ) d = true;
 					if ( pos < viewportHeight-150 ) d = true;
 					
 					if ( b==true || c==true || d==true ) {
@@ -198,12 +185,8 @@ var pageLoad = (function(){
 		if (direction == "left") dirsafari = "right"
 		
 		elem.css("background", "rgba(59, 59, 67, 100)"); // For browsers that do not support gradients
-		//elem.css("background", "-webkit-linear-gradient(" + dirsafari + ", rgba(59, 59, 67, " + a + "), rgba(59, 59, 67, " + b + "), rgba(59, 59, 67, " + c + "), rgba(59, 59, 67, " + d + "), rgba(59, 59, 67, " + e + "), url('./img/code-wallpaper-2.jpg')"); // For Safari 5.1 to 6.0
-		//elem.css("background", "-o-linear-gradient(" + direction + ", rgba(59, 59, 67, " + a + "), rgba(59, 59, 67, " + b + "), rgba(59, 59, 67, " + c + "), rgba(59, 59, 67, " + d + "), rgba(59, 59, 67, " + e + "), url('./img/code-wallpaper-2.jpg')"); // For Opera 11.1 to 12.0
-		//elem.css("background", "-moz-linear-gradient(" + direction + ", rgba(59, 59, 67, " + a + "), rgba(59, 59, 67, " + b + "), rgba(59, 59, 67, " + c + "), rgba(59, 59, 67, " + d + "), rgba(59, 59, 67, " + e + "), url('./img/code-wallpaper-2.jpg')"); // For Firefox 3.6 to 15
 		elem.css("background", "linear-gradient(to " + direction + ", rgba(59, 59, 67, " + a + "), rgba(59, 59, 67, " + b + "), rgba(59, 59, 67, " + c + "), rgba(59, 59, 67, " + d + "), rgba(59, 59, 67, " + e + "), url('./img/code-wallpaper-2.jpg')"); // Standard syntax
 		
-		//console.log('animated ' + "linear-gradient(to " + direction + ", rgba(59, 59, 67, " + a + "), rgba(59, 59, 67, " + b + "), rgba(59, 59, 67, " + c + "), rgba(59, 59, 67, " + d + "), rgba(59, 59, 67, " + e + "), url('./img/code-wallpaper-2.jpg')");
 	}
 	function randomInt(min,max) { return Math.floor(Math.random()*(max-min+1)+min); }
 	
@@ -215,48 +198,20 @@ var pageLoad = (function(){
 		var dirsafari = "left"
 		if (direction == "left") dirsafari = "right"
 		if (color1.substring(0,1) !== "#") color1 = "#" + color1;
-		
-		//color1 = "rgb(168, 158, 190)"; // I like this color a lot
-		
 		$(elem).css("background", "white"); // For browsers that do not support gradients
 		$(elem).css("background", "-webkit-linear-gradient(" + dirsafari + ", " + color1 + ", rgba(255,255,255, 0.0), rgba(255,255,255, 0.0))"); // For Safari 5.1 to 6.0
 		$(elem).css("background", "-o-linear-gradient(" + direction + ", " + color1 + ", rgba(255,255,255, 0.0), rgba(255,255,255, 0.0))"); // For Opera 11.1 to 12.0
 		$(elem).css("background", "-moz-linear-gradient(" + direction + ", " + color1 + ", rgba(255,255,255, 0.0), rgba(255,255,255, 0.0))"); // For Firefox 3.6 to 15
 		$(elem).css("background", "linear-gradient(to " + direction + ", " + color1 + ", rgba(255,255,255, 0.0), rgba(255,255,255, 0.0))"); // Standard syntax
 	}
-	/*
-	function randomcolor() 
-	{
-		var rcolor = '#000000';
-		while (rcolor == '#000000' || rcolor == '#FFFFFF' || rcolor.length < 7 || colorisdark(rcolor) < 117) {
-			// beware 5-digit colors in the rare instance that random() == 0
-			rcolor = "#"+((1<<24)*Math.random()|0).toString(16);
-		}
-		//console.log(rcolor + ' ' + colorisdark(rcolor));
-		return rcolor;
-	}
-	function colorisdark(hexcode)
-	{
-		// SOURCE:  http://stackoverflow.com/questions/12043187/how-to-check-if-hex-color-is-too-black
-		var c = hexcode.substring(1);      // strip #
-		var rgb = parseInt(c, 16);   // convert rrggbb to decimal
-		var r = (rgb >> 16) & 0xff;  // extract red
-		var g = (rgb >>  8) & 0xff;  // extract green
-		var b = (rgb >>  0) & 0xff;  // extract blue
-		var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
-		return luma;
-	}
-	*/
+	
 	function applyRandomColorGradients(direction)
 	{
 		$('.randomColor h3').each(function(){
 			gradientCss(this, direction, randomcolor());
 		});
 	}
-	//applyRandomColorGradients("left");
 	/*** FRIVOLOUS COSMETICS (END) ***/
-	
-	
 	
 });
 window.onload = pageLoad;
