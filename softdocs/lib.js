@@ -5,15 +5,15 @@ function initMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
     		console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
     		if (element.getAttribute('data-bind').includes("money")) {
-    			element.addEventListener('change', function() { MoneyCommasTrigger(this); }, false);
+    			element.addEventListener('change', function() { triggerMoneyCommas(this); }, false);
     		}
     	});
     }
     function triggerMoneyCommas(elem) {
-    	MoneyCommasFormat(elem);
+    	formatMoneyCommas(elem);
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
     		if (element.getAttribute('data-bind').includes("money") && element.getAttribute('data-bind').includes("calculate")) {
-    			MoneyCommasFormat(element);
+    			formatMoneyCommas(element);
     		}
     	});
     }
