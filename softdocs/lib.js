@@ -88,6 +88,9 @@ function disableAutocomplete() {
 	});
 }
 
+// Shows a loading message that will disappear when the default values finish loading.
+// Run showFormLoadingMessage(true); in vm.viewmodel().
+// Run showFormLoadingMessage(false); at the end of vm.setDefaults().
 function showFormLoadingMessage(boolEnable) {
 	if (boolEnable == true) {
 		if (document.getElementById("softdocsLoadingBar")) {
