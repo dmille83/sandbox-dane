@@ -7,9 +7,10 @@
 function initMoneyCommas() {
     function registerMoneyCommas() {
     	[].forEach.call(document.querySelectorAll('input[data-bind]'), function(element) {
-    		console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
-    		if (element.getAttribute('data-bind').includes("money")) {
+			if (element.getAttribute('data-bind').includes("money") && !element.getAttribute('sd-money-listener')) {
+				console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
     			element.addEventListener('change', function() { triggerMoneyCommas(this); }, false);
+				element.setAttribute('sd-money-listener', 'yes');
     		}
     	});
     }
@@ -28,8 +29,9 @@ function initMoneyCommas() {
     	elem.value = parts.join(".");
     }
     [].forEach.call(document.querySelectorAll('button'), function(element) {
-    	console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
+    	console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind') && !element.getAttribute('sd-money-listener'));
     	element.addEventListener('click', function() { registerMoneyCommas(); }, false);
+		element.setAttribute('sd-money-listener', 'yes');
     });
     registerMoneyCommas();
 }
@@ -38,7 +40,9 @@ function initMoneyCommas() {
 function initEmailKSU() {
 	function registerEmailKSU() {
 		[].forEach.call(document.querySelectorAll('.maskemail'), function(element) {
-			element.addEventListener('change', function() { formatEmailKSU(this); }, false);
+			if (!element.getAttribute('sd-email-listener')) {
+				element.addEventListener('change', function() { formatEmailKSU(this); }, false);
+			}
 		});
 	}
 	function formatEmailKSU(elem) {
@@ -50,8 +54,11 @@ function initEmailKSU() {
 		}
 	}
 	[].forEach.call(document.querySelectorAll('button'), function(element) {
-		console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
-		element.addEventListener('click', function() { registerEmailKSU(); }, false);
+		if (!element.getAttribute('sd-email-listener')) {
+			console.log(element.getAttribute('id') + '==' + element.getAttribute('data-bind'));
+			element.addEventListener('click', function() { registerEmailKSU(); }, false);
+			element.setAttribute('sd-email-listener', 'yes');
+		}
 	});
 	registerEmailKSU();
 }
