@@ -1,5 +1,3 @@
-// Host this .js file on GitHub.
-
 // To accomplish this you will need to use some custom JavaScript inside the' viewmodel.js' file of your form. 
 // Place the following inside the afterLoad() block.
 
@@ -54,48 +52,4 @@ function initEmailKSU() {
 		element.addEventListener('click', function() { registerEmailKSU(); }, false);
 	});
 	registerEmailKSU();
-}
-
-// Return unique text array
-function uniqueTxtArray(txtArray) {
-	function onlyUnique(value, index, self) {
-		return self.indexOf(value) === index;
-	}
-	var unique = txtArray.filter(onlyUnique);
-	return unique;
-}
-
-// Return unique object array
-// Also works for a text array
-function uniqueObjArray(arr) {
-	var a = [];
-	var unique = [];
-	for (i = 0; i < arr.length; i++) {
-		var v = JSON.stringify(arr[i]);
-		if (a.indexOf(v) == -1) {
-			a.push(v);
-			var o = arr[i];
-			unique.push(o);
-		}
-	}
-	return unique;
-}
-
-// Prevents form suggestion 
-function disableAutocomplete() {
-	$( document ).on( 'focus', 'input', function(){ 
-		$( this ).attr( 'autocomplete', 'chrome-off' ); 
-	});
-}
-
-function showFormLoadingMessage(boolEnable) {
-	if (boolEnable == true) {
-		if (document.querySelectorAll('#softdocsLoadingBar').length > -1) {
-		   $( '#softdocsLoadingBar' ).css('display', '');
-		} else {
-			$( 'body' ).prepend('<div id="softdocsLoadingBar" style="display: block; position: fixed; width: 50%; text-align: center; margin: 25% 25% 25% 25%; background: white; z-index: 999; font-size: 26px; font-weight: bold; padding: 20px; border: 4px solid black;">Loading form, please wait...</div>');
-		}
-	} else {
-		$( '#softdocsLoadingBar' ).css('display', 'none');
-	}
 }
