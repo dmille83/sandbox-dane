@@ -1,3 +1,5 @@
+// Host this .js file on GitHub.
+
 // To accomplish this you will need to use some custom JavaScript inside the' viewmodel.js' file of your form. 
 // Place the following inside the afterLoad() block.
 
@@ -42,8 +44,8 @@ function initEmailKSU() {
 	function formatEmailKSU(elem) {
 		var val = elem.value;
 		if (val == null || val.toString() == "") { return; }
-		var parts = val.toString().split("@");
-		if (parts.length == 1 || parts[1].toString() == "k-state.edu") {
+		var parts = val.toString().split('@');
+		if (parts.length == 1 || parts[1].toString() == 'k-state.edu') {
 			elem.value = parts[0] + "@ksu.edu";
 		}
 	}
@@ -77,4 +79,19 @@ function uniqueObjArray(arr) {
 		}
 	}
 	return unique;
+}
+
+// Prevents form suggestion 
+function disableAutocomplete() {
+	$( document ).on( 'focus', 'input', function(){ 
+		$( this ).attr( 'autocomplete', 'chrome-off' ); 
+	});
+}
+
+function showFormLoadingMessage(enable) {
+	if (enable == true) {
+		$( 'body' ).append('<div id="softdocsLoadingBar" style="display: block; position: fixed; width: 50%; text-align: center; margin: 25% 25% 25% 25%; background: white; z-index: 99; font-size: 26px; font-weight: bold; padding: 20px; border: 4px solid black;">Loading form, please wait...</div>');
+	} else {
+		$( '#softdocsLoadingBar' ).css('display', 'none');
+	}
 }
