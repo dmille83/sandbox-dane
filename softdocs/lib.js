@@ -88,8 +88,8 @@ function disableAutocomplete() {
 	});
 }
 
-function showFormLoadingMessage(enable) {
-	if (enable == true) {
+function showFormLoadingMessage(boolEnable) {
+	if (boolEnable == true) {
 		if (document.querySelectorAll('#softdocsLoadingBar').length > -1) {
 		   $( '#softdocsLoadingBar' ).css('display', '');
 		} else {
