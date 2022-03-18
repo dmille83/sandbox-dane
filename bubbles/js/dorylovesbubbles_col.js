@@ -60,7 +60,7 @@
 		select.appendChild(option);
 		
 		// Add root DB options
-		for (var i = 1; i < backend_list.length; i++) {
+		for (var i = 0; i < backend_list.length; i++) {
 			//console.log(backend_list[i]);
 			
 			var c = getFrontendCount(backend_list[i]) + getBackendCount(frontend_list[i]);
@@ -89,7 +89,7 @@
 		select.appendChild(option);
 		
 		// Add frontend options
-		for (var i = 1; i < frontend_list.length; i++) {
+		for (var i = 0; i < frontend_list.length; i++) {
 			//console.log(backend_list[i]);
 			
 			if (frontend_list[i].includes(".") > 0) {
