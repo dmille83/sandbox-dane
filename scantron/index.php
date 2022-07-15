@@ -491,7 +491,7 @@ function printStepTwoPage($answerkeysDataArray, $studentAnswersDataArray, $fileT
 	$converterOutput .= '</div>';
 	
 	$converterOutput .= '</div>';
-	//$converterOutput .= '<div style="text-align:center; font-size: 0.8em;">&copy; Dane Miller & Alexandre Adams, ITAC Help Desk Developers. K-State University 2014</div>';
+	//$converterOutput .= '<div style="text-align:center; font-size: 0.8em;">Dane Miller &amp; Alexandre Adams, ITAC Help Desk Developers. K-State University 2014</div>';
 
 	return $converterOutput;
 }
