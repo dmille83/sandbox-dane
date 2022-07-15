@@ -510,7 +510,7 @@ function writeNewCsv($answerkeysDataArray, $studentAnswersDataArray, $fileToZipN
 		if (isset($_POST['pointvalue'][$value->getVersion()])) 
 			$value->setPointValueArray($_POST['pointvalue'][$value->getVersion()]);
 		
-		if ($totalPointsPossible == -1) $totalPointsPossible = $value->getPointsPossible();		
+		if ($totalPointsPossible == -1) $totalPointsPossible = $value->getPointsPossible();
 	}
 
 	//Row1:
@@ -1111,7 +1111,7 @@ class Scantron
 
 <!-- Version 3.8 -->
 
-<link rel="shortcut icon" href="https://s.ksucloud.net/k-state-static/2011/0.9.5/img/favicon.ico">
+<link rel="shortcut icon" href="./favicon.ico">
 
 <style>
 	html, body
@@ -1412,17 +1412,6 @@ class Scantron
 	
 </style>
 
-
-<!-- LOAD JAVASCRIPT LIBRARIES: -->
-<!--
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
--->
-<!--
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
--->
-
 <script>
 	function showStep1Form(show)
 	{
@@ -1667,7 +1656,7 @@ class Scantron
 					</tr>
 					<tr>
 						<td>
-							How many points is this assignment worth?
+							How many points is this assignment worth? (default is 1 point per question)
 						</td>
 						<td>
 							<input type='number' name='totalPointsPossible' id='totalPointsPossible' style="width:55px; text-align: left;" min="1"/> <span style="color:red;">*required</span>
