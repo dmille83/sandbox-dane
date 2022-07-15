@@ -1725,5 +1725,5 @@ class Scantron
 			</div>
 		</form>
 	</div>
-	<div style="text-align:center; font-size: 0.8em;">&copy; Dane Miller & Alexandre Adams, ITAC Help Desk Developers. K-State University 2014</div>
+	<div style="text-align:center; font-size: 0.8em;">Dane Miller &amp; Alexandre Adams, ITAC Help Desk Developers. K-State University 2014</div>
 </body>
