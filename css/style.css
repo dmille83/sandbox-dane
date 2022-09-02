@@ -111,8 +111,12 @@ h3, .navLink {
 	margin-top: 0;
 }
 .resumeLink {
-	color: #dd3f31;
+	/*color: #dd3f31;*/
+	color: #000000;
 	text-decoration: underline;
+}
+.darkText {
+	color: #000000;
 }
 
 .spacerDiv, .bottomFrame {
